@@ -1,11 +1,9 @@
 \documentclass[a4paper, 11pt]{article}
 
-% Thông tin của bạn
-
+% Your full name
 \def\name{Hoàng Anh Đức}
 
 % Vietnamese in LaTeX
-
 \usepackage[utf8]{inputenc}
 \usepackage[vietnamese,american]{babel}
 
@@ -41,18 +39,16 @@
 \usepackage{multirow}
 
 % Section/Subsection Numbering
-
 \renewcommand\thesection{\Roman{section}.}
 \renewcommand\thesubsection{\arabic{subsection}.}
 
 % Adjust paper's margins
-
 \usepackage{geometry}
 \geometry{
-a4paper,
-total={170mm,257mm},
-left=20mm,
-top=20mm,
+    a4paper,
+    total={170mm,257mm},
+    left=20mm,
+    top=20mm,
 }
 
 %% Hyperlinks
@@ -68,10 +64,11 @@ top=20mm,
 			pdfsubject={Lý lịch khoa học: \name},
 			pdfkeywords={\name, Lý lịch khoa học},
 			pdfproducer={LaTeX},
-			pdfcreator={pdflatex}}		
+			pdfcreator={pdflatex}
+}		
 			
-% Bibliography formatting
-
+% Bibliography listing
+% Original: https://robjhyndman.com/hyndsight/cv/
 \usepackage[sorting=ydnt,citestyle=authoryear,bibstyle=alphabetic,defernumbers=true,maxnames=20,giveninits=false, bibencoding=utf8,doi=true,isbn=false,natbib=true,backend=biber]{biblatex}
 
 \DeclareFieldFormat{url}{\url{#1}}
@@ -100,7 +97,7 @@ top=20mm,
 %\makeatother
 
 % Bibliography categories
-\def\makebibcategory#1#2{\DeclareBibliographyCategory{#1}\defbibheading{#1}{\noindent\textcolor{blue}{\large #2}}}
+\def\makebibcategory#1#2{\DeclareBibliographyCategory{#1}\defbibheading{#1}{\noindent\textcolor{black}{\large #2}}}
 \makebibcategory{books}{Sách}
 \makebibcategory{papers}{Tạp chí khoa học}
 \makebibcategory{chapters}{Chương sách}
@@ -195,7 +192,8 @@ $-$ & \multicolumn{2}{l}{Tiến sĩ chuyên ngành: }\\
 \subsection{Ngoại ngữ}
 
 \begin{tabularx}{\columnwidth}{p{0.1cm}XX}
-1. & Tiếng Anh & Mức độ sử dụng: \\
+1. &  & Mức độ sử dụng: \\
+2. &  & Mức độ sử dụng: \\
 \end{tabularx}
 
 \section{QUÁ TRÌNH CÔNG TÁC}
@@ -223,31 +221,34 @@ TT & Năm bắt đầu/Năm hoàn thành & Đề tài cấp (NN, Bộ, ngành, t
 %% Add reference keys of your papers to corresponding categories, 
 %% and put \printbib{<category>} between \begin{publications} ... \end{publications}
 
-\addtocategory{inprogress}{
+\addtocategory{preprint}{
 	% ref-key,
 }
 
 \addtocategory{papers}{
 	% ref-key,
+	Hoang2020,
 }
 
 \addtocategory{conferences}{
 	% ref-key,
+	Hoang2019,
+	Hoang2019-2,
 }
 
 \addtocategory{phdthesis}{
 	% ref-key,
 }
 
-%\begin{publications}
+\begin{publications}
 %\printbib{books}
 %\printbib{inprogress}
-%\printbib{papers}
+\printbib{papers}
 %\printbib{chapters}
-%\printbib{conferences}
+\printbib{conferences}
 %\printbib{editorials}
 %\printbib{phdthesis}
-%\end{publications}
+\end{publications}
 
 \vskip 1em
 
