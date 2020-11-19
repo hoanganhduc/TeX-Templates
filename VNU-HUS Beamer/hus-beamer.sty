@@ -1,0 +1,89 @@
+% Modified from ub-beamer.sty [https://github.com/lenhard/ub-beamer]
+% 
+
+\ProvidesPackage{hus-beamer}[2018/10/13]
+\RequirePackage[absolute,verbose,overlay]{textpos}
+
+\let\Tiny=\tiny % Kills two default fontsize beamer warnings
+
+\setbeamertemplate{navigation symbols}{} % remove navigation symbols
+
+%for adjusting the position of the image in the titles of frames
+%instead of using a custom main theme, configure the inner and outer themes (footline)
+\newif\ifplacelogo % create a new conditional
+%\placelogotrue % set it to true
+\setbeamertemplate{footline}{
+	\ifplacelogo
+%	\grouplogo
+  	\ublogo
+  	\fi
+ 	 \begin{beamercolorbox}[wd=\textwidth,ht=4ex,leftskip=1.4cm,rightskip=.3cm]{author in head/foot}
+    	\usebeamercolor{UBRed}
+    	\hrule
+    	\vspace{0.1cm}
+   		\insertdate \hfill \inserttitle \newline 
+     	\insertshortauthor \ - \insertshortinstitute \hfill \insertframenumber/\inserttotalframenumber
+  	\end{beamercolorbox}
+  	\vspace*{0.1cm}
+} 
+
+%the university of bamberg colors
+\definecolor{UBBlue}{RGB}{83,121,170}
+\definecolor{UBBlack}{RGB}{26,23,27}
+\definecolor{UBYellow}{RGB}{255,211,0}
+\definecolor{UBGreen}{RGB}{151,191,13}
+\definecolor{UBRed}{RGB}{230,68,79}
+\definecolor{UBGray}{RGB}{135,135,131}
+
+%the usage of the colors in special elements
+\setbeamercolor{title}{fg=UBRed}
+\setbeamercolor{frametitle}{fg=UBRed}
+\setbeamercolor{structure}{fg=UBRed}
+
+% use square bullet points instead of arrows
+\setbeamertemplate{items}[square]
+
+%Do not count the front slide
+\setcounter{framenumber}{0}
+
+
+\def \grouplogofile {fig/HUS-logo}
+\def \ublogofile {fig/HUS-logo}
+%to position the group logo at the right-upper corner of a slide
+\newcommand{\grouplogo}{
+	%TPHorizModule and TPVertModule are the factors with which the horizontal and vertical alignment of the following textblock are calculated
+  \setlength{\TPHorizModule}{1pt}
+  \setlength{\TPVertModule}{1pt}
+  %  textblock{}{x,y}: pos(x) = x * TPHorizModule, pos(y) = y * TPVertModule
+  \begin{textblock}{1}(325,6)
+   \includegraphics[width=30pt,height=30pt]{\grouplogofile}
+  \end{textblock}
+  } 
+  
+  %
+% Includes the university logo at the lower left corner of the slide
+  \newcommand{\ublogo}{
+	%TPHorizModule and TPVertModule are the factors with which the horizontal and vertical alignment of the following textblock are calculated
+  \setlength{\TPHorizModule}{1pt}
+  \setlength{\TPVertModule}{1pt}
+  %  textblock{}{x,y}: pos(x) = x * TPHorizModule, pos(y) = y * TPVertModule
+  \begin{textblock}{1}(8,245)
+   \includegraphics[width=25pt,height=25pt]{\ublogofile}
+  \end{textblock}
+  } 
+  
+   %Colors the given text in standard blue
+  \newcommand{\markB}[1]{%
+  	{\color{UBBlue} #1}%
+  }
+  
+   %Colors the given text in standard blue and rendered bold
+  \newcommand{\markBB}[1]{%
+  	{\color{UBBlue} \textbf{#1}}%
+  }
+  
+   %Colors the given text in standard blue and rendered italic
+  \newcommand{\markBI}[1]{%
+  	{\color{UBBlue} \textit{#1}}%
+  }
+  

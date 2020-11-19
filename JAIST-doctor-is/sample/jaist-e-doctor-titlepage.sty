@@ -1,0 +1,53 @@
+% titlepage.sty  27 Jan 85
+%                24 Dec 98
+\newlength{\titletopskip}
+\setlength{\titletopskip}{1.0cm}
+
+\def\maketitle{\begin{titlepage}
+\let\footnotesize\small \let\footnoterule\relax \setcounter{page}{0}
+\null
+\vskip \titletopskip % \vfil
+\large\sf
+\begin{center}
+Doctoral Dissertation
+\vskip 35pt
+{\Large\bf \@title \par} \par
+\vskip 85pt
+{\Large\sf
+\@author} \par
+
+\vskip 250pt
+
+{\large\sf
+{\em Supervisor:\ } \@adviser
+
+\vskip 50pt
+
+{\em
+School of \@school \par
+Japan Advanced Institute of Science and Technology}
+
+\vskip 45pt
+
+\@date
+} \par
+\end{center}
+
+\null
+\end{titlepage}
+\setcounter{footnote}{0} \let\thanks\relax
+\gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\maketitle\relax} 
+\def\abstract{\titlepage
+\null\vfil
+\begin{center}
+{\bf Abstract}
+\end{center}}
+\def\endabstract{\par\vfil\null\endtitlepage}
+
+
+\def\school#1{\def\@school{#1}}
+\def\adviser#1{\def\@adviser{#1}}
+
+\def\crnotify#1{\def\@crnotify{#1}}
+\crnotify{}
+

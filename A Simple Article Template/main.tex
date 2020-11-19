@@ -1,0 +1,172 @@
+\documentclass[a4paper]{article}
+
+\usepackage[pages=all, color=black, position={current page.south}, placement=bottom, scale=1, opacity=1, vshift=5mm]{background}
+\SetBgContents{
+	\tt This work is shared under a \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC BY-SA 4.0 license} unless otherwise noted
+}      % copyright
+
+\usepackage[margin=1in]{geometry} % full-width
+
+% AMS Packages
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+% Unicode
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\hypersetup{
+	unicode,
+%	colorlinks,
+%	breaklinks,
+%	urlcolor=cyan, 
+%	linkcolor=blue, 
+	pdfauthor={Author One, Author Two, Author Three},
+	pdftitle={A simple article template},
+	pdfsubject={A simple article template},
+	pdfkeywords={article, template, simple},
+	pdfproducer={LaTeX},
+	pdfcreator={pdflatex}
+}
+
+% Vietnamese
+%\usepackage{vntex}
+
+% Natbib
+\usepackage[sort&compress,numbers,square]{natbib}
+\bibliographystyle{mplainnat}
+
+% Theorem, Lemma, etc
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}{Claim}[theorem]
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{criterion}[theorem]{Criterion}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{principle}[theorem]{Principle}
+
+\usepackage{graphicx, color}
+\graphicspath{{fig/}}
+
+%\usepackage[linesnumbered,ruled,vlined,commentsnumbered]{algorithm2e} % use algorithm2e for typesetting algorithms
+\usepackage{algorithm, algpseudocode} % use algorithm and algorithmicx for typesetting algorithms
+\usepackage{mathrsfs} % for \mathscr command
+
+\usepackage{lipsum}
+
+% Author info
+\title{A simple article template}
+\author{Author One$^1$\thanks{Author One was partially supported by Grant XXX} \and Author Two$^2$ \and Author Three$^1$}
+
+\date{
+	$^1$Organization 1 \\ \texttt{\{auth1, auth3\}@org1.edu}\\%
+	$^2$Organization 2 \\ \texttt{auth3@inst2.edu}\\[2ex]%
+%	\today
+}
+
+\begin{document}
+	\maketitle
+	
+	\begin{abstract}
+		\lipsum[1]
+		
+		\noindent\textbf{Keywords:} article, template, simple
+	\end{abstract}
+
+	\tableofcontents
+	
+	\section{Introduction}
+	\label{sec:intro}
+	
+	\lipsum[2]
+	
+	\subsection{Preliminaries}
+	\label{sec:pre}
+	
+	\lipsum[3]
+	
+	\subsection{Previous Results}
+	\label{sec:prev-results}
+	
+	Null graphs are discussed in \cite{HararyR74}
+	The concept of ``internally stable set'' was used in \cite{Berge57, Berge58}.
+	
+	\begin{theorem}
+		\label{thrm:1}
+		\lipsum[4]
+	\end{theorem}
+	\begin{proof}
+		content...
+	\end{proof}
+
+	\begin{corollary}
+	\label{cor:1}
+	
+	\lipsum[5]
+	\end{corollary}
+
+	Unordered List (taken from Overleaf)
+	\begin{itemize}
+		\item The individual entries are indicated with a black dot, a so-called bullet.
+		\item The text in the entries may be of any length.
+	\end{itemize}
+
+	Ordered List (taken from Overleaf)
+	\begin{enumerate}
+		\item The labels consists of sequential numbers.
+		\item The numbers starts at 1 with every call to the enumerate environment.
+	\end{enumerate}
+
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{|c|c|}
+			\hline
+			\textbf{Odd} & \textbf{Even} \\
+			\hline\hline
+			One & Two \\
+			\hline
+			Three & Four \\
+			\hline
+		\end{tabular}
+		\caption{This is a table}
+		\label{tbl:1}
+	\end{table}
+
+	Table~\ref*{tbl:1} is an example of a table.
+	
+	\section{More Examples}
+	\label{sec:examples}
+	
+	Now we include a figure.
+	(See Figure~\ref{fig:example}.)
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[width=0.3\textwidth]{example}
+		\caption{An example of a figure}
+		\label{fig:example}
+	\end{figure}
+	
+	\paragraph{Acknowledgements} \lipsum[6]
+	
+%	\newpage
+	\bibliography{refs}
+	
+	\appendix
+	
+	\section{Omitted Proof in Section~\ref{sec:examples}}
+	\label{app:1}
+	
+	\lipsum[7]
+	
+\end{document}

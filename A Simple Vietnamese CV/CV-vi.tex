@@ -1,0 +1,268 @@
+\documentclass[a4paper, 11pt]{article}
+
+% Thông tin của bạn
+
+\def\name{Hoàng Anh Đức}
+
+% Vietnamese in LaTeX
+
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese,american]{babel}
+
+% Redefine Maketitle
+
+\makeatletter
+\def\@maketitle{%
+  \newpage
+  \null
+  \vskip 2em%
+  \begin{center}%
+  \let \footnote \thanks
+    {\bf CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM \\
+    			\underline{Độc lập -- Tự do -- Hạnh phúc} 
+    }
+    \vskip 1.5em%
+    {\Large\bf \@title \par}%
+    \vskip 2em%
+%    {\large
+%      \lineskip .5em%
+%      \begin{tabular}[t]{c}%
+%        \@author
+%      \end{tabular}\par}%
+%    \vskip 1em%
+%    {\large \@date}%
+  \end{center}%
+  \par
+  \vskip 1.5em}
+\makeatother
+
+% Table
+\usepackage{tabularx}
+\usepackage{multirow}
+
+% Section/Subsection Numbering
+
+\renewcommand\thesection{\Roman{section}.}
+\renewcommand\thesubsection{\arabic{subsection}.}
+
+% Adjust paper's margins
+
+\usepackage{geometry}
+\geometry{
+a4paper,
+total={170mm,257mm},
+left=20mm,
+top=20mm,
+}
+
+%% Hyperlinks
+\usepackage{hyperref, color}								% to use hyperlinks
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}			% hyperlinks setup
+\hypersetup{colorlinks,
+			breaklinks,
+			urlcolor=linkcolour, 
+			linkcolor=linkcolour, 
+			unicode=true,
+			pdfauthor={\name},
+			pdftitle={Lý lịch khoa học: \name},
+			pdfsubject={Lý lịch khoa học: \name},
+			pdfkeywords={\name, Lý lịch khoa học},
+			pdfproducer={LaTeX},
+			pdfcreator={pdflatex}}		
+			
+% Bibliography formatting
+
+\usepackage[sorting=ydnt,citestyle=authoryear,bibstyle=alphabetic,defernumbers=true,maxnames=20,giveninits=false, bibencoding=utf8,doi=true,isbn=false,natbib=true,backend=biber]{biblatex}
+
+\DeclareFieldFormat{url}{\url{#1}}
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[inproceedings]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[incollection]{pages}{\lowercase{pp.}#1}
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+\DeclareFieldFormat[article]{title}{\MakeCapital{#1}}
+\DeclareFieldFormat[article]{url}{}
+\DeclareFieldFormat[inproceedings]{title}{#1}
+\DeclareFieldFormat{shorthandwidth}{#1}
+\DeclareFieldFormat{extradate}{}
+
+% No dot before number of articles
+\usepackage{xpatch}
+\xpatchbibmacro{volume+number+eid}{\setunit*{\adddot}}{}{}{}
+
+% Remove In: for an article.
+\renewbibmacro{in:}{%
+  \ifentrytype{article}{}{%
+  \printtext{\bibstring{in}\intitlepunct}}}
+
+%\makeatletter
+%\DeclareDelimFormat[cbx@textcite]{nameyeardelim}{\addspace}
+%\makeatother
+
+% Bibliography categories
+\def\makebibcategory#1#2{\DeclareBibliographyCategory{#1}\defbibheading{#1}{\noindent\textcolor{blue}{\large #2}}}
+\makebibcategory{books}{Sách}
+\makebibcategory{papers}{Tạp chí khoa học}
+\makebibcategory{chapters}{Chương sách}
+\makebibcategory{conferences}{Kỷ yếu hội thảo}
+\makebibcategory{techreports}{Báo cáo}
+\makebibcategory{editorials}{Chủ biên}
+\makebibcategory{phdthesis}{Luận án tiến sĩ}
+\makebibcategory{software}{Phần mềm}
+\makebibcategory{preprint}{Tiền ấn phẩm}
+
+\setlength{\bibitemsep}{2.3pt}
+\setlength{\bibhang}{.9cm}
+%\renewcommand{\bibfont}{\fontsize{12}{14}}
+
+\renewcommand*{\bibitem}{\addtocounter{papers}{1}\item \mbox{}\hskip-0.9cm\hbox to 0.9cm{\hfill\arabic{papers}.~\,}}
+\defbibenvironment{bibliography}
+{\list{}
+  {\setlength{\leftmargin}{\bibhang}%
+   \setlength{\itemsep}{\bibitemsep}%
+   \setlength{\parsep}{\bibparsep}}}
+{\endlist}
+{\bibitem}
+
+\newenvironment{publications}{\subsection{Các công trình khoa học đã công bố}\label{papersstart}
+}{\label{papersend}\addtocounter{sumpapers}{-1}\refstepcounter{sumpapers}\label{sumpapers}}
+
+\def\printbib#1{\printbibliography[category=#1,heading=#1]\lastref{sumpapers}}
+%\renewcommand{\bibfont}{\normalfont\fontsize{10}{12.4}\rmfamily}
+% Counters for keeping track of papers
+\newcounter{papers}\setcounter{papers}{0}
+\newcounter{sumpapers}\setcounter{sumpapers}{0}
+\def\lastref#1{\addtocounter{#1}{\value{papers}}\setcounter{papers}{0}}
+
+\DeclareSourcemap{
+	\maps[datatype=bibtex, overwrite]{
+		\map{
+			\step[fieldset=month, null]
+		}
+	}
+}
+
+% Add all papers from pubs.bib
+\nocite{*}
+\bibliography{pubs}
+
+\title{LÝ LỊCH KHOA HỌC \\ \tiny\emph{(Dựa theo mẫu tại Thông tư số 09/2017/TT-BGDĐT ngày 04/04/2017 của Bộ trưởng Bộ GDĐT)}}
+
+\begin{document}
+\pagestyle{empty}
+\selectlanguage{vietnamese}
+\maketitle
+\thispagestyle{empty}
+
+\section{LÝ LỊCH SƠ LƯỢC}
+
+\begin{tabularx}{\columnwidth}{XXXX}
+\multicolumn{2}{l}{Họ và tên: } & \multicolumn{2}{l}{Giới tính: }\\
+\multicolumn{2}{l}{Ngày, tháng, năm sinh: } & \multicolumn{2}{l}{Nơi sinh:} \\ 
+\multicolumn{2}{l}{Quê quán:} & \multicolumn{2}{l}{Dân tộc:} \\
+\multicolumn{2}{l}{Học vị cao nhất: } & \multicolumn{2}{l}{Năm, nơi nhận học vị: }\\
+\multicolumn{2}{l}{Chức danh khoa học cao nhất: } & \multicolumn{2}{l}{Năm bổ nhiệm:} \\
+\multicolumn{4}{l}{Chức vụ (hiện tại hoặc trước khi nghỉ hưu):} \\
+\multicolumn{4}{l}{Đơn vị công tác (hiện tại hoặc trước khi nghỉ hưu):} \\
+\multicolumn{4}{l}{Chỗ ở riêng hoặc địa chỉ liên lạc:} \\
+Điện thoại liên hệ: & CQ: & NR: & DĐ: \\
+\multicolumn{2}{l}{Fax:} & \multicolumn{2}{l}{Email (cá nhân): } \\
+\multicolumn{2}{l}{Trang cá nhân: } & \multicolumn{2}{l}{Email (công việc):} \\
+Số CMND: & Nơi cấp: & Ngày cấp: & \\
+\end{tabularx}
+
+\section{QUÁ TRÌNH ĐÀO TẠO}
+
+\subsection{Đại học}
+
+\begin{tabularx}{\columnwidth}{XX}
+Ngành học:  & Hệ đào tạo: \\
+\multicolumn{2}{l}{Nơi đào tạo: } \\
+Nước đào tạo:  & Năm tốt nghiệp: \\
+\end{tabularx}
+
+\subsection{Sau đại học}
+
+\begin{tabularx}{\columnwidth}{p{0.1cm}p{12cm}X}
+$-$ & \multicolumn{2}{l}{Thạc sĩ chuyên ngành: }\\
+ & Nơi đào tạo:  & Năm cấp bằng: \\
+ & \multicolumn{2}{l}{Tên luận văn: }\\
+$-$ & \multicolumn{2}{l}{Tiến sĩ chuyên ngành: }\\
+ & Nơi đào tạo: & Năm cấp bằng: \\
+ & \multicolumn{2}{l}{Tên luận văn: }\\
+\end{tabularx}
+
+\subsection{Ngoại ngữ}
+
+\begin{tabularx}{\columnwidth}{p{0.1cm}XX}
+1. & Tiếng Anh & Mức độ sử dụng: \\
+\end{tabularx}
+
+\section{QUÁ TRÌNH CÔNG TÁC}
+
+\begin{tabularx}{\columnwidth}{|X|X|X|}
+\hline
+Thời gian & Nơi công tác & Công việc đảm nhiệm \\
+\hline
+& & \\
+\hline
+\end{tabularx}
+
+\section{QUÁ TRÌNH NGHIÊN CỨU KHOA HỌC}
+
+\subsection{Các đề tài nghiên cứu khoa học đã và đang tham gia}
+
+\begin{tabularx}{\columnwidth}{|p{0.5cm}|X|X|X|}
+\hline
+TT & Năm bắt đầu/Năm hoàn thành & Đề tài cấp (NN, Bộ, ngành, trường) & Trách nhiệm tham gia trong đề tài \\
+\hline
+& & & \\
+\hline
+\end{tabularx}
+
+%% Add reference keys of your papers to corresponding categories, 
+%% and put \printbib{<category>} between \begin{publications} ... \end{publications}
+
+\addtocategory{inprogress}{
+	% ref-key,
+}
+
+\addtocategory{papers}{
+	% ref-key,
+}
+
+\addtocategory{conferences}{
+	% ref-key,
+}
+
+\addtocategory{phdthesis}{
+	% ref-key,
+}
+
+%\begin{publications}
+%\printbib{books}
+%\printbib{inprogress}
+%\printbib{papers}
+%\printbib{chapters}
+%\printbib{conferences}
+%\printbib{editorials}
+%\printbib{phdthesis}
+%\end{publications}
+
+\vskip 1em
+
+\begin{flushright}
+\begin{tabularx}{0.5\columnwidth}{c}
+Hà Nội, \today \\
+{\bf Người khai ký tên} \\
+(Ghi rõ chức danh khoa học, học vị) \\
+\\
+\\
+\\
+\\
+\\
+\name
+\end{tabularx}
+\end{flushright}
+
+\end{document}

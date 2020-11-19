@@ -1,0 +1,80 @@
+\chapter{Preliminaries}
+Let $\cX$ and $\cY$ be finite set. $P$ will denote a distribution on $\cX$,
+and $V$ and $W$ will denote discrete memoryless channels (DMC's), that is,
+stochastic matrices with input alphabet $\cX$ and output alphabet $\cY$. 
+In order to specify the input and output alphabets of a DMC, we shall use
+the shorthand notation $V:\cX \rightarrow \cY$. 
+
+The {\it type\/} of a sequence $\x\in \cX^n$ is the distribution $P_{\x}$
+on $\cX$, where $P_{\x}(a)$ is given by
+\begin{equation}
+  P_{\x}(a)=\frac{1}{n}\cdot(\mbox{number of occurrences of $a\in\cX$ 
+in $\x$}).
+\end{equation}
+We shall write ${\cal P}_n$ for the set of types of sequences in $\cX^n$.
+The {\it joint type\/} $P_{\x,\y}$ of the two sequences $\x\in\cX^n$ and
+$\y\in\cY^n$ is the distribution on $\cX\times\cY$ defined similarly.
+The set of sequences of type $P$ in $\cX^n$ is denoted by $T^n_P$ or
+$T_P$. Further, for every $\x\in\cX^n$ and $\y\in\cY^n$, if $\x$ and
+$\y$ has joint type
+\begin{equation}
+ P_{\x,\y}(a,b)=P_{\x}(a)V(b|a),
+\end{equation}
+then we shall say that $\y$ has {\it conditional type\/} $V$ given $\x$.
+The set of such $\y$ will be denoted by $T_V(\x)$. We shall say that $P$
+is a {\it type} of sequences in $\cX$ if $T_P\neq \emptyset$, and $Y$ 
+is a {\it conditional type of sequences in $\cY^n$ given $\x$\/}  if 
+$T_V(\x)\neq \emptyset$. We shall denote by ${\cal V}(P)={\cal V}_n(P)$
+the set of stochastic matrices $V:\cX\rightarrow \cY$ such that
+$T_V(P)\neq\emptyset$ for the sequence $\x$ of type $P$.
+
+We shall write $I(P,V)$ and $H(V|P)$ for the mutual information
+$I(X\wedge Y)$ and conditional entropy $H(Y|X)$, respectively,
+of random variables (RV's) $X$ and $Y$ such that $X$ has distribution $P$
+and $Y$ is connected with $X$ by the channel $V$. Further, for arbitrary
+distribution $P$ and $Q$ on $\cX$ and channels $V:\cX \rightarrow \cY$,
+$W:\cX \rightarrow \cY$, we denote by $D(P\parallel Q)$ and 
+$D(V\parallel W|P)$, the information divergence
+\begin{equation}
+ D(P\parallel Q)\eqtri \sum_{x\in \cX}P(x)\log\frac{P(x)}{Q(x)},
+\end{equation}
+and the conditional information divergence
+\begin{equation}
+ D(V\parallel W|P) \eqtri \sum_{x\in \cX}P(x)D(V(\cdot|x)\parallel W(\cdot|x)),
+\end{equation}
+respectively. From now on, all logarithms and exponentials are to the base 
+two.
+
+Denoting by $W^n$ the $n$-th memoryless extension of $W$, we have
+\begin{eqnarray}
+ W^n(\y|\x)&=&\exp\{-n[D(V\parallel W|P)+H(V|P)]\},\nonumber \\
+ && \quad \mbox{if $\x\in T_P$ and $\y \in T_V(\x)$}.
+\label{w}
+\end{eqnarray}
+%
+For any distribution $P$ over $\cX$, 
+Gallager defined the random coding error exponent\cite{ga} given by
+\begin{equation}
+E_r(R,P,W) = \max_{0\le \rho \le 1}\left[E_o(\rho,P,W)
+ -\rho R \right],
+\label{erg}
+\end{equation}
+where $E_o(\rho,P,W)$ is the Gallager function
+\begin{equation}
+ E_o(\rho,P,W)=- \log \sum_{y \in \cY}\left[ \sum_{x \in \cX}P(x)
+W(y|x)^{\frac{1}{1+ \rho}} \right]^{1+ \rho}.
+\label{gaf}
+\end{equation}
+On the other hand, in case of fixed composition codes
+with type $P$, Csisz\'ar, K\"orner and Marton gave another form of
+the random coding error exponent\cite{ck}
+\begin{equation}
+ E_r(R,P,W) = \min_{V} (D(V\parallel W|P)+|I(P,V)-R|^+),
+\label{erckm}
+\end{equation}
+where minimum is taken over all stochastic matrices $V:\cX\rightarrow\cY$,
+and $|x|^+=\max(x,0)$. 
+In what follows, we only consider fixed composition codes
+and use the above two definitions of the random coding error exponent
+interchangeably.
+

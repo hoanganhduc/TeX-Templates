@@ -1,0 +1,53 @@
+\documentclass[12pt]{report}
+
+\usepackage{jaist-e-doctor}
+
+\title{% Write title of your thesis 
+Good Universal Codes Can Be Obtained by Concatenated Codes}
+\author{Tomohiko UYEMATSU}
+\school{Information Science}
+\adviser{Associate Professor Tomohiko Uyematsu}
+\date{February 15, 1997}
+
+\begin{document}
+\maketitle
+
+\pagenumbering{roman}  % Show page number in ROMAN 
+\setcounter{page}{1}
+
+\strut
+\vspace{20pt}
+
+\begin{center}
+{\LARGE\bf Abstract}
+\end{center}
+\vspace{20pt}
+\addcontentsline{toc}{chapter}{Abstract}
+
+This paper investigates the error 
+correcting capabilities of concatenated codes 
+employing maximum distance separable (MDS) codes as outer codes and
+time-varying randomly selected constant composition inner codes,
+used on discrete memoryless channels with modified maximum mutual 
+information decoding. It is proved that such code
+can achieve Gallager's random coding error exponent
+for all rates, while both encoding and decoding of the codes do not
+depend on the channel. 
+
+\include{eack}
+
+\tableofcontents
+%\listoffigures
+%\listoftables
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\include{1ec}
+\include{2ec}
+\include{3ec}
+\include{4ec}
+\include{eref}
+\include{epub}
+
+\end{document}

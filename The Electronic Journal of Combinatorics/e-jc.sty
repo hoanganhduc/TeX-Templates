@@ -1,0 +1,128 @@
+%% Simple style-file for the Electronic Journal of Combinatorics
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[a4paper]{geometry}
+\usepackage{amsthm,amssymb}
+
+\setlength{\textwidth}{6.3in}
+\setlength{\textheight}{8.7in}
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+
+\newenvironment{corrigendum}[1]%
+{\clearpage\newpage\section*{Corrigendum -- submitted #1}}{}
+
+\newcommand{\reusenumber}[2]{\setcounter{#1}{#2}\addtocounter{#1}{-1}}
+
+\newcommand{\specs}[3]{\def\papno{#1}\def\volno{#2}\def\volyear{#3}}
+\ifx\volno\undefined\def\volno{25}\fi
+\ifx\volyear\undefined\def\volyear{2018}\fi
+\ifx\papno\undefined\def\papno{P00}\fi
+
+\newcommand{\Copyright}[1]{\def\copy@right{\copyright\thinspace\ignorespaces#1}}
+\newcommand{\dateline}[3]{\def\the@dateline{Submitted: \ignorespaces#1;
+    Accepted: \ignorespaces#2; Published: \ignorespaces#3\\[0.5ex]\copy@right}}
+\newcommand{\MSC}[1]{\def\the@MSC{\ignorespaces#1}}
+
+\let\old@maketitle\maketitle
+\renewcommand{\maketitle}{\date{\small\the@dateline}\old@maketitle}
+
+\renewenvironment{abstract}{%
+  \small
+      \begin{center}%
+	{\bfseries \abstractname\vspace{-.5em}\vspace{\z@}}%
+      \end{center}%
+      \quotation}%
+  {\par\smallskip\noindent
+   \textbf{Mathematics Subject Classifications: }\the@MSC\endquotation} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% The next group of commands makes the font smaller for the title and
+%% for section and subsection headings, and adjusts the space just below 
+%% each such heading.
+
+\renewcommand\title[1]{\gdef\@title{\reset@font\Large\bfseries #1}}
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\normalfont\large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-2.5ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                     {2ex \@plus.5ex \@minus.2ex}%
+                                     {-1em}%
+                                     {\normalfont\normalsize\bfseries}}
+
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                     {2ex \@plus.5ex \@minus .2ex}%
+                                     {-1em}%
+                                     {\normalfont\normalsize\bfseries}}
+
+\newfont{\footsc}{cmcsc10 at 8truept}
+\newfont{\footbf}{cmbx10 at 8truept}
+\newfont{\footrm}{cmr10 at 10truept}
+\renewcommand{\ps@plain}{%
+\renewcommand{\@oddfoot}{\footsc the electronic journal of combinatorics
+  {\footbf\volno} (\volyear), \#\papno\hfil\footrm\thepage}}
+\pagestyle{plain}
+
+\g@addto@macro\bfseries{\boldmath}
+
+%%%  Squashing the bibliography together a bit
+  \newlength{\BiblioSpacing}
+  \setlength{\BiblioSpacing}{0.4ex plus 0.1ex minus 0.1ex}
+  \newcommand{\SquashBibFurther}{%
+     \setlength{\BiblioSpacing}{0.2ex plus 0.1ex}}
+
+  \let\oldthebibliography\thebibliography
+  \let\endoldthebibliography\endthebibliography
+  \renewenvironment{thebibliography}[1]{%
+    \begin{oldthebibliography}{#1}%
+      \setlength{\parskip}{\BiblioSpacing}
+      \setlength{\itemsep}{\BiblioSpacing}
+  }%
+  {%
+    \end{oldthebibliography}%
+  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{claim}[theorem]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{open}[theorem]{Open Problem}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{question}[theorem]{Question}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{note}[theorem]{Note}
+
+\newcommand{\doi}[1]{\href{http://dx.doi.org/#1}{\texttt{doi:#1}}}
+\newcommand{\arxiv}[1]{\href{http://arxiv.org/abs/#1}{\texttt{arXiv:#1}}}
+

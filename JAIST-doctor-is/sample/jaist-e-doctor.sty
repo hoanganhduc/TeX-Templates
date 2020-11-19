@@ -1,0 +1,31 @@
+% jaist-e-doctor.sty 19-Oct-99 by Akira Tanaka
+% jaist-e-doctor.sty 03-Oct-96 by Tomohiko Uyematsu
+% jaist-report.sty 17-Aug-92 by Satoshi SATO
+% report.sty 26-Apr-88
+ 
+\typeout{Document Style `jaist-e-doctor' <19 Oct 99>.}
+ 
+\input jaist-e-doctor-titlepage.sty
+
+
+% \def\@makechapterhead#1{ \vspace*{20pt} 
+% { \parindent 0pt \raggedright 
+%  \ifnum \c@secnumdepth >\m@ne \LARGE\bf \@chapapp{\thechapter} 
+%  \hskip 10pt \fi \LARGE \bf #1\par 
+%  \nobreak \vskip 20pt } }
+% 
+% \def\@makeschapterhead#1{ \vspace*{20pt} 
+% { \parindent 0pt \raggedright 
+%  \LARGE \bf #1\par 
+%  \nobreak \vskip 20pt } }
+
+\setlength{\oddsidemargin}{0mm}
+\setlength{\textwidth}{160mm}
+\setlength{\topmargin}{-9mm}
+\setlength{\headheight}{0mm}
+\setlength{\textheight}{241mm}
+
+\newenvironment{publication}%
+{\chapter*{Publications}\newcounter{pubnum}\begin{list}%
+{[\arabic{pubnum}]}{\usecounter{pubnum}}}{\end{list}}
+

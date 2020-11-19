@@ -1,0 +1,140 @@
+\chapter{Structure of Codes}
+\section{Inner Encoders}
+The outer codes to be considered are maximum distance
+separable (MDS) codes. Let \g\ denote
+an MDS code over $GF(q)$, where $q$ is a prime power.
+Let $K$ denotes its dimension and $N$ its block length.
+Then the minimum distance $D$ of \g\ is given by $D=N-K+1$.
+When we refer to the rate $\tau$ of the outer code, we
+mean the dimensionless rate $\tau=K/N$.
+
+The symbols of the codewords in \g\  are encoded into sequences in $T^n_P$
+by inner encoders, where $P$ is a specified type of sequences.
+Suppose that all inner encoders have the same code length $n$,
+the inner encoders $g_1,\cdots ,g_N$ are defined by the mappings
+\[
+g_i : GF(q) \rightarrow T^n_P  \qquad (1 \leq i \leq N),
+\]
+where the inner encoders are not necessary to be one to one. The rate $r$
+of the inner encoders is defined by $r = \ln q/n$ (nats/symbol).
+
+In what follows, the inner codes are selected randomly from the
+specified ensemble. Especially, we deal with the following
+$P$-ensemble as an ensemble of inner codes.
+\begin{defini}[$P$-ensemble]
+{\rm
+For a given outer code, a given type $P\in{\cal P}_n$,
+and a given block length $n$ of the inner code,
+we select $Nq$ sequences $g_i(u)\in T^n_P$, where $1\le i\le N$
+and $u\in GF(q)$, independently and uniformly over $T^n_P$.
+}
+\end{defini}
+
+\section{Construction of Concatenated Codes}
+We employ Forney's concatenated encoding scheme\cite{fo} to construct
+codes. In the first stage, 
+a message from the message set $\{1,2, \cdots ,q^K\}$ is mapped into the
+codeword $\vt{u} \in \g$ by an outer encoder, and in the second stage
+$\vt{u}$ is mapped into the channel codeword $\vt{x} = g(\vt{u})$, where
+the mapping $g : [\gf]^N \rightarrow X^{nN}$ is defined by
+\[
+g( \vt{u})=(g_1(u_1),g_2(u_2), \cdots ,g_{N}(u_{N}))
+\]
+for $\vt{u} = (u_1, u_2, \cdots , u_N)$\ $(\in [\gf]^N)$.
+Since the outer encoder can be assumed to be one to one, 
+the receiver only has to estimate which codeword $ \vt{u} \in \Gamma$ is
+sent. The resulting concatenated code is a block code of 
+length $N_o=nN$ and rate $R_o = \tau r$ (nats/symbol).
+
+\section{Decoding Scheme}
+%
+The encoder encodes all the messages into constant composition
+codewords with type $P$, we can employ maximum mutual information (MMI)
+decoding\cite{ck}. 
+In MMI decoding, the channel output $\y$ is decoded as the message $\x$,
+if the corresponding codeword $\x$ maximizes the mutual information function
+\begin{equation}
+ I(\x\wedge \y) \eqtri I(P,V) \quad \mbox{if $\y\in T_V(\x)$ and $\x\in T_P$}.
+\end{equation}
+However, for the proposed code,
+we employ the following modified MMI decoding.
+Let $\y=(y_1,y_2,\cdots,y_N)$ $(y_i\in \cY^n)$ be a received word
+when a codeword $g(\u)=(g_1(u_1),g_2(u_2),\cdots,$ $g_N(u_N))$
+is transmitted. In this representation, we assume that the output
+$y_i$ corresponds to the input $g_i(u_i)$.
+In modified MMI decoding, 
+the channel output $\y$ is decoded as the message $\u\in\g$,
+if the corresponding codeword $g(\u)$
+maximizes the sum of the mutual information between $g_i(u)$ and $y_i$, i.e.
+\begin{equation}
+ \sum_{i=1}^N I(g_i(u_i)\wedge y_i).
+\end{equation}
+Especially, for an encoder $g$, let the decoder $\varphi$
+be any function $\varphi:\cY^{nN}\longrightarrow \Gamma$ such that
+$\varphi(\y)=\u$ satisfies
+\begin{equation}
+ \sum_{i=1}^N I(g_i(u_i)\wedge y_i)
+  =\max_{\hat{\u}\in \g}\sum_{i=1}^N I(g_i(\hat{u}_i)\wedge y_i)
+\end{equation}
+where we assume that an ambiguous estimate is considered to be erroneous.
+It is easy to see that this decoding rule is independent of the channel.
+
+For a DMC $W:\cX\rightarrow\cY$, if $\y\in \cY^{nN}$ leads to an
+erroneous decoding of the message $\u\in\g$, then both
+\begin{equation}
+ y_i \in T_{V_i}(g(u_i))\cap T_{\hat{V}_i}(g(\hat{u}_i)) \quad (i=1,2,\cdots,N)
+\end{equation}
+and
+\begin{equation}
+ \sum_{i=1}^N I(P,\hat{V}_i)\ge \sum_{i=1}^N I(P,V_i)
+\label{ced1}
+\end{equation}
+must hold for some $\hat{\u}(\neq \u)$ in \g, $\hat{V}_i$ and 
+$V_i$ belonging to $\cV_n(P)$ $(1\le i\le N)$. Hence,
+the probability of the decoding error $\Phi(\u)$ can be given by
+\begin{eqnarray}
+\lefteqn{\Phi(\u)= W^{nN}(\{\y:\varphi(\y)\neq\u\}|g(\u))} \nonumber\\
+ &\le &  
+  \sum_{V_1,\cdots,V_N,\hat{V}_1,\cdots,\hat{V}_N\in {\cal V}(P)
+       \atop \sum_{i=1}^N I(P,\hat{V}_i)\ge \sum_{i=1}^N I(P,V_i)}
+  \sum_{\hat{\u}\in \g \atop \hat{\u}\neq \u}
+  \prod_{i=1}^N 
+  W^n (T_{V_i}(g(u_i))\cap T_{\hat{V}_i}(g(\hat{u}_i)) | g(u_i)),
+\label{phisum}
+\end{eqnarray}
+
+\section{Preliminaries from Coding Theory}
+In this subsection, we shall introduce some results of coding theory.
+
+Let $S(N)=\{ 1,2,\ldots ,N\}$, then for every nonempty subset $I$ of
+$S(N)$ with
+\[
+I = \{ i_1,i_2, \cdots ,i_{|I|} \},\;\;\;\;\;(1 \leq i_1 < i_2 < \cdots <
+i_{|I|
+}
+\leq N),
+\]
+we define $g_i(\vt{u})$ as
+\[
+\begin{array}{l}
+g_I(\vt{u})=(g_{i_1}(u_{i_1}),g_{i_2}(u_{i_2}),\cdots
+,g_{i_{|I|}}(u_{i_{|I|}})).
+\end{array}
+\]
+Let \g($I$) indicates the subset of codewords in \g\ which
+have nonzeros in the positions specified by $I$ and zeros outside these
+positions. By using $\Gamma(I)$, nonzero codewords in $\Gamma$ can be
+written by
+\begin{equation}
+ \Gamma\backslash\{\bm{0}\}=
+  \bigcup_{I\subset S(N) \atop D\le |I|\le N}\Gamma(I).
+\label{gi}
+\end{equation}
+Thommesen \cite{th} gives an upper bound on the 
+number of codewords in $\g(I)$, which is given by
+\begin{equation}
+ |\Gamma(I)| \leq q^{|I|-D+1} \qquad \qquad (D\leq |I|).
+\label{gam}
+\end{equation}
+%
+

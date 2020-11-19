@@ -1,0 +1,61 @@
+\documentclass[12pt,a4paper]{epsilon}
+\usepackage{courier}
+
+\title{Soạn thảo bài viết cho Epsilon}
+\author{Ban Biên tập Epsilon}
+
+\begin{document}
+\maketitle
+%\selectlanguage{vietnam}
+\begin{newAbstract}{Giới thiệu}
+Để tiện hơn cho tác giả và cộng tác viên trong việc soạn thảo bài viết cho Epsilon, chúng tôi đã khởi tạo một định dạng chuẩn (template) riêng cho Epsilon. Hi vọng với định dạng này, các tác giả, cộng tác viên sẽ dễ dàng hơn trong việc biên soạn bài viết, có thể giữ trọn vẹn không chỉ nội dung mà cả về hình thức cho đúng ý của mình.
+
+Bài viết chủ yếu trình bày cho các tác giả sử dụng Latex, tuy nhiên các tác giả sử dụng các phần mềm khác có thể tham khảo các quy chuẩn về định dạng để từ đó khi Ban Biên tập Epsilon chuyển đổi định dạng sang Latex sẽ đơn giản hơn.
+\end{newAbstract}
+
+\section{Các quy định và định dạng cơ bản}
+Epsilon sử dụng khổ giấy A4, cách lề trên 3cm và toàn bộ nội dung phải nằm trong khung chữ nhật có chiều rộng 16cm và chiều cao 24cm. Khung này được canh giữa khổ giấy.
+
+Font chữ của Epsilon là font Times, cỡ 12pt. 
+
+Tựa đề mỗi bài viết của Epsilon đều được viết hoa toàn bộ. Chúng tôi không giới hạn, tuy nhiên khuyến khích các tác giả nên tặt đựa không dài quá 3 dòng.
+
+Về công thức, hình minh họa, ... cũng như toàn bộ các nội dung khác, như đã trình bày ở trên, tất cả phải giới hạn độ rộng tối đa 16cm và độ cao 24cm. Vì vậy, với các công thức dài, chúng tôi khuyến khích tác giả cố gắng xuống dòng mới.
+
+Về thông tin tác giả, Epsilon khuyến khích ghi nơi làm việc hoặc nơi sinh sống. Nếu có nhiều hơn một tác giả, chúng tôi khuyến khích tên tác giả nên đặt ở cùng một dòng, cách nhau bởi dấu phẩy (,) và nơi làm việc ở cùng một dòng, cách nhau bởi dấu  gạch nối (-) hoặc phẩy (,).
+
+\textbf{\epsilonHighlightColor Lưu ý:} Epsilon sẽ không ghi học hàm, học vị, hay chức vị của các tác giả. Nếu tác giả là giáo sư, hay giám đốc của trường đại học hay công ty nào đó, vui lòng chỉ ghi tên của trường hoặc công ty. Nếu tác giả là học sinh, vui lòng cũng chỉ ghi tên mình và tên trường hoặc nơi ở, không ghi học sinh lớp nào... Nếu tác giả vẫn muốn nhấn mạnh các yếu tố học hàm, học vị... vui lòng ghi ở phần giới thiệu hoặc chú thích.
+
+\section{Sử dụng Epsilon template cho Latex}
+Để sử dụng template cho Epsilon, cần tải tập tin \textit{epsilon.cls} và sau đó soạn thảo bài viết với class này. Cụ thể, một bài viết của Epsilon chỉ cần như sau:
+
+\texttt{\textbackslash documentclass[12pt,a4paper]\{epsilon\}}\\
+\texttt{\textbackslash title\{Tựa bài viết\}}\\
+\texttt{\textbackslash author\{Tên các tác giả, không ghi học hàm, học vị\}}\\
+\texttt{\textbackslash begin\{document\}}
+
+\texttt{Nội dung bài viết ở đây.}
+
+\texttt{\textbackslash end\{document\}}
+
+Epsilon ngoài lệnh \texttt{abstract} như Latex thông thường, chúng tôi có định nghĩa thêm lệnh \texttt{newAbstract\{Từ khóa\}} để người viết có thể chọn từ khác thay vì "Tóm tắt" như thông thường.
+
+Ví dụ trong bài viết này, chúng tôi sử dụng: 
+\texttt{\textbackslash begin\{newAbstract\}\{Giới thiệu\}} để có phần giới thiệu với từ khóa là "Giới thiệu" như ở trên.
+
+Epsilon là một tạp chí có màu sắc, do vậy chúng tôi khuyến khích tác giả sử dụng cho màu sắc cho bài viết của mình. Để tiện lợi, chúng tôi đã định nghĩa sẵn các màu thường dùng cho Epsilon với các lệnh sau:
+
+\texttt{\textbackslash epsilonTitleColor}: Màu cho tựa đề.\\
+\texttt{\textbackslash epsilonSectionColor}: Màu cho tiêu đề.\\
+\texttt{\textbackslash epsilonAuthorColor}: Màu cho tác giả.\\
+\texttt{\textbackslash epsilonHighlightColor}: Màu cho định lý, bổ đề, bài toán ...\\
+\texttt{\textbackslash epsilonAbstractColor}: Màu cho phần tóm tắt.
+
+\section*{Lời kết}
+Ngoài các phần như đã liệt kê ở trên, Epsilon sẽ liên tục cập nhật để cung cấp nhiều lệnh hữu ích hơn cho các phiên bản tiếp theo. 
+
+Epsilon hi vọng nhận được phản hồi cũng như mọi thắc mắc, góp ý, ... từ các tác giả!
+
+Trân trọng! Ban Biên tập Epsilon.
+ 
+\end{document}

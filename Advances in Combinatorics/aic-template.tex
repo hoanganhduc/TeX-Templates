@@ -1,0 +1,182 @@
+%% Advances in Combinatorics article template
+%%
+%% aic-template.tex v0.33
+%%
+%% AUTHOR: Fill in fields (or see warnings) below marked with "AUTHOR"
+%% ** Add as few macro / package definitions as possible
+%% ** Compile with "pdflatex"; make sure that
+%%           aic.cls and tocbase.cls are in the same directory.
+%%
+%% EDITOR: Fill in fields below marked with "EDITOR"
+%%    and check that authors proprely filled in field marked with "AUTHOR"
+
+\documentclass{aic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% AUTHOR: Fill in meta-data below:
+\aicAUTHORdetails{%
+  title = {Short Proof of R\"odl's $n^{\log\log n}$ Bound}, %% please capitalize all significant words
+  author = {Paul Erd\H{o}s, Johan H{\aa}stad, L\'aszl\'o Lov\'asz, and Andrew Chi-Chih Yao},
+    %% Please use the format for commas as follows:
+    %% "A", or "A and B", or "A, B, and C", or "A, B, C, and D", etc.
+  plaintextauthor = {Paul Erdos, Johan Hastad, Laszlo Lovasz, Andrew Chi-Chih Yao},
+    %% An author list in plain text: Use the format
+    %% "A", or "A, B", or "A, B, C", etc.
+    %% NOTE: No LaTeX code in author names.
+    %% NOTE: No "and" at the end--simply comma separated,
+    % 
+ %% The remaining lines in this section are optional:
+    %
+    %% IF YOUR TITLE CONTAINS MATH OR LATEX such as accented characters: 
+    %% Add a "plain text title";  otherwise comment out the next line:
+  plaintexttitle = {Short Proof of Rodl's n**loglog n Bound}, %%  title without math or LaTeX
+    %
+    %% ONLY IF YOUR TITLE IS TOO LONG to fit in the page headers, please 
+    %% add an abbreviated version of the title, otherwise comment it out:
+  runningtitle = {R\"odl's $n^{\log\log n}$ Bound}, 
+    %
+    %% ONLY IF YOUR AUTHOR LIST IS TOO LONG to fit in the page headers, 
+    %% add an abbreviated version, otherwise comment it out:
+  runningauthor = {Paul Erd\H{o}s, Johan H{\aa}stad, L\'aszl\'o Lov\'asz, and Andrew C-C. Yao},
+    %% you can replace first names and/or middle names with initials.
+    %
+    %% ONLY IF YOUR AUTHOR LIST IS TOO LONG to fit the copyright entry
+    %% on the bottom of the front page,
+    %% add an abbreviated version, otherwise comment it out:
+  copyrightauthor = {P. Erd\H{o}s, J. H{\aa}stad, L. Lov\'asz, and A. C-C. Yao},
+    %% Note that the copyrightauthor  field will seldom be necessary;
+    %% for instance, in this example with four authors, it would be 
+    %% all right to comment it out and have all authors' full names 
+    %% appear on the Copyright line
+   %
+   %% Include keywords of your choice: comma separated, lower case;
+   %% comment out the "keywords" line if you don't wish to provide them
+  keywords = {keyword, keyword, etc.},
+}   %%% END \aicAUTHORdetails
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% EDITOR: please fill in the following data:
+\aicEDITORdetails{%
+   year={20XX},
+   volume={XX},
+   number={XX},
+   received={XX Month 20XX},   % received date: example: 7 January 2017
+   revised={XX Month 20XX},    % Optional revised date (you may comment it out)
+   published={XX Month 20XX},  % published date
+   doi={10.19086/aicXXX},      % XXX = number of paper, e.g. aic006 for paper#6
+%                              % or  aic0006 (length of string arbitrary)
+}   %%% END \aicEDITORdetails
+
+\begin{document}
+
+\begin{frontmatter}[classification=text]
+%% EDITOR: this will force the keywords to appear right after the Abstract.
+%%   If the abstract is too long and would force the keywords off the
+%%   front page, please comment out % [classification=text] above
+%%   This way the keywords will be floated on the bottom of the first page
+%%   even though the Abstract spills over to the next page.
+
+%%% AUTHOR: Title goes here.  This line is optional.  You must use it
+%%   if title has footnote attached or requires nontrivial typesetting,
+%%   e.g., inclusion of linebreaks to force nice layout.
+\title{Short Proof of R\"odl's $n^{\log\log n}$ Bound\titlefootnote{This is a footnote to the title}} %% please capitalize all significant words
+
+%%% AUTHOR:
+%%% List all authors. If you wish, place grant acknowledgements in \thanks.
+%%% In brackets include a short tag for each author.
+\author[pgom]{Paul Erd\H{o}s\thanks{Supported by...}}
+\author[johan]{Johan H{\aa}stad\thanks{Supported by...}}
+\author[laci]{L\'aszl\'o Lov\'asz\thanks{Supported by...}}
+\author[andy]{Andrew Chi-Chih Yao\thanks{Supported by...}}
+
+%%% AUTHOR: Abstract goes here
+\begin{abstract}
+Abstract here
+\end{abstract}
+\end{frontmatter}
+
+%%% AUTHOR: body of paper starts here
+\section{Introduction}
+ The body of your paper goes here~\cite{cilleruelo}.
+
+\newpage %% AUTHOR: please comment out this line.  It serves only
+%%   to demonstrate both types of header line in aic-template.pdf
+
+\section{Expansion estimates}
+
+ More of the body of your paper goes here~\cite{bergelson-johnson-moreira}.
+
+%%% AUTHOR: optional appendix here
+\appendix %% you may comment this out if no Appendix
+\section*{Appendix}
+\section{Improving the constants}
+Material is placed here as needed.
+
+%%% AUTHOR: optional acknowledgments here
+\section*{Acknowledgments} %%  you may comment this out if no Ackno
+The authors are grateful to the anonymous reviewers for finding
+a bug in the main result.
+
+%%% AUTHOR:
+%%% Bibliography goes here. Note that the arXiv cannot process bibtex
+%%% or biber bibliographies.  Example of acceptable bibliograpy format:
+\bibliographystyle{amsplain}
+\begin{thebibliography}{99}
+\bibitem{bergelson-johnson-moreira}
+Vitaly Bergelson, John H. Johnson Jr., and Joel Moreira.
+\newblock New polynomial and multidimensional extensions of classical partition
+  results.
+\newblock 2015, arXiv:1501.02408.
+
+\bibitem{cilleruelo}
+Javier Cilleruelo.
+\newblock Combinatorial problems in finite fields and {S}idon sets.
+\newblock {\em Combinatorica}, 32(5):497--511, 2012.
+
+\end{thebibliography}
+%% AUTHOR: You can generate such a bibliography from a .bib file by 
+%% running pdflatex/bibtex/pdflatex/pdflatex and then pasting the .bbl file
+%% between \begin{thebibliography} and \end{bibliography}
+
+%%% AUTHOR: Include a short description of each author following the
+%%% structure below. Use the same short tags used previously.  
+%%% Use \imageat{} and \imagedot{} instead of "@" and "." in
+%%% email addresses-this replaces the symbols with graphics to avoid 
+%%% e-mail address harvesting from the .pdf file
+\begin{aicauthors}
+\begin{authorinfo}[pgom]
+  Paul Erd\H{o}s\\
+  R\'enyi Institute\\
+  Budapest, Hungary\\
+  paulerdos\imageat{}renyiinstitute\imagedot{}hu \\
+  \url{https://www.cs.elte.hu/erdos}
+\end{authorinfo}
+\begin{authorinfo}[johan]
+  Johan H{\aa}stad\\
+  Professor\\
+  KTH - Royal Institute of Technology\\
+  Stockholm, Sweden\\
+  johanh\imageat{}ktth\imagedot{}se \\
+  \url{http://www.csc.kth.se/~johanh}
+\end{authorinfo}
+\begin{authorinfo}[laci]
+  L\'aszl\'o Lov\'asz\\
+  Professor\\
+  E\"otv\"os Lor\'and University\\
+  Budapest, Hungary\\
+  laci\imageat{}comb\imagedot{}elte\imagedot{}hu\\
+  \url{http://www.cs.elte.hu/~lovasz}
+\end{authorinfo}
+\begin{authorinfo}[andy]
+  Andrew Chi-Chih Yao\\
+  Professor\\
+  etc.
+\end{authorinfo}
+\end{aicauthors}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "aic-template"
+%%% End:
