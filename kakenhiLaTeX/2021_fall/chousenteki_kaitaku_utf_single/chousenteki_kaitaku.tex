@@ -1,0 +1,150 @@
+%\documentclass[11pt,a4paper,uplatex,dvipdfmx]{ujarticle} 		% for uplatex
+\documentclass[11pt,a4j,dvipdfmx]{jarticle} 					% for platex
+\input{pieces/form00_header} % pieces
+\input{pieces/kakenhi7} % pieces
+\input{pieces/form01_header} % pieces
+\input{pieces/form02_2022_header} % pieces
+\input{pieces/hook3} % pieces
+%#Name: chousenteki_kaitaku
+\input{pieces/form04_jsps_headers} % pieces
+\input{pieces/form04_chousenteki_kaitaku_header} % pieces
+% ===== Global definitions for the Kakenhi form ======================
+%　基本情報
+%
+%------ 研究課題名  -------------------------------------------
+\newcommand{\研究課題名}{象の卵}
+
+%----- 研究機関名と研究代表者の氏名-----------------------
+\newcommand{\研究機関名}{逢坂大学}
+\newcommand{\研究代表者氏名}{湯川秀樹}
+\newcommand{\me}{\underline{\underline{H.~Yukawa}}} 
+%---- 研究期間の最終年度 ----------------
+\newcommand{\研究期間の最終元号年度}{9}  %令和で、半角数字のみ
+%========================================
+
+\input{pieces/inst_general} % pieces
+\input{pieces/inst_chousenteki_kaitaku} % pieces
+% user07_header
+% ===== my favorite packages ====================================
+% ここに、自分の使いたいパッケージを宣言して下さい。
+\usepackage{wrapfig}
+%\usepackage{amssymb}
+%\usepackage{mb}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{lineno}
+
+% ===== my personal definitions ==================================
+% ここに、自分のよく使う記号などを定義して下さい。
+\newcommand{\klpionn}{K_L \to \pi^0 \nu \overline{\nu}}
+\newcommand{\kppipnn}{K^+ \to \pi^+ \nu \overline{\nu}}
+
+% ----- 業績リスト用 -------------
+\newcommand{\paper}[6]{%
+	% paper{title}{authors}{journal}{vol}{pages}{year}
+	\item ``#1'', #2, #3 {\bf #4}, #5 (#6).			% お好みに合わせて変えてください。
+}
+
+\newcommand{\etal}{\textit{et al.\ }}
+\newcommand{\ca}[1]{*#1}	% corresponding author;   \ca{\yukawa}  みたいにして使う
+\newcommand{\invitedtalk}{招待講演}
+
+\newcommand{\yukawa}{H.~Yukawa}					% no underline
+%\newcommand{\yukawa}{\underline{\underline{H.~Yukawa}}}	% with 2 underlines
+\newcommand{\tomonaga}{S.~Tomonaga}
+
+\newcommand{\prl}{Phys.\ Rev.\ Lett.\ }		% よく使う雑誌も定義すると楽
+
+% ===== 欄外メモ ==================
+\newcommand{\memo}[1]{\marginpar{#1}}
+%\renewcommand{\memo}[1]{}	% 全てのメモを表示させないようにするには、行頭の"%"を消す
+
+
+%\input{../../sample/simple/contents}	% skip
+\input{pieces/hook5} % pieces
+
+\begin{document}
+\input{pieces/hook7} % pieces
+%#Split: 01_purpose_plan  
+%#PieceName: p01_purpose_plan
+\input{pieces/p01_purpose_plan_00}
+\section{１　研究目的及び研究方法}
+%　　　　＜＜最大　3ページ＞＞
+
+%s02_purpose_plan_chousenteki_kaitaku
+%begin 挑戦的研究の目的と方法と環境 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+\JSPSInstructions	% <-- 留意事項。これは消すか、コメントアウトしてください。
+
+	 象の卵の研究目的は．．．
+
+	象の卵の研究計画は．．．
+
+	研究代表者と研究分担者の役割分担は．．．
+
+%	シロナガスクジラの卵を探すために用いていたソナーと双眼鏡、及び
+	シロナガスクジラの卵を引き上げるために用意していた大きな網は、
+	そのまま使える。
+
+	\vspace{1cm}
+	\begin{thebibliography}{99}
+		\bibitem{teramura} 寺村輝夫、「ぼくは王様 - ぞうのたまごのたまごやき」.
+	\end{thebibliography}
+%end 挑戦的研究の目的と方法と環境 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+\input{pieces/p01_purpose_plan_01}
+
+%#Split: 02_importance  
+%#PieceName: p02_importance
+\input{pieces/p02_importance_00}
+\section{２　挑戦的研究としての意義}
+%　　　　＜＜最大　1ページ＞＞
+
+%s04_importance_chousenteki.tex
+%begin 挑戦的研究としての意義 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+		風呂で巨大な温泉卵について考えていて、ふと思いついた。
+
+	この発見により、哺乳類は卵を産まないという学術の世界の
+	「常識の殻」を文字通り打ち破ることができる。
+	また、他分野の研究の場においても、古くからの「常識の殻」を
+	打ち砕くきっかけとなり、科学全体が大きく前進するきっかけとなる。
+%end 挑戦的研究としての意義 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+\input{pieces/p02_importance_01}
+
+%#Split: 03_competence  
+%#PieceName: p03_competence
+\input{pieces/p03_competence_00}
+\section{３　応募者の研究遂行能力}
+%　　　　＜＜最大　1ページ＞＞
+
+%s03_competence
+%begin 応募者の研究遂行能力 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+\PapersInstructions	% <-- 研究業績留意事項。これは消すか、コメントアウトしてください。
+
+	応募者は過去20年間、７つの海を隅から隅まで航海し、
+	浅瀬から深海まで潜り、文字通り東西南北上下の３次元で
+	シロナガスクジラの卵の探索を行ってきた(業績\ref{pub:whale})。
+	シロナガスクジラに飲み込まれそうになったり、海賊に捕まるなどの危険な目にも
+	あったが、それにもめげず、研究を遂行してきた強靭な能力を有する。
+%end 応募者の研究遂行能力 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+\input{pieces/p03_competence_01}
+
+%#Split: 04_rights  
+%#PieceName: p04_rights
+\input{pieces/p04_rights_00}
+\section{４　人権の保護及び法令等の遵守への対応}
+%　　　　＜＜最大　1ページ＞＞
+
+% s09_rights
+%begin 人権の保護及び法令等の遵守への対応 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+	象の卵のES細胞の培養、象のクローンの生成などは行わない。
+
+	\LaTeX の便利な機能については、\texttt{egg\_***.tex} や\texttt{sample\_pdf/egg\_***.pdf}をご覧ください。
+%end 人権の保護及び法令等の遵守への対応 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+\input{pieces/p04_rights_01}
+
+%#Split: 99_tail
+\input{pieces/hook9} % pieces
+\end{document}
+

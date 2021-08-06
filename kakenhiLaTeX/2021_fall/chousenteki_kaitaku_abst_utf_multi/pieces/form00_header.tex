@@ -1,0 +1,49 @@
+%=======================================
+% form00_header.tex
+%	General header for kakenhiLaTeX,  Moved over from form00_2010_header.tex.
+%	2009-09-06 Taku Yamanaka (Osaka Univ.)
+%==== General Version History ======================================
+% 2006-05-30 Taku Yamanaka (Physics Dept., Osaka Univ.)
+% 2006-06-02 V1.0
+% 2006-06-14 V1.1 Use automatic calculation for cost tables.
+% 2006-06-18 V1.2 Split user's contents and the format.
+% 2006-06-20 V1.3 Reorganized user and format files
+% 2006-06-25 V1.4 Readjusted all the table column widths with p{...}.
+%				With \KLTabR and \KLTabRNum, now the items can be right-justified
+%				in the cell defined by p{...}.
+% 2006-06-26 V1.5 Use \newlength and \setlength, instead of \newcommand, to define positions.
+% 2006-08-19 V1.6 Remade it for 2007 JFY version.
+% 2006-09-05 V1.7 Added font declarations suggested by Hoshino@Meisei Univ.
+% 2006-09-06 V1.8 Introduced usePDFform flag to switch the form file format.
+% 2006-09-09 V1.9 Changed p.7, to allow different heights between years. (Thanks to Ytow.)
+% 2006-09-11 V2.0 Added an option to show budget summary.
+% 2006-09-13 V2.1 Added an option to show the group.
+% 2006-09-14 V2.1.1 Cleaned up Kenkyush Chosho.
+% 2006-09-21 V2.2 Generated under a new automatic development system.
+
+% 2007-03-24 V3.0 Switched to a method using "picture" environment.
+
+% 2007-08-14 V3.1 Switched to kakenhi3.sty.
+% 2007-09-17 V3.2 Added \KLMaxYearCount
+% 2008-03-08 V3.3 Remade it for 2009 JFY version\
+% 2008-09-08 V3.4 Added \KLXf ... \KLXh.
+% 2011-10-20 V5.0 Use kakenhi5.sty, to utilize array package in tabular environment.
+% 2012-08-14 v5.1 Moved preamble and kakenhi5 into the current directory, instead of the parent directory.
+% 2012-11-10 v6.0 Switched to kakenhi6.sty.
+% 2015-08-26 v6.1 Added KLFirstPageIsLongPage flag.
+% 2017-05-27 v7.0 Simplified for the new format.
+%=======================================
+% Dummy section and subsection commands.
+% With these, some editors (such as TeXShop, etc.) can jump to the (sub)sections.
+\newcommand{\dummy}{dummy}% 
+\renewcommand{\section}[1]{\renewcommand{\dummy}{#1}}
+
+\usepackage{calc}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage{udline}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{fancyhdr}
