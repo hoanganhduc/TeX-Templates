@@ -1,0 +1,74 @@
+% form04_jsps_headers.tex
+% 2017-08-20 Taku
+% 2017-08-29 Taku
+%			Added a check against jsps-abs-p1-header.
+% 2017-09-02 Taku
+%			Added sectionNo to the commands to make them compatible with 
+%			\KLBeginSubjectWithHeaderCommands.
+%			Use \KLJInt.
+% 2018-09-01 Taku
+%			Adjusted the heights of the headers by inserting \vspace{-3pt} and \rule.
+%
+\newcommand{\headerfont}{\fontsize{11}{11}\selectfont}
+% ===== Headers =====================================
+\newcommand{\JSPSVeryFirstPageStyle}[5]{%
+%	Defines the header for the very first page of the form.
+%	Called from \KLShumokuFirstPageStyle in form04_***.
+%--------------------------------
+%	#1: page style name
+%	#2: 様式
+%	#3: 研究種目名
+%	#4: 項目名
+%	#5: sectionNo
+%--------------------------------
+	\fancypagestyle{JSPSVeryFirstPageStyle}{% The name is not taken from #1, because 
+		\fancyhf{}
+		\fancyhead[L]{\hspace{-37pt}\headerfont#2\ 研究計画調書（添付ファイル項目）\\
+				\rule{0pt}{18pt}\\}
+%				\rule{0pt}{0pt}\\}
+		\fancyhead[R]{\headerfont\textbf{#3\ \KLJInt{\thepage}}\vspace{-5pt}\\
+			\rule{0pt}{0pt}\\}
+%		\fancyhead[R]{\headerfont\textbf{#3\ \KLJInt{\thepage}\\}}
+	}
+	\thispagestyle{JSPSVeryFirstPageStyle}
+}
+
+\newcommand{\JSPSFirstSubjectPageStyle}[5]{%
+%	Defines the header for the first page for the subject.
+%	Called from \KLShumokuFirstPageStyle in form04_***.
+%--------------------------------
+%	#1: page style name
+%	#2: 様式
+%	#3: 研究種目名
+%	#4: 項目名
+%	#5: sectionNo
+%--------------------------------
+	\fancypagestyle{JSPSFirstSubjectPageStyle}{%
+		\fancyhf{}
+		\fancyhead[R]{\headerfont\textbf{#3\ \KLJInt{\thepage}}\vspace{-5pt}\\
+			\rule{0pt}{0pt}\\}
+%		\fancyhead[R]{\headerfont\textbf{#3\ \KLJInt{\thepage}\\}}
+	}
+	\thispagestyle{JSPSFirstSubjectPageStyle}
+}
+
+\newcommand{\JSPSDefaultPageStyle}[5]{%
+%	Defines the default header for the subject.
+%	Called from \KLShumokuDefaultPageStyle in form04_***.
+%--------------------------------
+%	#1: page style name
+%	#2: 様式
+%	#3: 研究種目名
+%	#4: 項目名
+%	#5: sectionNo
+%--------------------------------
+	\fancypagestyle{JSPSDefaultPageStyle}{%
+		\fancyhf{}
+		\fancyhead[L]{\headerfont\textbf{【#4（つづき）\ 】}\vspace{-7pt}\\}
+		\fancyhead[R]{\headerfont\textbf{#3\ \KLJInt{\thepage}}\vspace{-5pt}\\
+			\rule{0pt}{0pt}\\}
+%		\fancyhead[R]{\headerfont\textbf{#3\ \KLJInt{\thepage}\\}}	
+        }
+        \pagestyle{JSPSDefaultPageStyle}
+}
+
