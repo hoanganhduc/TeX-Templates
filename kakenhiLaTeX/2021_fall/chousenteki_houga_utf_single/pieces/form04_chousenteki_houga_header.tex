@@ -1,0 +1,29 @@
+% form04_chousenteki_houga_header.tex
+
+% ===== Global definitions for the Kakenhi form ======================
+%　基本情報
+\newcommand{\様式}{様式S−４２−２}
+\newcommand{\研究種目}{挑戦的研究（萌芽）}
+\newcommand{\研究種目後半}{}
+\ifthenelse{\isundefined{\研究種別}}{
+	\newcommand{\研究種別}{}
+}{}%
+\newcommand{\研究種目header}{\研究種目\研究種別\研究種目後半}
+
+\newcommand{\KLMainFile}{chousenteki\_houga.tex}
+\newcommand{\KLYoshiki}{chousenteki_houga_header}
+
+%====== Headers ====================================================
+\fancypagestyle{chousenteki-abs-p1-header}{%
+	\fancyhf{}
+	\fancyhead[L]{\hspace{-37pt}\headerfont\様式\ 研究計画調書（添付ファイル項目）\\
+				\rule{0pt}{0pt}\\}
+	\fancyhead[R]{\headerfont\textbf{\研究種目 概要\ \thepage\\}}
+}
+
+\fancypagestyle{chousenteki-abs-default-header}{%
+	\fancyhf{}
+	\fancyhead[L]{\headerfont\textbf{【研究計画調書の概要（つづき）\ 】}}
+	\fancyhead[R]{\headerfont\textbf{\研究種目 概要\ \thepage\\}}
+}
+

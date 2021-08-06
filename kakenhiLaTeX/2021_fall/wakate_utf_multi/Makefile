@@ -5,7 +5,7 @@ headers:
 	
 main: wakate.pdf
 
-%.pdf: %.tex
+%.pdf: %.tex %_*.tex
 	@latexmk $<
 	
 clean:

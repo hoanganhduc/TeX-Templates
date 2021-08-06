@@ -1,0 +1,232 @@
+%\documentclass[11pt,a4paper,uplatex,dvipdfmx]{ujarticle} 		% for uplatex
+\documentclass[11pt,a4j,dvipdfmx]{jarticle} 					% for platex
+\input{pieces/form00_header} % pieces
+\input{pieces/kakenhi7} % pieces
+\input{pieces/form01_header} % pieces
+\input{pieces/form02_2022_header} % pieces
+\input{pieces/hook3} % pieces
+%#Name: chousenteki_houga
+\input{pieces/form04_jsps_headers} % pieces
+\input{pieces/form04_chousenteki_houga_header} % pieces
+% ===== Global definitions for the Kakenhi form ======================
+%　基本情報
+%
+%------ 研究課題名  -------------------------------------------
+\newcommand{\研究課題名}{象の卵}
+
+%----- 研究機関名と研究代表者の氏名-----------------------
+\newcommand{\研究機関名}{逢坂大学}
+\newcommand{\研究代表者氏名}{湯川秀樹}
+\newcommand{\me}{\underline{\underline{H.~Yukawa}}} 
+%---- 研究期間の最終年度 ----------------
+\newcommand{\研究期間の最終元号年度}{6}  %令和で、半角数字のみ
+%========================================
+
+\input{pieces/inst_general} % pieces
+\input{pieces/inst_chousenteki_houga} % pieces
+% user07_header
+% ===== my favorite packages ====================================
+% ここに、自分の使いたいパッケージを宣言して下さい。
+\usepackage{wrapfig}
+%\usepackage{amssymb}
+%\usepackage{mb}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{lineno}
+
+% ===== my personal definitions ==================================
+% ここに、自分のよく使う記号などを定義して下さい。
+\newcommand{\klpionn}{K_L \to \pi^0 \nu \overline{\nu}}
+\newcommand{\kppipnn}{K^+ \to \pi^+ \nu \overline{\nu}}
+
+% ----- 業績リスト用 -------------
+\newcommand{\paper}[6]{%
+	% paper{title}{authors}{journal}{vol}{pages}{year}
+	\item ``#1'', #2, #3 {\bf #4}, #5 (#6).			% お好みに合わせて変えてください。
+}
+
+\newcommand{\etal}{\textit{et al.\ }}
+\newcommand{\ca}[1]{*#1}	% corresponding author;   \ca{\yukawa}  みたいにして使う
+\newcommand{\invitedtalk}{招待講演}
+
+\newcommand{\yukawa}{H.~Yukawa}					% no underline
+%\newcommand{\yukawa}{\underline{\underline{H.~Yukawa}}}	% with 2 underlines
+\newcommand{\tomonaga}{S.~Tomonaga}
+
+\newcommand{\prl}{Phys.\ Rev.\ Lett.\ }		% よく使う雑誌も定義すると楽
+
+% ===== 欄外メモ ==================
+\newcommand{\memo}[1]{\marginpar{#1}}
+%\renewcommand{\memo}[1]{}	% 全てのメモを表示させないようにするには、行頭の"%"を消す
+
+
+%\input{../../sample/simple/contents}	% skip
+\input{pieces/hook5} % pieces
+
+\begin{document}
+\input{pieces/hook7} % pieces
+%#Split: 01_purpose_plan_competence  
+%#PieceName: p01_purpose_plan_competence
+\input{pieces/p01_purpose_plan_competence_00}
+\section{１　研究目的及び研究方法、応募者の研究遂行能力}
+%　　　　＜＜最大　2ページ＞＞
+
+%s02_purpose_plan_competence_chousenteki_houga
+%begin 挑戦的研究の目的及び方法と応募者の研究遂行能力 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+\JSPSInstructions	% <-- 留意事項。これは消すか、コメントアウトしてください。
+
+\subsection{今こそ、枠を越えた自由な発想を}
+今まで、我々研究者は分野や古い学説など様々な枠にとらわれてきた。
+しかし今や、科研費の書類では全体を囲む枠が取り払われたのみならず、
+研究目的、背景、方法などの間の枠も取り除かれた。
+これにより我々研究者は、自分の主張を、細切れにされることなく、
+自分の論理的な道筋に従って書類に書ける自由を得た。
+しかし逆に言えば、一目で数ページの中のどこに何が書いてあるのかがわかる
+文章を書くことが重要である。
+そのためには、論文など論理的な文章を書くときに使い慣れた\LaTeX を用いるのが楽である。
+
+書類の枠から解放された今、\framebox{象=胎生}という\underline{常識の枠}からも我々は解放され、
+より\textbf{自由な発想}をするべきである。
+
+\textbf{ん？？この研究の目的が何か、どこでも言ってないぞ。。。}
+
+\subsection{どうやって探すか}
+予算と時間は限られているため、確率と効率を考慮し、
+次のような順序で象の卵を探索する。
+\begin{enumerate}
+	\item 逢坂北部のある終点駅の駅前では、
+            	毎年年末になると図\ref{fig:egg_R}、図\ref{fig:egg_L}に示すように
+            	コンクリートでできた象の卵の像のまわりを電飾するしきたりが残っている。
+            	(少し寄り目にし、右目で左の図、左目で右の図を見てください。
+            	なお、このように図や表を横に並べる方が、{\tt wrapfigure}を用いるより位置の調整が楽です。)
+		まずは超音波を使い、このコンクリートの内側に化石化した象の卵が実は隠されていないか、
+		調査する。
+                \begin{figure}[h]
+                 	\begin{minipage}[t]{0.49\linewidth}
+            			\includegraphics[width=\linewidth]{figs/egg_R.eps}
+            			\caption{右目用}
+            			\label{fig:egg_R}
+                		\end{minipage}
+                		\hspace{0.01\linewidth}
+                		\begin{minipage}[t]{0.49\linewidth}
+            			\includegraphics[width=\linewidth]{figs/egg_L.eps}
+            			\caption{左目用}
+            			\label{fig:egg_L}
+        			\end{minipage}
+                 \end{figure}
+                 
+	\item 世界の動物園を巡り、
+            	象舍の藁の山の中に卵が隠されていないか、探す。
+		これは藁の山の中から針を探すより楽である。
+
+	\item 見通しの効くアフリカのサバンナで、宇宙と地上から象の卵を探す。
+		定期的に撮った写真を比較する、超新星探索と同じ画像処理を衛星写真に対して行えば、
+		効率的に広範囲の探索ができる。
+		象の卵の候補が見つかったら、ハッブル望遠鏡をその方向に向けて写真を撮り、
+		現地調査に向かうべきかどうかを判定する。
+
+	\item インドとタイに行き、ジャングルに隠されている卵を探す。
+                	ジャングルの場合空からは探しにくいが、象使いも多く、象の背中に乗って
+                	象の視点から探索することができる。
+                	さらに、気性の荒いアフリカ象と異なり、気だての優しいインド象ならば
+                	卵の在処を教えてくれる可能性もある。
+		子供時代、象と散歩をした経験があるので\cite{inTheForest}、
+		すぐに象と仲良くなれると思う。
+		
+\end{enumerate}
+
+\vspace*{1zw}
+\begin{thebibliography}{99}
+	\bibitem{teramura} 寺村輝夫、「ぼくは王様 - ぞうのたまごのたまごやき」.
+	\bibitem{inTheForest} マリー・ホール・エッツ、「もりのなか」.
+\end{thebibliography}
+%end 挑戦的研究の目的及び方法と応募者の研究遂行能力 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+\input{pieces/p01_purpose_plan_competence_01}
+
+%#Split: 02_importance  
+%#PieceName: p02_importance
+\input{pieces/p02_importance_00}
+\section{２　挑戦的研究としての意義}
+%　　　　＜＜最大　1ページ＞＞
+
+%s04_importance_chousenteki.tex
+%begin 挑戦的研究としての意義 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+\vspace*{-8mm}
+\subsection{ひらめき}
+ある日、風呂につかって温泉卵のことを考えているときに、
+世界で一番大きな温泉卵を作るにはどうすればいいかという想いに走り、
+世界最大の動物であるシロナガスクジラの卵に思い至った。
+
+\subsection{シロナガスクジラから象へ}
+\label{sec:whale}
+地球上で最大の生物、シロナガスクジラの卵の研究を進めようとしてきた。
+クジラの卵の場合は、高い水圧に耐える必要があるため、堅固の構造となっているはずであり、
+これが解明されれば、将来、深海潜水艇への応用も効く。
+しかし、シロナガスクジラの生息範囲が広い、海に潜っている時間が長い、
+生息数も減っている、などの原因により、
+卵を見つけることができなかった。
+そこで、\underline{地球で}最大の動物から、
+\underline{地上で}最大の動物に研究対象を変更する。
+象の卵ならば、はるかに簡単に探索できるはずである。
+
+	この発見により、哺乳類は卵を産まないという学術の世界の
+	「常識の殻」を文字通り打ち破ることができる。
+	また、他分野の研究の場においても、古くからの「常識の殻」を
+	打ち砕くきっかけとなり、科学全体が大きく前進するきっかけとなる。
+%end 挑戦的研究としての意義 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+\input{pieces/p02_importance_01}
+
+%#Split: 03_rights  
+%#PieceName: p03_rights
+\input{pieces/p03_rights_00}
+\section{３　人権の保護及び法令等の遵守への対応}
+%　　　　＜＜最大　1ページ＞＞
+
+% s09_rights
+%begin 人権の保護及び法令等の遵守への対応 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+	象の卵のES細胞の培養、象のクローンの生成などは行わない。
+	象個体を現地から持ち出すことはないので、ワシントン条約ならびに
+        生物多様性条約に抵触しない。また、組換え実験は行なわないので、
+        カルタヘナ議定書にも抵触しない。
+
+        \noindent
+        \rule{\linewidth}{1pt}
+        \linenumbers
+        \subsection{ついでに\LaTeX の便利な機能}
+        \subsubsection{節}
+        通常通り\textbackslash subsection, \textbackslash subsubsectionなどが使えます。
+        番号は自動的につきます。
+        
+        \subsubsection*{番号なし節}
+        \textbackslash subsubsection* のように* 付きを使うと、節の番号がつきません。
+        
+        \subsubsection{コメント文}
+        %う〜ん、これ言おうか言わまいか迷てんねんけどな、
+        %言うのも何やし、言わへんのもどうかと思うし、どうしようかなあ．．．．
+        \LaTeX では当たり前ですが、
+        今はとりあえず消すけど使う可能性のある文章は、
+        消さずに行の頭に \% をつけてコメントアウトすると、後で復活できます。
+        \texttt{TeXShop}や\texttt{TeXWorks}では、複数行選んでまとめてコメントにしたり
+        コメントから外したりできます。
+        
+        \subsubsection{編集用の行番号}
+        \texttt{lineno}というパッケージを使えば、
+        \textbackslash linenumbersと\textbackslash nolinenumbersの間の行に行番号が振られます。
+        これは編集中に他の人からコメントをもらうときに便利です。\\
+        \textbf{最終版のPDFを作る前に、行番号は消してください。}
+        
+        \subsubsection{編集用の欄外のメモ}
+        \textbackslash memo{}を使うと右の例のように、欄外にメモを書けます。\\
+        \memo{欄外メモ\\だよ}
+        \textbf{最終版のPDFを作る前に、\LaTeX ソースファイルの60行目付近にある指示に従って、}
+        \textbackslash memo \textbf{を無効化してください。}
+        
+        \nolinenumbers
+%end 人権の保護及び法令等の遵守への対応 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+\input{pieces/p03_rights_01}
+
+%#Split: 99_tail
+\input{pieces/hook9} % pieces
+\end{document}
+
