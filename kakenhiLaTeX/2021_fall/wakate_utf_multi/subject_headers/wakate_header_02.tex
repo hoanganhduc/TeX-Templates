@@ -1,0 +1,29 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont 2. Applicant's Ability to Conduct the Research and the Research Environment}\\
+\begin{tabularx}{1.1\linewidth}{"|X|"}
+	\thickhline
+	Descriptions of (1) applicant's hitherto research activities, and (2) research environments including research facilities and equipment, research materials, etc. relevant to the conduct of the proposed research should be given within 2 pages to show the feasibility of the research plan by the applicant (Principal Investigator).
+	
+	If the applicant has taken leave of absence from research activity for some period (e.g. due to maternity and/or child-care), he/she may choose to write about it in ``(1) applicant's hitherto research activities''.
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+
