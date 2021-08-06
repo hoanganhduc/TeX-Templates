@@ -23,12 +23,12 @@ The followings are available on Overleaf:
 ## kakenhiLaTeX
 
 Here I modified the [original Japanese versions](http://osksn2.hep.sci.osaka-u.ac.jp/~taku/kakenhiLaTeX/) to create my own English versions of the application forms.
-**Use it at your own risk!**
+**Use these forms at your own risk!**
 
 ### For Summer 2021 Applications
 
 | **type** | **style** | **updated** | **utf** | **original forms** |
 |:---------|:----------|:------------|:--------|:-------------------|
-| 挑戦的研究(萌芽)概要 <br>"Challenging Research （Exploratory） Outline"	 | S-42-1 | 2021.08.06 | [single](kakenhiLaTeX/2021_fall/chousenteki_houga_abst_utf_single)/[multi](kakenhiLaTeX/2021_fall/chousenteki_houga_abst_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-42-1_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-42-1_e.doc) |
-| 挑戦的研究(萌芽) <br>"Challenging Research （Exploratory）"	 | S-42-2 | 2021.08.06 | [single](kakenhiLaTeX/2021_fall/chousenteki_houga_utf_single)/[multi](kakenhiLaTeX/2021_fall/chousenteki_houga_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-42-2_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-42-2_e.doc) |
-| 若手研究 <br>"Early-Career Scientists"	 | S-21 | 2021.08.06 | [single](kakenhiLaTeX/2021_fall/wakate_utf_single)/[multi](kakenhiLaTeX/2021_fall/wakate_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-21_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-21_e.doc) |
+| 挑戦的研究(萌芽)概要 <br>Challenging Research （Exploratory） Outline	 | S-42-1 | 2021.08.06 | [single](kakenhiLaTeX/2021_fall/chousenteki_houga_abst_utf_single)/[multi](kakenhiLaTeX/2021_fall/chousenteki_houga_abst_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-42-1_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-42-1_e.doc) |
+| 挑戦的研究(萌芽) <br>Challenging Research （Exploratory）	 | S-42-2 | 2021.08.06 | [single](kakenhiLaTeX/2021_fall/chousenteki_houga_utf_single)/[multi](kakenhiLaTeX/2021_fall/chousenteki_houga_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-42-2_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-42-2_e.doc) |
+| 若手研究 <br>Early-Career Scientists	 | S-21 | 2021.08.06 | [single](kakenhiLaTeX/2021_fall/wakate_utf_single)/[multi](kakenhiLaTeX/2021_fall/wakate_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-21_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-21_e.doc) |

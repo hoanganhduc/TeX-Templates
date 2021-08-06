@@ -1,0 +1,34 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+\usepackage{graphicx}
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont \resizebox{1.1\textwidth}{!}{2. Significance as Challenging Research (Reason for applying for this research category)}}\\
+\begin{tabularx}{1.1\linewidth}{"|X|"}
+	\thickhline
+	\underline{\textbf{This research category calls for a challenging research with the potential of radically transforming the existing research framework}}\\
+	\underline{\textbf{and/or changing the research direction.}}
+	
+	Describe the following points within 1 page.
+
+	1. Applicant's research background and history leading to the conception of this research proposal based on applicant's hitherto research activities.\\
+	2. Based on the current research situation, what significance does this research concept have as Challenging Research (If the research plan is highly exploratory and/or is in their budding stages, whether the plan has a possibility as Challenging Research).
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+
