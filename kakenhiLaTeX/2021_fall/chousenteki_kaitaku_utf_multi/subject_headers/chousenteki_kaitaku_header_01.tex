@@ -1,0 +1,34 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont 1. Research Objectives and Research Method}\\
+\begin{tabularx}{1.1\linewidth}{"|X|"}
+	\thickhline
+	\underline{\textbf{This research category is reviewed by the Medium-sized Section of the Review Section Table Please note that your Research Proposal}}\\
+	\underline{\textbf{Document is reviewed by review committee in a wide range of fields from a multilateral perspective.}}
+	
+	Describe the following points focused on concretely and clearly within 3 pages.
+	
+	1. Objectives of this research\\
+	2. Research Method that the objective can be achieved (including each role of Researchers in Project Members List and Research Collaborators).\\
+	3. Status on the current research environment such as research facilities, equipment, research materials, etc. used to implement this research (In the case that the research environment changes greatly due to transfer or retirement during the research period, securing place and implementation method etc. should be described. 
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+

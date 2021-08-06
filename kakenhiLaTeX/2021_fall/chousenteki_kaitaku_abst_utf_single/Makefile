@@ -1,0 +1,13 @@
+all: main
+
+headers:
+	cd subject_headers && for i in 1; do pdflatex "chousenteki_kaitaku_abst_header_0$$i" ; rm -rf *.dvi *.log *.bak *.aux *.blg *.idx *.ps *.eps *.toc *.out *.snm *.nav *.xml *.bcf *.spl *.synctex.gz *~ ; done && cd ..
+	
+main: chousenteki_kaitaku_abst.pdf
+
+%.pdf: %.tex
+	@latexmk $<
+	
+clean:
+	@latexmk -c
+	@rm -rf *.dvi *.log *.bak *.aux *.blg *.idx *.ps *.eps *.toc *.out *.snm *.nav *.xml *.bcf *.spl *.synctex.gz *~

@@ -373,13 +373,13 @@
 		\JSPSVeryFirstPageStyle{#1}{#2}{#3}{#4}{#5}
 	}{%
 		\ifthenelse{\equal{#1}{jsps-abs-p1-header}}{%
-			\JSPSVeryFirstPageStyle{#1}{#2}{#3 概要}{#4}{#5}
+			\JSPSVeryFirstPageStyle{#1}{#2}{#3 (Outline)}{#4}{#5}
 		}{%
             		\ifthenelse{\equal{#1}{jsps-subject-header}}{%
             			\JSPSFirstSubjectPageStyle{#1}{#2}{#3}{#4}{#5}
             		}{%
 				\ifthenelse{\equal{#1}{jsps-abs-subject-header}}{%
-            				\JSPSFirstSubjectPageStyle{#1}{#2}{#3 概要}{#4}{#5}
+            				\JSPSFirstSubjectPageStyle{#1}{#2}{#3 (Outline)}{#4}{#5}
 				}{%
                     			\thispagestyle{#1}
 				}
@@ -402,7 +402,7 @@
 		\JSPSDefaultPageStyle{#1}{#2}{#3}{#4}{#5}
 	}{%
 		\ifthenelse{\equal{#1}{jsps-abs-default-header}}{%
-			\JSPSDefaultPageStyle{#1}{#2}{#3 概要}{#4}{#5}
+			\JSPSDefaultPageStyle{#1}{#2}{#3 (Outline)}{#4}{#5}
 		}{%
             		\pagestyle{#1}
 		}

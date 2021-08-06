@@ -1,0 +1,29 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont Outline of Research Proposal Document}\\
+\begin{tabularx}{1.1\linewidth}{"|X|"}
+	\thickhline
+	A succinct summary should be described within 2 pages concerning ``1. Research Objectives and Research Method'', ``2. Significance as Challenging Research (Reason for applying for this research category)'', and ``3. Applicant's Ability to Conduct the Research'' written in the research proposal document.
+	
+	* In this research category, the preliminary screening will be conducted only by the ``Research Proposal Document (Outline)'' which is made up by adding the first half of the Research Proposal Document (items to be entered in the Website) to this column (Preliminary screening will not be conducted if the number of application is small). Take note that this form is unable to be referred at the document review.
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+

@@ -23,12 +23,12 @@
 %--------------------------------
 	\fancypagestyle{JSPSVeryFirstPageStyle}{% The name is not taken from #1, because 
 		\fancyhf{}
-		\fancyhead[L]{\hspace{-37pt}\headerfont#2\ 研究計画調書（添付ファイル項目）\\
+		\fancyhead[L]{\hspace{-37pt}\headerfont#2\ Research Proposal Document (forms to be uploaded)\\
 				\rule{0pt}{18pt}\\}
 %				\rule{0pt}{0pt}\\}
-		\fancyhead[R]{\headerfont\textbf{#3\ \KLJInt{\thepage}}\vspace{-5pt}\\
+		\fancyhead[R]{\headerfont\textbf{#3\ \thepage}\vspace{-5pt}\\
 			\rule{0pt}{0pt}\\}
-%		\fancyhead[R]{\headerfont\textbf{#3\ \KLJInt{\thepage}\\}}
+%		\fancyhead[R]{\headerfont\textbf{#3\ \thepage\\}}
 	}
 	\thispagestyle{JSPSVeryFirstPageStyle}
 }
@@ -45,9 +45,9 @@
 %--------------------------------
 	\fancypagestyle{JSPSFirstSubjectPageStyle}{%
 		\fancyhf{}
-		\fancyhead[R]{\headerfont\textbf{#3\ \KLJInt{\thepage}}\vspace{-5pt}\\
+		\fancyhead[R]{\headerfont\textbf{#3\ \thepage}\vspace{-5pt}\\
 			\rule{0pt}{0pt}\\}
-%		\fancyhead[R]{\headerfont\textbf{#3\ \KLJInt{\thepage}\\}}
+%		\fancyhead[R]{\headerfont\textbf{#3\ \thepage\\}}
 	}
 	\thispagestyle{JSPSFirstSubjectPageStyle}
 }
@@ -64,10 +64,10 @@
 %--------------------------------
 	\fancypagestyle{JSPSDefaultPageStyle}{%
 		\fancyhf{}
-		\fancyhead[L]{\headerfont\textbf{【#4（つづき）\ 】}\vspace{-7pt}\\}
-		\fancyhead[R]{\headerfont\textbf{#3\ \KLJInt{\thepage}}\vspace{-5pt}\\
+		\fancyhead[L]{\headerfont\textbf{[#4\ (continued from the previous page)]}\vspace{-7pt}\\}
+		\fancyhead[R]{\headerfont\textbf{#3\ \thepage}\vspace{-5pt}\\
 			\rule{0pt}{0pt}\\}
-%		\fancyhead[R]{\headerfont\textbf{#3\ \KLJInt{\thepage}\\}}	
+%		\fancyhead[R]{\headerfont\textbf{#3\ \thepage\\}}	
         }
         \pagestyle{JSPSDefaultPageStyle}
 }

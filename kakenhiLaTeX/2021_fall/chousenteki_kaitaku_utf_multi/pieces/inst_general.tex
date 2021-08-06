@@ -4,7 +4,7 @@
 %--------------------------------------------------------------------
 \newcommand{\KLInstWOGeneral}[1]{%
 	\noindent
-　ーー　※留意事項　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 		#1\\
 　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 }
@@ -12,31 +12,31 @@
 \newcommand{\KLInst}[1]{%
 	\noindent
 	\ifthenelse{\equal{#1}{}}{%
-　ーー　※留意事項　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 	}{%
-　ーー　※留意事項\textcircled{1}　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note\textcircled{1}　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 		#1\\
 		
 	\noindent
-　ーー　※留意事項\textcircled{2}　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note\textcircled{2}　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 	}
 }
 
 \newcommand{\KLInstLine}[1]{%
 	\ifthenelse{\equal{#1}{}}{%
-　ーー　※留意事項　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 	}{%
-　ーー　※留意事項\textcircled{#1}　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note\textcircled{#1}　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 	}
 }
 
 \newcommand{\KLInstructionTitle}{%
-	\textbf{\large 研究計画調書作成に当たって留意すること}\\
+	\textbf{\large Matters to be noted when preparing the Research Proposal Document}\\
 }
 
 \newcommand{\DeleteInstructions}[1]{%
-	\textcolor{red}{本留意事項の内容を十分に確認し、研究計画調書の作成時には本留意事項を削除すること。\\
-　(\texttt{\textbackslash #1}などを消す)}%
+	\textcolor{red}{Read the following important notes carefully before preparing this form. Delete this entire text box when filling in this form.\\
+　(Delete \texttt{\textbackslash #1} and other text)}%
 }
 
 % local variables for \GeneralInstructions ------------------------
@@ -81,17 +81,18 @@
 	}{%
 		\renewcommand{\留意事項内種目名削除用}{#3}%
 	}%
-　　１．作成に当たっては、\留意事項内種目名\留意事項内記入要領名 を必ず確認すること。\\
-　　２．本文全体は１１ポイント以上の大きさの文字等を使用すること。\\
-　　３．各頁の上部のタイトルと指示書きは動かさないこと。\\
-　　４．指示書きで定められた頁数は超えないこと。なお、空白の頁が生じても削除しないこと。\\
+	1. Read carefully the ``Procedures for Preparing and Entering a Research Proposal
+	Document'' when preparing the document.\\
+	2. The document should be written with font size 10-point or larger.\\
+	3. The title and instructions on the upper part of each page should be left intact.\\
+	4. Do not exceed the maximum number of pages specified in the instructions. In case blank page(s) occur, leave them as they are (do not eliminate any page).\\
 　\DeleteInstructions{JSPSInstructions}\\
 　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 }
 
 
 \newcommand{\PapersInstructions}{%
-　ーー　※留意事項　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 \begin{small}%
 　１． 研究業績(論文、著書、産業財産権、招待講演等)は、網羅的に記載するのではなく、本研\\
 　　　究計画の実行可能性を説明する上で、その根拠となる文献等の主要なものを適宜記載するこ\\
