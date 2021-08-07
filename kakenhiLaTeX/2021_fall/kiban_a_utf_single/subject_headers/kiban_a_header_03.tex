@@ -1,0 +1,32 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont 3. Issues Relevant to Human Right Protection and Legal Compliance}\\
+\indent (\textit{cf.} Application Procedures for Grants-in-Aid for Scientific Research)\\
+\begin{tabularx}{1.1\linewidth}{"|X|"}
+	\thickhline
+	In case the proposed research involves such issues that require obtaining consent and/or cooperation of the third party, consideration in handling of personal information, or actions related bioethics and/or biosafety (including the laws and regulations and the guidelines in the country/region(s) where the joint international research is to be conducted), the planned measures and actions for these issues should be stated within 1 page.
+	
+	This applies to research activities that would require approval by an internal or external ethical jury, such as research involving questionnaire surveys, interviews and/or behavior surveys (including personal histories and images) including personal information, handling of donated specimens, human genome analysis, recombinant DNA, and experimentation with animals.
+	
+	If the proposed research does not fall under such categories, enter ``N/A (not applicable)''.
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+

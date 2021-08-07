@@ -1,0 +1,35 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont 1. Research Objectives, Research Method, etc.}\\
+\begin{tabularx}{1.1\linewidth}{"|X|"}
+	\thickhline
+	This research proposal will be reviewed in the Basic Section of the applicant's choice. In filling this application form, refer to the Application Procedures for Grants-in-Aid for Scientific Research -KAKENHI-.
+	
+	Research objectives, research method, etc. should be described within 4 pages.
+	
+	A succinct summary of the research proposal should be given at the beginning.
+	
+	The main text should give descriptions, in concrete and clear terms, of (1) scientific background for the proposed research, and the ``key scientific question'' comprising the core of the research plan, (2) the purpose, scientific originality, and creativity of the research project, and (3) applicant's research development leading to conception of the present research proposal, domestic and overseas trends related to the proposed research and the positioning of this research in the relevant field, (4) what will be elucidated, and to what extent and how will it be pursued during the research period, and (5) preparation status towards achievement of the purpose of the research project. 
+	
+	If the proposed research project involves Co-Investigator(s) (Co-I(s)), a concrete description of the role-sharing between the Principal Investigator (PI) and the Co-I(s) should be given.
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+

@@ -4,7 +4,7 @@
 %--------------------------------------------------------------------
 \newcommand{\KLInstWOGeneral}[1]{%
 	\noindent
-　ーー　※留意事項　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 		#1\\
 　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 }
@@ -12,31 +12,31 @@
 \newcommand{\KLInst}[1]{%
 	\noindent
 	\ifthenelse{\equal{#1}{}}{%
-　ーー　※留意事項　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 	}{%
-　ーー　※留意事項\textcircled{1}　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note\textcircled{1}　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 		#1\\
 		
 	\noindent
-　ーー　※留意事項\textcircled{2}　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note\textcircled{2}　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 	}
 }
 
 \newcommand{\KLInstLine}[1]{%
 	\ifthenelse{\equal{#1}{}}{%
-　ーー　※留意事項　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 	}{%
-　ーー　※留意事項\textcircled{#1}　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note\textcircled{#1}　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 	}
 }
 
 \newcommand{\KLInstructionTitle}{%
-	\textbf{\large 研究計画調書作成に当たって留意すること}\\
+	\textbf{\large Matters to be noted when preparing the Research Proposal Document}\\
 }
 
 \newcommand{\DeleteInstructions}[1]{%
-	\textcolor{red}{本留意事項の内容を十分に確認し、研究計画調書の作成時には本留意事項を削除すること。\\
-　(\texttt{\textbackslash #1}などを消す)}%
+	\textcolor{red}{Read the following important notes carefully before preparing this form. Delete this entire text box when filling in this form.\\
+　(Delete \texttt{\textbackslash #1} and other text)}%
 }
 
 % local variables for \GeneralInstructions ------------------------
@@ -45,21 +45,21 @@
 \newcommand{\留意事項内種目名削除用}{}	% #3
 
 \newcommand{\KakenhiInstructions}{%
-    \textbf{１．以下の内容を熟読・理解の上、研究計画調書を作成すること。\\
+    \textbf{1. Read and understand the following important notes carefully before preparing your Research Proposal Document.\\
   ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
     \begin{small}
-    　科研費は、研究者の自由な発想に基づく全ての分野にわたる研究を格段に発展させることを目的とし、\\
-    豊かな社会発展の基盤となる独創的・先駆的な研究を支援します。\\
-    　科研費では、応募者が自ら自由に課題設定を行うため、提案課題の学術的意義に加え、独自性や創造性\\
-    が重要な評価ポイントになります。このため、「基盤研究」及び「若手研究」の研究計画調書様式では、\\
-    学術の潮流や新たな展開などどのような「学術的背景」の下でどのような「学術的『問い』」を設定した\\
-    か、当該課題の「学術的独自性や創造性」、「着想に至った経緯」、「国内外の研究動向と本研究の位置\\
-    付け」はどのようなものか、などの記述を求めています。\\
-    　審査においては、総合審査又は二段階書面審査における審査委員間の議論・意見交換等により研究課題\\
-    の核心を掴み、学術的な意義や独自性、創造性など学術的重要性を評価するとともに、実行可能性並びに\\
-    研究遂行能力も含めて総合的に判断します。\\
-    　科研費に応募するに当たっては、上記に留意の上、公募要領や審査基準、様式の説明書き等を十分に確\\
-    認し、審査委員に学術的重要性等が適切に伝わるように研究計画調書を作成してください。\\
+	KAKENHI funding aims to promote scientific research in all fields based on original ideas of researchers.
+	The grants provide financial support for creative and pioneering research projects that will become the foundation of social development.
+	In KAKENHI, research theme setting is at the applicant's discretion.
+	As such, KAKENHI research proposals are evaluated based not only on their scientific significance, but also on their originality and creativity.
+	Accordingly, in the Research Proposal Document forms for the ``Scientific Research'' and ``Early-Career Scientists'' categories, applicants are required to state:\\
+	\checked\ What kind of \underline{key scientific question(s)} is set against the relevant \underline{scientific background} (such as research trends and new developments)?\\
+	\checked\ What are the \underline{scientific originality} and \underline{creativity of the proposal}?\\
+	\checked\ What was the \underline{research development leading to the conception of the research idea}?\\
+	\checked\ What are \underline{the research trends (domestic and overseas) and the positioning of this research in the relevant field}?\\
+	In the review process, research proposals will be screened either by Comprehensive Review or Two-Stage Document Review.
+	Reviewers strive to grasp the essence of the proposed research through exchange of opinions among them, evaluate such merits as scientific significance, originality and creativity, and comprehensively place their judgments taking account of the feasibility of the research plan and the applicant's ability to conduct research.\\
+	　	In applying for KAKENHI, applicants are advised to take note of the above, and to read the Application Procedures for Grants-in-Aid for Scientific Research and the explanations of review criteria and the annotations in the application form in preparing their Research Proposal Documents, so that the scientific merits and other points in the research proposal will be appropriately conveyed to the reviewers.\\
     \end{small}%
   ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
     }
@@ -81,25 +81,21 @@
 	}{%
 		\renewcommand{\留意事項内種目名削除用}{#3}%
 	}%
-　　１．作成に当たっては、\留意事項内種目名\留意事項内記入要領名 を必ず確認すること。\\
-　　２．本文全体は１１ポイント以上の大きさの文字等を使用すること。\\
-　　３．各頁の上部のタイトルと指示書きは動かさないこと。\\
-　　４．指示書きで定められた頁数は超えないこと。なお、空白の頁が生じても削除しないこと。\\
+	1.	Read carefully the ``Procedures for Preparing and Entering a Research Proposal Document'' when preparing the document.\\
+	2.	The document should be written with font size 10-point or larger.\\
+	3.	The title and instructions on the upper part of each page should be left intact.\\
+	4.	Do not exceed the maximum number of pages specified in the instructions. In case blank page(s) occur, leave them as they are (do not eliminate any page).\\
 　\DeleteInstructions{JSPSInstructions}\\
 　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 }
 
 
 \newcommand{\PapersInstructions}{%
-　ーー　※留意事項　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
+　ーー　Note　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
 \begin{small}%
-　１． 研究業績(論文、著書、産業財産権、招待講演等)は、網羅的に記載するのではなく、本研\\
-　　　究計画の実行可能性を説明する上で、その根拠となる文献等の主要なものを適宜記載するこ\\
-　　　と。\\
-　２．研究業績の記述に当たっては、当該研究業績を同定するに十分な情報を記載すること。\\
-　　　例として、学術論文の場合は論文名、著者名、掲載誌名、巻号や頁等、発表年(西暦)、著\\
-　　　書の場合はその書誌情報、など。\\
-　３．論文は、既に掲載されているもの又は掲載が確定しているものに限って記載すること。\\
+1. The description in this column is to explain the feasibility of the research plan. On citing research achievements (research papers, books, patents, invited talks, etc.) they should be given not as an exhaustive list but as supporting evidence to prove the applicant's ability to conduct the proposed research.\\
+2. Sufficient information should be given so that the reviewers can identify the research achievements. In the case of a research paper, for example, the relevant bibliographic information, including the title of the paper, the author(s), the title and the volume of the journal, the publication year, and the pages of the article should be given.\\
+3. The research papers that can be cited are only those already published or accepted for publication.\\
 　\DeleteInstructions{PapersInstructions}\\
 \end{small}
 　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー\\
