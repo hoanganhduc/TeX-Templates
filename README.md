@@ -29,6 +29,7 @@ Here I modified the [original Japanese versions](http://osksn2.hep.sci.osaka-u.a
 
 | **type** | **style** | **updated** | **utf** | **original forms** |
 |:---------|:----------|:------------|:--------|:-------------------|
+| 基盤研究 (S) <br>Grant-in-Aid for Scientific Research (S) | S-11 | 2021.08.08 | [single](kakenhiLaTeX/2021_fall/kiban_s_utf_single)/[multi](kakenhiLaTeX/2021_fall/kiban_s_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-11_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-11_e.doc) |
 | 基盤研究 (A) <br>Grant-in-Aid for Scientific Research (A) | S-12 | 2021.08.07 | [single](kakenhiLaTeX/2021_fall/kiban_a_utf_single)/[multi](kakenhiLaTeX/2021_fall/kiban_a_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-12_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-12_e.doc) |
 | 基盤研究 (B) <br>Grant-in-Aid for Scientific Research (B) | S-13 | 2021.08.07 | [single](kakenhiLaTeX/2021_fall/kiban_b_utf_single)/[multi](kakenhiLaTeX/2021_fall/kiban_b_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-13_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-13_e.doc) |
 | 基盤研究 (C) <br>Grant-in-Aid for Scientific Research (C) | S-14 | 2021.08.07 | [single](kakenhiLaTeX/2021_fall/kiban_c_utf_single)/[multi](kakenhiLaTeX/2021_fall/kiban_c_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-14_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-14_e.doc) |

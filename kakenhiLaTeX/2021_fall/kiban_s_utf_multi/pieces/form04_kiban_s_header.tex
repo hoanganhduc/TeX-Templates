@@ -1,0 +1,43 @@
+% form04_kiban_s_header.tex
+% 2018-09-02 Taku: Revised headers for JFY2019 style with (sub page#).
+
+\usepackage{watermark}
+
+% ===== Global definitions for the Kakenhi form ======================
+%　基本情報
+\newcommand{\様式}{様式S−１１}
+\newcommand{\研究種目}{基盤研究}
+\newcommand{\研究種目後半}{}
+\newcommand{\研究種別}{（S）}
+\newcommand{\研究種目header}{\研究種目\研究種別\研究種目後半}
+
+\newcommand{\KLMainFile}{kiban\_s.tex}
+\newcommand{\KLYoshiki}{kiban_s_header}
+
+% ===== Headers =====================================
+\fancypagestyle{kiban-s-pub-subject-header}{%
+	\fancyhf{}
+	\fancyhead[L]{\framebox{\headerfont　研究代表者・研究分担者ごとに研究者調書を作成・添付　}\\}
+	\fancyhead[R]{\headerfont\textbf{\研究種目\研究種別\ ９−（\KLJInt{\thepage}）\\}}
+}
+
+\fancypagestyle{kiban-s-pub-header}{%
+	\fancyhf{}
+	\fancyhead[L]{\headerfont\textbf{【研究者調書（研究代表者）（つづき）】}}
+	\fancyhead[R]{\headerfont\textbf{\研究種目\研究種別\ ９−（\KLJInt{\thepage}）\\}}
+}
+
+%==== specific commands for kiban_s ================
+\newcommand{\研究者氏名}{}
+\newcommand{\研究者氏名ふりがな}{}
+\newcommand{\研究者生年月日の年}{}
+\newcommand{\研究者生年月日の月}{}
+\newcommand{\研究者生年月日の日}{}
+\newcommand{\研究者年齢}{}
+\newcommand{\研究者所属機関部局職}{}
+\newcommand{\研究者学位}{}
+
+\newcommand{\KLXi}{}
+\newcommand{\KLYi}{}
+\newcommand{\KLYii}{}
+%============================================
