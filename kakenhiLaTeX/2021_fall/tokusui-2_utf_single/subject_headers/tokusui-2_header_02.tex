@@ -1,0 +1,31 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont Significance as Specially Promoted Research}\\
+\begin{tabularx}{1.1\linewidth}{"|X|"}
+	\thickhline
+	This research category is intended to support outstanding and distinctive research that opens up new scientific fields.
+	
+	The following points should be stated in concrete and clear terms.
+	
+	- Expected research achievements, scientific significance and impact of this research in opening up new scientific fields
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+

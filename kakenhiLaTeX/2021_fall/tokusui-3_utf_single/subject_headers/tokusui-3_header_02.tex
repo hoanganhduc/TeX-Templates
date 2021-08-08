@@ -1,0 +1,29 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+\usepackage{graphicx}
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont Items to be Entered When New Application is Made in the Fiscal Year Previous to the Final Year of the Research Period of an On-Going KAKENHI Project}\\
+\indent \resizebox{1.05\textwidth}{!}{(For an application that comes under this category, this column is a mandatory entry. (\textit{cf.} Application Procedures for Grants-in-Aid for Scientific Research))}\\
+\begin{tabularx}{1.1\linewidth}{"|X|"}
+	\thickhline
+	The applicant should give within 1 page: (1) the relevant information on the on-going project (for which FY2022 is the final year of the research period) including the original plan at the time of application/adoption and the research accomplishment such as new knowledge acquired, and (2) the reason why he/she is submitting this new proposal for FY2022 on top of the on-going project (in terms of the development of the on-going research, necessity of new research budget, etc.). If not applicable, leave this page blank. (Do not eliminate the page.) 
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+

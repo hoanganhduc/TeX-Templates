@@ -1,0 +1,37 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont Research Objectives, Background of the Research Project, etc.}\\
+\begin{tabularx}{1.1\linewidth}{"|X|"}
+	\thickhline
+	This Research Proposal Document will be reviewed in the Section ``Category'' of Humanities and Social Sciences, Science and Engineering, and Biological Sciences of the applicant's choice. In filling this application form, refer to the Application Procedures for Grants-in-Aid for Scientific Research-KAKENHI-.
+	
+	Research objectives, background of the research project, etc. should be described.
+	
+	A succinct summary of the research proposal should be given at the beginning.
+	
+	The main text should give descriptions, in concrete and clear terms, of\\
+	(1) Scientific background for the proposed research, and the ``key scientific question'' comprising the core of the research plan,\\
+	(2) The purpose, scientific originality, and creativity of the research project,\\
+	(3) Applicant's research development leading to the conception of this research proposal based on applicant’s hitherto research activities, domestic and overseas trends related to the proposed research and the positioning of this research in the relevant field, and\\
+	(4) What will be elucidated, and to what extent and how will it be pursued during the research period. 
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+

@@ -1,0 +1,31 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont Research Plan and Methods}\\
+\begin{tabularx}{1.1\linewidth}{"|X|"}
+	\thickhline
+	The applicant should provide details of the research plan and methods for achieving the objectives of the research. The following points should be stated in concrete and clear terms.
+	
+	- Preparation status for the research plan: The description with an understandable manner should include a preparation status such as a data collection, analysis, assessment and examination, a preliminary experiment to become a foundation, a design and manufacture of the experimental devices or facilities, a development of methods, and an organization of the project members including a participation of Research Collaborator(s), etc., which is assumed to be a precondition for the implementation of the proposed research project and also explain on the relations between the preparation status and the research plan.
+	
+	- A concrete description of the role-sharing between the Principal Investigator (PI) and the Co-Investigator(s) (Co-I(s)), if the proposed research project involves Co-I(s).
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+

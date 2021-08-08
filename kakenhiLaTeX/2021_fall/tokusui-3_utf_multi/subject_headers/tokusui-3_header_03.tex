@@ -1,0 +1,28 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+\usepackage{graphicx}
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont Reason(s) Why Comments by an Overseas Researcher is not Appropriate}\\
+\begin{tabularx}{1.1\linewidth}{"|X|"}
+	\thickhline
+	As a rule, review comments from overseas researchers are solicited for a proposal submitted to the category of Specially Promoted Research. However, if the applicant considers that his/her proposal document should not be sent to overseas researchers for some reason, he/she can select ``Not Appropriate'' for the entry ``Appropriateness of Comments by Overseas Researchers'' (one of the web entry items). In that case, the applicant should give the reason of the choice within 1 page. The appropriateness of the reason of the choice will be judged by the Scientific Research Grant Committee.
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+

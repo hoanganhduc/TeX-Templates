@@ -1,0 +1,27 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont Applicant's Ability to Conduct the Research and the Research Environment}\\
+\begin{tabularx}{1.1\linewidth}{"|X|"}
+	\thickhline
+	With a view to showing the feasibility of the research plan by the applicant (PI) (and Co-I(s), if any), descriptions of (1) applicant's hitherto research activities and the details of the achievements, and (2) research environments including research facilities and equipment, research materials, etc. relevant to the conduct of the proposed research should be given. In addition, the description of (1) above must include funded researches in the past and achievements obtained from them, etc. but if appropriate, it can include items not directly related to the proposed project. Moreover if there were some absence periods from research activities, an explanation, etc. about them may be provided in the description of (1) above.
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+
