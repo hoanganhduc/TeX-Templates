@@ -29,6 +29,9 @@ Here I modified the [original Japanese versions](http://osksn2.hep.sci.osaka-u.a
 
 | **type** | **style** | **updated** | **utf** | **original forms** |
 |:---------|:----------|:------------|:--------|:-------------------|
+| 特別推進研究（新規） [^1] <br>Grant-in-Aid for Specially Promoted Research (new) | S-1 (1) | 2021.08.08 | [single](kakenhiLaTeX/2021_fall/tokusui-1_utf_single)/[multi](kakenhiLaTeX/2021_fall/tokusui-1_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-1-1_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-1-1_e.doc) |
+| 特別推進研究（新規） <br>Grant-in-Aid for Specially Promoted Research (new) | S-1 (2) | 2021.08.08 | [single](kakenhiLaTeX/2021_fall/tokusui-2_utf_single)/[multi](kakenhiLaTeX/2021_fall/tokusui-2_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-1-2_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-1-2_e.doc) |
+| 特別推進研究（新規） <br>Grant-in-Aid for Specially Promoted Research (new) | S-1 (3) | 2021.08.08 | [single](kakenhiLaTeX/2021_fall/tokusui-3_utf_single)/[multi](kakenhiLaTeX/2021_fall/tokusui-3_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-1-3_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-1-3_e.doc) |
 | 基盤研究 (S) <br>Grant-in-Aid for Scientific Research (S) | S-11 | 2021.08.08 | [single](kakenhiLaTeX/2021_fall/kiban_s_utf_single)/[multi](kakenhiLaTeX/2021_fall/kiban_s_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-11_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-11_e.doc) |
 | 基盤研究 (A) <br>Grant-in-Aid for Scientific Research (A) | S-12 | 2021.08.07 | [single](kakenhiLaTeX/2021_fall/kiban_a_utf_single)/[multi](kakenhiLaTeX/2021_fall/kiban_a_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-12_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-12_e.doc) |
 | 基盤研究 (B) <br>Grant-in-Aid for Scientific Research (B) | S-13 | 2021.08.07 | [single](kakenhiLaTeX/2021_fall/kiban_b_utf_single)/[multi](kakenhiLaTeX/2021_fall/kiban_b_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-13_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-13_e.doc) |
@@ -38,3 +41,5 @@ Here I modified the [original Japanese versions](http://osksn2.hep.sci.osaka-u.a
 | 挑戦的研究(萌芽)概要 <br>Challenging Research (Exploratory) Outline | S-42-1 | 2021.08.06 | [single](kakenhiLaTeX/2021_fall/chousenteki_houga_abst_utf_single)/[multi](kakenhiLaTeX/2021_fall/chousenteki_houga_abst_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-42-1_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-42-1_e.doc) |
 | 挑戦的研究(萌芽) <br>Challenging Research (Exploratory) | S-42-2 | 2021.08.06 | [single](kakenhiLaTeX/2021_fall/chousenteki_houga_utf_single)/[multi](kakenhiLaTeX/2021_fall/chousenteki_houga_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-42-2_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-42-2_e.doc) |
 | 若手研究 <br>Early-Career Scientists | S-21 | 2021.08.06 | [single](kakenhiLaTeX/2021_fall/wakate_utf_single)/[multi](kakenhiLaTeX/2021_fall/wakate_utf_multi) | [PDF](kakenhiLaTeX/2021_fall/original_forms/s-21_e.pdf)/[DOC](kakenhiLaTeX/2021_fall/original_forms/s-21_e.doc) |
+
+[^1] This form is the original one with no modifications.

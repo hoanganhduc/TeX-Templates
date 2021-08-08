@@ -1,0 +1,47 @@
+% form04_tokusui-1_header.tex
+
+\usepackage{watermark}
+
+% ===== Global definitions for the Kakenhi form ======================
+%　基本情報
+\newcommand{\様式}{様式S−１（１）}
+\newcommand{\研究種目}{特別推進研究}
+\newcommand{\研究種目後半}{　新規}
+\ifthenelse{\isundefined{\研究種別}}{%
+	\newcommand{\研究種別}{}
+}{}%
+\newcommand{\研究種目header}{\研究種目}
+
+\newcommand{\KLMainFile}{tokusui-1.tex}
+\newcommand{\KLYoshiki}{tokusui-1_header}
+
+%==== specific commands for kiban_s ================
+\newcommand{\Name}{}
+\newcommand{\DateOfBirth}{}
+\newcommand{\Age}{}
+\newcommand{\AffiliationPosition}{}
+\newcommand{\Degree}{}
+
+\newcommand{\KLXi}{}
+
+% ===== Headers =====================================
+\setlength{\headsep}{-2pt}
+
+\fancypagestyle{tokusui-1-p1-header}{%
+	\fancyhf{}
+	\fancyhead[L]{\hspace{-34pt}\headerfont{ Form S-1 (1): Research Proposal Document (forms to be uploaded)}\\
+				\vspace*{10pt}
+				\rule{0pt}{0pt}\\}
+	\fancyhead[R]{\headerfont{\textbf{Specially Promoted Research 1-1-(\thepage)}\\\vspace*{8pt}}}
+}
+
+\fancypagestyle{tokusui-1-default-header}{%
+	\fancyhf{}
+	\fancyhead[R]{\headerfont{\textbf{Specially Promoted Research 1-1-(\thepage)}\\\vspace*{5pt}}}
+}
+
+\fancypagestyle{tokusui-1-subject-header}{%
+	\fancyhf{}
+	\fancyhead[R]{\headerfont{\textbf{Specially Promoted Research 1-\thepage}\\\vspace*{5pt}}}
+}
+%==========================================================

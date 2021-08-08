@@ -1,0 +1,131 @@
+%\documentclass[11pt,a4paper,uplatex,dvipdfmx]{ujarticle} 		% for uplatex
+\documentclass[11pt,a4j,dvipdfmx]{jarticle} 					% for platex
+\input{pieces/form00_header} % pieces
+\input{pieces/kakenhi7} % pieces
+\input{pieces/form01_header} % pieces
+\input{pieces/form02_2022_header} % pieces
+\input{pieces/hook3} % pieces
+%#Name: tokusui-3
+\input{pieces/form04_jsps_headers} % pieces
+\input{pieces/form04_tokusui-3_header} % pieces
+% ===== Global definitions for the Kakenhi form ======================
+%　基本情報
+%
+%------ 研究課題名  -------------------------------------------
+\newcommand{\研究課題名}{象の卵}
+
+%----- 研究機関名と研究代表者の氏名-----------------------
+\newcommand{\研究機関名}{逢坂大学}
+\newcommand{\研究代表者氏名}{湯川秀樹}
+\newcommand{\me}{\underline{\underline{H.~Yukawa}}} 
+%---- 研究期間の最終年度 ----------------
+\newcommand{\研究期間の最終元号年度}{8}  %令和で、半角数字のみ
+%========================================
+
+% user07_header
+% ===== my favorite packages ====================================
+% ここに、自分の使いたいパッケージを宣言して下さい。
+\usepackage{wrapfig}
+%\usepackage{amssymb}
+%\usepackage{mb}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{lineno}
+
+% ===== my personal definitions ==================================
+% ここに、自分のよく使う記号などを定義して下さい。
+\newcommand{\klpionn}{K_L \to \pi^0 \nu \overline{\nu}}
+\newcommand{\kppipnn}{K^+ \to \pi^+ \nu \overline{\nu}}
+
+% ----- 業績リスト用 -------------
+\newcommand{\paper}[6]{%
+	% paper{title}{authors}{journal}{vol}{pages}{year}
+	\item ``#1'', #2, #3 {\bf #4}, #5 (#6).			% お好みに合わせて変えてください。
+}
+
+\newcommand{\etal}{\textit{et al.\ }}
+\newcommand{\ca}[1]{*#1}	% corresponding author;   \ca{\yukawa}  みたいにして使う
+\newcommand{\invitedtalk}{招待講演}
+
+\newcommand{\yukawa}{H.~Yukawa}					% no underline
+%\newcommand{\yukawa}{\underline{\underline{H.~Yukawa}}}	% with 2 underlines
+\newcommand{\tomonaga}{S.~Tomonaga}
+
+\newcommand{\prl}{Phys.\ Rev.\ Lett.\ }		% よく使う雑誌も定義すると楽
+
+% ===== 欄外メモ ==================
+\newcommand{\memo}[1]{\marginpar{#1}}
+%\renewcommand{\memo}[1]{}	% 全てのメモを表示させないようにするには、行頭の"%"を消す
+
+
+%\input{../../sample/simple/contents}	% skip
+\input{pieces/hook5} % pieces
+
+\begin{document}
+\input{pieces/hook7} % pieces
+%#Split: 10_rights  
+%#PieceName: p10_rights
+\input{pieces/p10_rights_00}
+\section{人権の保護及び法令等の遵守への対応 }
+%　　　　＜＜最大　1ページ＞＞
+
+% s09_rights
+%begin 人権の保護及び法令等の遵守への対応 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+	象の卵のES細胞の培養、象のクローンの生成などは行わない。
+
+	\LaTeX の便利な機能については、\texttt{egg\_***.tex} や\texttt{sample\_pdf/egg\_***.pdf}をご覧ください。
+%end 人権の保護及び法令等の遵守への対応 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+\input{pieces/p10_rights_01}
+
+%#Split: 11_final_year  
+%#PieceName: p11_final_year
+\input{pieces/p11_final_year_00}
+\section{研究計画最終年度前年度応募を行う場合の記述事項 }
+%　　　　＜＜最大　1ページ＞＞
+
+%s04_prep_finalyear
+% 2020-08-16: Taku: Adjusted the horizontal position of the tabular.
+%begin 最終年度の研究課題　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+\newcommand{\最終年度研究種目名}{基盤研究（Z）}
+\newcommand{\最終年度研究課題番号}{99999}
+\newcommand{\最終年度研究課題名}{シロナガスクジラの卵はなぜ見つけられないのか}
+\newcommand{\最終年度研究期間}{平成25年度〜令和\一年目 年度}
+%end 最終年度の研究課題　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+\input{pieces/p11_final_year_01}
+
+\noindent
+\textbf{当初研究計画及び研究成果}\\
+%begin 研究計画最終年度の応募の計画と成果 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+	研究課題の通り、シロナガスクジラの卵は見つけられなかった。
+%end 研究計画最終年度の応募の計画と成果 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+\\
+
+\noindent
+\textbf{前年度応募する理由}\\
+%begin 研究計画最終年度の応募の理由 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+	さっさと次の研究に移りたいので。
+%end 研究計画最終年度の応募の理由 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+\input{pieces/p11_final_year_02}
+
+%#Split: 12_plan  
+%#PieceName: p12_plan
+\input{pieces/p12_plan_00}
+\section{海外の研究者に審査意見書を求めることが適当でない場合、その理由 }
+%　　　　＜＜最大　1ページ＞＞
+
+%s16_why_no_foreign_reviewers
+%begin 海外の研究者による審査が適当でない理由 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+	象の卵の研究はあまりに先鋭的であるため、
+	象が多く生息するアフリカやインドを過去に植民地としていた国の審査員が
+	本研究の審査をした場合、
+	旧植民地とのつながりを生かして先に卵を発見されてしまう
+	可能性がある。
+%end 海外の研究者による審査が適当でない理由 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+
+\input{pieces/p12_plan_01}
+
+%#Split: 99_tail
+\input{pieces/hook9} % pieces
+\end{document}
+

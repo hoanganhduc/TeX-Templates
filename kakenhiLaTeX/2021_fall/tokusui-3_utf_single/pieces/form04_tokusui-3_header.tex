@@ -1,0 +1,61 @@
+% form04_tokusui_s-3_header.tex
+%=================================================================
+
+% ===== Global definitions for the Kakenhi form ======================
+%　基本情報
+\newcommand{\様式}{様式S−１（３）}
+\newcommand{\研究種目}{特別推進研究}
+\newcommand{\研究種目後半}{　新規（日本語）}
+\ifthenelse{\isundefined{\研究種別}}{%
+	\newcommand{\研究種別}{}
+}{}%
+\newcommand{\研究種目header}{\研究種目}
+
+\newcommand{\KLMainFile}{jpa\_tokusui-3.tex}
+\newcommand{\KLYoshiki}{tokusui-3_header}
+
+% ===== Headers =====================================
+
+\fancypagestyle{tokusui-2-10-header}{%
+	\fancyhf{}
+	\fancyhead[L]{\hspace{-37pt}\headerfont{様式S−１（３）研究計画調書（添付ファイル項目）}\\
+				\rule{0pt}{0pt}\\}
+	\fancyhead[R]{\headerfont{\textbf{特別推進研究２−１０}\\}}
+}
+
+\fancypagestyle{tokusui-2-11-header}{%
+	\fancyhf{}
+	\fancyhead[R]{\headerfont{\textbf{特別推進研究２−１１}\\}}
+}
+
+\fancypagestyle{tokusui-2-12-header}{%
+	\fancyhf{}
+	\fancyhead[R]{\headerfont{\textbf{特別推進研究２−１２}\\}}
+}
+
+%%\newcommand{\KLShumokuFirstPageStyle}[4]{%
+%%%	Defines the header for the first page.
+%%%	Called from \KLBeginSubject.
+%%%--------------------------------
+%%%	#1: page style name
+%%%	#2: 様式
+%%%	#3: 研究種目名
+%%%	#4: 項目名
+%%%--------------------------------
+%%	\thispagestyle{#1}
+%%}
+%%
+%%\newcommand{\KLShumokuDefaultPageStyle}[4]{%
+%%%	Defines the default header.
+%%%	Called from \KLBeginSubject.
+%%%--------------------------------
+%%%	#1: page style name
+%%%	#2: 様式
+%%%	#3: 研究種目名
+%%%	#4: 項目名
+%%%--------------------------------
+%%	\pagestyle{#1}
+%%}
+
+
+%==========================================================

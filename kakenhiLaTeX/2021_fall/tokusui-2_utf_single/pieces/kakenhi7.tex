@@ -1,0 +1,636 @@
+%==================================================
+% kakenhi7.sty
+%==================================================
+% v1
+% Minimum amount of macros for writing Kakenhi forms.
+%
+% 2005-10-24 Taku Yamanaka, Physics Dept. Osaka Univ.
+%		taku@hep.sci.osaka-u.ac.jp
+% 		Macros such as XYBC, etc. were imported from Kakenhi Macro at
+% 		http://www.yukawa.kyoto-u.ac.jp/contents/researcher/kakenhi.html .
+% 2006-06-04 Taku
+%		Added macros to draw boxes if \DrawBox is in the source.
+%		This is useful when designing the LaTeX forms.
+% 2006-06-14 Taku
+%		Added LaTeX macros to add costs 
+%		(\KLResetGrandSum, \KLCostItem, \KLSum, \KLGrandSum).
+%		Added a macro \Number to supply commas every 3 digits (imported from kkh.mac).
+% 2006-06-25 Taku
+%		Added \KLTabC, \KLTabR, \KLTabRNum to specify alignments in tables.
+%		Please note that \phantom{...} is required for the column, 
+%		or otherwise somehow p{...mm} is ignored.
+% 2006-08-13 Taku
+%		Added \KLItemNumUnitCost . This requires calc.sty.
+% 2006-09-06 Taku
+%		Added KLGrandTotalValue to add ALL the costs.
+%		Also added \KLPrintGrandTotal to print the total on the console.
+% 2006-09-09 Taku
+%		Added macros to handle "efforts".
+% 2006-09-10 Taku
+%		Added \KLnewcounter to make series of counters.
+%		Modified \KLResetGrandSum and \KLSum to add the sum for 
+%		each category and year.
+% 2006-09-11 Taku
+%		Added \NumC to display LaTeX counter with commas.
+% 2006-09-12 Taku
+%		Added simple macros to make group table.
+% 2006-09-23 Taku
+%		Added the 'Fair License' notification.
+% 2006-10-22 Taku
+%		Initialize KLNumPeople to -1, so that the first header row will not be included in the count.
+%====================================================
+% v2
+% 2007-03-24 Taku
+%		Instead of using Kakenhi Macros to position items, 
+%		switched to a new method using
+%		"picture" environment.  The origin of the coordinate is set to 
+%		the lower left corner of the paper.  The positions are given in "points", 
+%		as can be read by gv. These methods were suggested by 
+%		Tsutomu Sakurai at Saitama Univ..
+% 2007-03-30 Taku
+%		The sum of each category and year is made using 
+%		macros \KLItemCost, etc., instead of \KLSum.  This is a step toward
+%		automatically aligning category sums in the same year, in some forms.
+% 2007-04-02 Taku
+%		Added \KLBudgetMiniTabular, \KLMiniSum, etc. to handle
+%		budget tables with multiple category columns.
+% 2007-05-04 Taku
+%		Added \multicolumnDottedLine .
+%==================================================
+% v3 
+% 2007-08-14 Taku
+%		Simplified page handling, by introducing \KLBeginSinglePage,
+%		\KLPageRange, etc..
+% 2007-09-01 Taku
+%		Added a new command, \KLItemNumUnitCostLocation , 
+%		and \KLAddCost to clean things up.
+% 2007-09-06 Taku
+%		Set \KLEven/OddLeft/RightEdge parameters in \KLWaterMark.
+%		Without it, if \KLLeftEdge or \KLRightEdge is used inside watermark,
+%		it generated a very obscure error message, which was hard to track down.
+% 2007-09-09 Taku
+%		Removed clearring \thiswatermark in \KLClearWaterMarks.
+% 2007-09-12 Taku
+%		Added \KLPriorityItemNumUnitCostTwo for Tokusui.
+% 2007-09-14 Taku
+%		Added \KLItemNumUnitCostTwo for tokutei_koubo.
+% 2007-09-17 Taku
+%		In \KLAddCost, costs are added only if it is within the defined year range.
+% 2008-09-02 Taku
+%		  Added \KLMonthPriorityItemNumUnitCostTwo for tokutei_keizoku.
+% 2008-09-07 Taku
+%		   Use \KLJFY to print year in budget tables.
+% 2008-10-21 Taku
+%			Added KLItemNumUnitCostInParen for shorei.
+% 2009-09-03 Taku
+%			Added \dottedLine .
+%==================================================
+% v4
+% 2009-09-06 Taku
+%			Added macros for partial typesetting.
+% 2009-09-12 Taku
+%			Added macros for showing coordinates and edges.
+% 2009-09-13 Taku
+%			Added macros to show boxes and minipage frames and their corner coordinates.
+% 2010-03-04 Taku
+%			Moved macros for calculating lengths and positions from form07_header.tex to here.
+% 2010-04-11 Taku
+%			Added \KLItemCostOne for jisedai, and necessary flags to print budget sums before 
+%			the detailed budget table.
+%==================================================
+% v5
+% 2011-10-20 Taku
+%			By using array package within tabular environment, the following macros were simplified:
+%			\KLTabC, \KLTabR, \KLBudgetMiniTabular, 
+%			New Macros:
+%			\KLCC, \KLCR
+% 2011-10-24 Taku
+%			Removed using \KLTabR from most of the budget tables.
+% 2011-10-26 Taku
+%			Added KLMyBudget.
+%			Modified KLYearItemNumUnitCostTwo to just put the JFY if the second item is blank.  (For Kiban S)
+% 2012-03-10 Taku
+%			Changed the tabcolsep for \KLMyBudget to 0pt.
+% 2012-08-14 Taku
+%			Moved xxx_forms_pdf and _eps directories to under mother.
+% 2012-09-09	Taku
+%			Added \KLbibitem(B) and \KLcite(B).
+% 2012-09-16	Taku
+%			Added \KLOtherApplication, \KLOtherApplicationReasons, and \KLOtherFundReasons
+%			for tokusui (and maybe for others in the future).
+%==================================================
+% v6
+% 2012-11-10	Taku
+% 			Modified \KLOtherApplicationReasons and \KLOtherFundReasons to make the tables compact.
+%			These were in hook3.tex for the 2013 version.
+%			Added \KLOtherApplicationDiff for many shumokus.
+%			Removed \KLbibitemB and \KLciteB.
+%			Changed \KLbibitem to use a dedicated column for numbering.
+% 2012-11-11	Taku
+%			Added \KLItemSetCostLocationInfo and \KLItemCostInfo.
+% 2013-09-19	Taku
+%			Added \KLOtherPD and \KLOtherPDShort to enter JSPS PD for other funds.
+% 2013-10-02	Taku
+%			Changed \KLbibItem, not to use a dedicated column for numbering, 
+%			because otherwise the label defined in \label{...} cannot be used in @currentlabel.
+% 2014-09-22	Taku
+%			Added \KLCL for filling narrow tabular cells in English.  
+%			(Suggested by Frank Bennett.)
+% 2014-11-08	Taku
+%			Added an instruction in \KLCheckPageLimit.
+% 2015-08-23	Taku
+%			Added NumCk to show numbers divided by 1000 (truncated).
+% 2015-08-24	Taku
+%			Introduced \KLLongPage and \KLSimpleLongPage to offer floating environment in 
+%			single-page-frames.
+%=====================================================
+% v7
+%	Frames are gone!  Simplify kakenhiLaTeX to benefit from 
+%	the new style.
+% 2017-05-03	Taku
+%			Added \KLAnotherFund .
+% 2017-05-27	Taku
+%			Made \KLBeginSubject and \KLEndSubject to handle new 
+%			mother file style.
+% 2017-08-17 Taku
+%	Added \KLItemCostNoYear and \KLEndBudgetNoYear for kokusai_kyoudou.
+% 2017-08-19	Taku
+%			Updated \KLBeginSubject and \KLEndSubject to handle 
+%			various headers.
+% 2017-08-20	Taku
+%			\KLBeginSubject calls \KLFirstPageStyle and \KLDefaultPageStyle
+%			which should be defined for each shumoku (or JSPS/MEXT).
+%			This is to pass the subject name etc. to the header.
+% 2017-08-27	Taku
+%			Set section number in \KLBeginSubject.
+% 2017-08-29	Taku
+%			Moved over KLShumokuFirstPageStyle and KLShumokuDefaultPageStyle.
+%			Added jsps-abs-p1-header, jps-abs-subject-header, and 
+%			jsps-abs-default-header as arguments to \KLShumoku***Header.
+% 2017-09-02	Taku
+%			Added \KLBeginSubjectWithHeaderCommands for more flexible header style.
+% 2017-09-03	Taku
+%			Added \vspace*{-4mm} after \includegraphics in \KLBeginSubject*.
+% 2017-09-05	Taku
+%			Removed now-the-old commands.
+% 2020-01-02	Taku
+%			Added more numbers to \KLJint for gakuhen_a.
+% 2020-01-15	Taku
+%			Changed the horizontal position (none --> -3mm) 
+%			and the width of the top boxes for headers (\linewidth --> 1.02\linewidth)
+%			to reproduce the original boxes.  
+%			This became necessary because the margins were set correctly in form02_header.tex.
+% 2021-01-29	Taku
+%			Set section counter and reset subsection counter only if the section # is given for
+%			\KLBeginSubject and \KLBeginSubjectWithHeaderCommands .
+%=====================================================
+
+%=====================================================
+% Macro to supply commas every 3 digits (up to 9 digits)
+%	Imported from kkh.mac for Kakenhi Macro.
+%=====================================================
+%
+\newif\ifNumWithCommas \NumWithCommastrue
+\def\NumWithCommas{\NumWithCommastrue}
+\def\NumWithoutCommas{\NumWithCommasfalse}
+\newcount\Numa
+\newcount\Numb
+\def\Numempty{}%output blank if "-0" is given
+\def\Number#1{\edef\Numpar{#1}\ifx\Numempty\Numpar\else%
+\ifNumWithCommas\Numa=#1\relax
+\ifnum\Numa>999999\divide\Numa by 1000000
+\number\Numa,%
+\multiply\Numa by -1000000\advance\Numa by #1\relax
+\Numb=\Numa\divide\Numa by 1000
+\ifnum\Numa<100 \ifnum\Numa<10 0\fi0\fi\number\Numa,%
+\multiply\Numa by -1000\advance\Numa by \Numb
+\ifnum\Numa<100 \ifnum\Numa<10 0\fi0\fi\number\Numa%
+\else\ifnum\Numa>999\divide\Numa by 1000
+\number\Numa,%
+\multiply\Numa by -1000\advance\Numa by #1\relax
+\ifnum\Numa<100 \ifnum\Numa<10 0\fi0\fi\number\Numa%
+\else\number\Numa\fi\fi\else\number#1\fi\fi}
+
+%======================================================
+% Macro to display LaTeX counter with commas every 3 digits.
+%======================================================
+\newcommand{\NumC}[1]{\Number{\value{#1}}}
+
+\newcounter{kyen}
+\newcommand{\NumCk}[1]{%
+	\setcounter{kyen}{\arabic{#1}/1000}
+	\Number{\value{kyen}}
+}
+
+%======================================================
+% Macros to align (right-justify, center) elements within a tabular cell
+% whose width is defined by p{...}.
+% 2006-06-25 Taku
+% 	These are necessary, because the cell width should be given explicitly
+% 	by p{...mm} to match the given table in a tabular environment.  
+% 	One could allocate a width with \phantom{...},
+% 	but it is a little tricky, since it depends on the font size.
+%======================================================
+
+%---------------------------------------------------------------------
+% Center text within a tabular cell allocated by p{...}
+%\newcommand{\KLTabC}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\KLTabC}[1]{\centering\arraybackslash#1}
+% This new method does not require a dummy table row to put them in correct columns.
+%
+% This should be used in tabular definition, as:
+%	\begin{tabular}[t]{>{\KLCC}p{30pt}p{50pt}}
+\newcommand{\KLCC}{\centering\arraybackslash}
+
+%---------------------------------------------------------------------
+% Right justify text within a tabular cell allocated  by p{...}
+%\newcommand{\KLTabR}[1]{\multicolumn{1}{r@{\ }}{#1}}
+\newcommand{\KLTabR}[1]{\raggedleft\arraybackslash#1}
+
+% This should be used in tabular definition, as:
+%	\begin{tabular}[t]{>{\KLCR}p{30pt}p{50pt}}
+\newcommand{\KLCR}{\raggedleft\arraybackslash}%
+
+%---------------------------------------------------------------------
+% Right justify number (with comma every 3 digits) 
+% within a tabular cell allocated by p{...}
+\newcommand{\KLTabRNum}[1]{\KLTabR{\Number{#1}}}
+
+%---------------------------------------------------------------------
+% Left justify text within a tabular cell allocated by p{...}
+% This should be used in tabular definition, as:
+%	\begin{tabular}[t]{>{\KLCL}p{30pt}p{50pt}}
+\newcommand{\KLCL}{\raggedright\arraybackslash}%
+
+%=================================================
+%  counter tools
+%=================================================
+\newcounter{KLtmp}
+
+%------------------------------------------------------------------------------
+% Makes a set of counters, with prefix #1, followed by 
+% suffix ranging from 0 to #2 - 1.
+% For example, \KLnewcounter{mine}{3} makes counters
+% mine0, mine1, and mine2 .
+%-------------------------------------------------------------------------------
+\newcommand{\KLnewcounter}[2]{
+	\setcounter{KLtmp}{0}
+	
+	\whiledo{\value{KLtmp} < #2}{
+		\newcounter{#1\arabic{KLtmp}}
+		\stepcounter{KLtmp}
+	}
+}
+
+%------------------------------------------------------------------------------
+% Dumps the contents of the counters.
+%------------------------------------------------------------------------------
+\newcommand{\KLdumpcounter}[2]{
+	\setcounter{KLtmp}{0}
+	
+	\whiledo{\value{KLtmp} < #2}{
+		#1\arabic{KLtmp} : \arabic{#1\arabic{KLtmp}}\\
+		\stepcounter{KLtmp}
+	}
+}
+
+%=======================================================
+% LaTeX macros to add costs.
+%	2006-06-14 Taku Yamanaka
+%=======================================================
+\newcounter{KLCost}				% to calculate cost = #units x unit cost
+\newcounter{KLGrandTotalValue}		% for the grand total of all the categories in all years
+\setcounter{KLGrandTotalValue}{0}
+
+\newcommand{\KLCostCategory}{KLequipments}
+\newcounter{KLYearCount}
+\newcounter{KLPrintYear}
+
+% Make counters for annual sums for each category-----------------------
+\newcommand{\KLMaxYear}{8}
+\KLnewcounter{KLequipments}{\KLMaxYear}
+\KLnewcounter{KLexpendables}{\KLMaxYear}
+\KLnewcounter{KLdomestic}{\KLMaxYear}
+\KLnewcounter{KLforeign}{\KLMaxYear}
+\KLnewcounter{KLtravel}{\KLMaxYear}
+\KLnewcounter{KLgratitude}{\KLMaxYear}
+\KLnewcounter{KLmisc}{\KLMaxYear}
+\KLnewcounter{KLAnnualSum}{\KLMaxYear}
+
+%------------------------------------------------
+% Add up the given cost to category-year sum, category sum, year-sum, and total.
+% 2007-09-01 Taku
+% 2007-09-17 Taku: Add costs only if it is within the defined year range.
+%------------------------------------------------
+\newcommand{\KLAddCost}[1]{%
+	\ifthenelse{\value{KLYearCount} > \value{KLMaxYearCount}}{%
+		%pass
+	}{%
+		\addtocounter{\KLCostCategory0}{#1}%
+		\addtocounter{\KLCostCategory\arabic{KLYearCount}}{#1}%
+		\addtocounter{KLAnnualSum\arabic{KLYearCount}}{#1}%
+		\addtocounter{KLAnnualSum0}{#1}%
+		\ifthenelse{\equal{\KLCostCategory}{KLdomestic}}{%
+			\addtocounter{KLtravel0}{#1}%
+			\addtocounter{KLtravel\arabic{KLYearCount}}{#1}%
+		}{}%
+		\ifthenelse{\equal{\KLCostCategory}{KLforeign}}{%
+			\addtocounter{KLtravel0}{#1}%
+			\addtocounter{KLtravel\arabic{KLYearCount}}{#1}%
+		}{}%
+	}%
+}
+
+
+\newcommand{\KLClearWaterMarks}{%
+	%--empty watermarks
+	\watermark{}
+%	\thiswatermark{}
+	\rightwatermark{}
+	\leftwatermark{}
+}
+
+\newcommand{\KLInput}[1]{%	The macros defined inside the file are only valid within the file.
+	\begingroup
+	\input{#1}
+	\endgroup
+}
+
+%================================
+% For 2017 new style without frames
+%================================
+\newcommand{\KLShumokuFirstPageStyle}[5]{%
+%	Defines the header for the first page.
+%	Called from \KLBeginSubject.
+%--------------------------------
+%	#1: page style name
+%	#2: 様式
+%	#3: 研究種目名
+%	#4: 項目名
+%	#5: sectionNo
+%--------------------------------
+	\ifthenelse{\equal{#1}{jsps-p1-header}}{%
+		\JSPSVeryFirstPageStyle{#1}{#2}{#3}{#4}{#5}
+	}{%
+		\ifthenelse{\equal{#1}{jsps-abs-p1-header}}{%
+			\JSPSVeryFirstPageStyle{#1}{#2}{#3 概要}{#4}{#5}
+		}{%
+            		\ifthenelse{\equal{#1}{jsps-subject-header}}{%
+            			\JSPSFirstSubjectPageStyle{#1}{#2}{#3}{#4}{#5}
+            		}{%
+				\ifthenelse{\equal{#1}{jsps-abs-subject-header}}{%
+            				\JSPSFirstSubjectPageStyle{#1}{#2}{#3 概要}{#4}{#5}
+				}{%
+                    			\thispagestyle{#1}
+				}
+            		}
+		}
+	}
+}
+
+\newcommand{\KLShumokuDefaultPageStyle}[5]{%
+%	Defines the default header.
+%	Called from \KLBeginSubject.
+%--------------------------------
+%	#1: page style name
+%	#2: 様式
+%	#3: 研究種目名
+%	#4: 項目名
+%	#5: sectionNo
+%--------------------------------
+	\ifthenelse{\equal{#1}{jsps-default-header}}{%
+		\JSPSDefaultPageStyle{#1}{#2}{#3}{#4}{#5}
+	}{%
+		\ifthenelse{\equal{#1}{jsps-abs-default-header}}{%
+			\JSPSDefaultPageStyle{#1}{#2}{#3 概要}{#4}{#5}
+		}{%
+            		\pagestyle{#1}
+		}
+	}
+}
+
+\newcommand{\KLSubjectName}{}
+\newcommand{\KLSubjectMaxPages}{}
+\newcommand{\KLSubjectEndPage}{}
+\newcounter{KLSubjectEndPage}
+\setcounter{KLSubjectEndPage}{0}
+
+\newcommand{\KLSubjectCheckNPages}{%
+%	\arabic{page}, \arabic{KLSubjectEndPage}\\
+	\ifthenelse{\value{page}>\value{KLSubjectEndPage}}{
+		{\LARGE「\KLSubjectName」は \KLSubjectMaxPages\ ページ以内で書いてください。}
+		\clearpage
+	}{%
+	}
+}
+
+\newcommand{\KLSubjectAdvancePages}{%
+	\renewcommand{\KLSubjectEndPage}{\value{KLSubjectEndPage}}
+	\ifthenelse{\value{page}<\KLSubjectEndPage}{%
+		\phantom{x}\clearpage
+	}{}
+	% Advance page if necessary
+	\ifthenelse{\value{page}<\KLSubjectEndPage}{%
+		\phantom{x}\clearpage
+	}{}
+	% Advance page if necessary
+	\ifthenelse{\value{page}<\KLSubjectEndPage}{%
+		\phantom{x}\clearpage
+	}{}
+	% Advance page if necessary
+	\ifthenelse{\value{page}<\KLSubjectEndPage}{%
+		\phantom{x}\clearpage
+	}{}
+	% Advance page if necessary
+	\ifthenelse{\value{page}<\KLSubjectEndPage}{%
+		\phantom{x}\clearpage
+	}{}
+}	
+
+\newcommand{\KLJInt}[1]{%
+% Returns full-width numerical character.
+	\ifthenelse{\equal{#1}{1}}{１}{%
+	\ifthenelse{\equal{#1}{2}}{２}{%
+	\ifthenelse{\equal{#1}{3}}{３}{%
+	\ifthenelse{\equal{#1}{4}}{４}{%
+	\ifthenelse{\equal{#1}{5}}{５}{%
+	\ifthenelse{\equal{#1}{6}}{６}{%
+	\ifthenelse{\equal{#1}{7}}{７}{%
+	\ifthenelse{\equal{#1}{8}}{８}{%
+	\ifthenelse{\equal{#1}{9}}{９}{%
+	\ifthenelse{\equal{#1}{10}}{１０}{%
+	\ifthenelse{\equal{#1}{11}}{１１}{%
+	\ifthenelse{\equal{#1}{12}}{１２}{%
+	\ifthenelse{\equal{#1}{13}}{１３}{%
+	\ifthenelse{\equal{#1}{14}}{１４}{%
+	\ifthenelse{\equal{#1}{15}}{１５}{%
+	\ifthenelse{\equal{#1}{16}}{１６}{%
+	\ifthenelse{\equal{#1}{17}}{１７}{%
+	#1}}}}}}}}}}}}}}}}}%
+}
+
+
+\newcommand{\KLBeginSubject}[8]{%
+%----------------------------------------------------
+%	#1: subjectNo
+%	#2: sectionNo
+%	#3: sectionJ
+%	#4: maxPages
+%	#5: pageLengthStyle ('V' for variable, 'F' for fixed)
+%	#6: pageCounter (set page counter to this value if the argument exists.
+%	#7: subjectFirstPageHeader (header for the first page)
+%	#8: defaultPageHeader
+%----------------------------------------------------
+	\ifthenelse{\equal{#2}{}}{%
+	}{%
+	    	\setcounter{section}{#2}
+	    	\setcounter{subsection}{0}
+	}
+	\setcounter{subsubsection}{0}
+	\renewcommand{\KLSubjectName}{#3}
+	\renewcommand{\KLSubjectMaxPages}{#4}
+	
+	\ifthenelse{\equal{#6}{}}{%
+	}{%
+		\setcounter{page}{#6}
+	}
+	
+	\setcounter{KLSubjectEndPage}{\value{page}}
+	\addtocounter{KLSubjectEndPage}{#4}
+	
+	\ifthenelse{\equal{#7}{}}{%
+		% pass
+	}{%
+		\KLShumokuFirstPageStyle{#7}{\様式}{\研究種目header}{#3}{#2}
+	}
+	
+	\ifthenelse{\equal{#8}{}}{%
+		% pass
+	}{%
+		\KLShumokuDefaultPageStyle{#8}{\様式}{\研究種目header}{#3}{#2}
+	}
+	
+	\noindent
+	\hspace{-3mm}
+	\includegraphics[width=1.03\linewidth]{subject_headers/\KLYoshiki_#1.pdf}\\
+	\vspace*{-4mm}
+}
+
+\newcommand{\KLNullHeader}[5]{}
+% Dummy command for No header.
+% This was introduced to avoid error caused in statement \ifthenelse{\equal{#8}{}} .
+
+\newcommand{\KLBeginSubjectWithHeaderCommands}[8]{%
+%----------------------------------------------------
+%	#1: subjectNo
+%	#2: sectionNo
+%	#3: sectionJ
+%	#4: maxPages
+%	#5: pageLengthStyle ('V' for variable, 'F' for fixed)
+%	#6: pageCounter (set page counter to this value if the argument exists.
+%	#7: LaTeX command for subjectFirstPageHeader (header for the first page)
+%	#8: LaTeX command for defaultPageHeader
+%----------------------------------------------------
+	\ifthenelse{\equal{#2}{}}{%
+	}{%
+		\setcounter{section}{#2}
+		\setcounter{subsection}{0}
+	}
+	\setcounter{subsubsection}{0}
+	\renewcommand{\KLSubjectName}{#3}
+	\renewcommand{\KLSubjectMaxPages}{#4}
+	
+	\ifthenelse{\equal{#6}{}}{%
+	}{%
+		\setcounter{page}{#6}
+	}
+	
+	\setcounter{KLSubjectEndPage}{\value{page}}
+	\addtocounter{KLSubjectEndPage}{#4}
+	
+	#7{#7}{\様式}{\研究種目header}{#3}{#2}
+	#8{#8}{\様式}{\研究種目header}{#3}{#2}
+	
+	\noindent
+	\hspace{-3mm}
+	\includegraphics[width=1.03\linewidth]{subject_headers/\KLYoshiki_#1.pdf}\\
+	\vspace*{-4mm}
+}
+
+\newcommand{\KLEndSubject}[1]{%
+%	#1: pageLengthStyle ('V' for variable, 'F' for fixed)
+		\clearpage % This should be done to update page counter for checking.
+		\KLSubjectCheckNPages
+		\ifthenelse{\equal{#1}{F}}{%
+			\KLSubjectAdvancePages
+		}{%
+		}
+}
+
+%==================================================
+% Miscellaneous macros
+%==================================================
+
+%----------------------------------------------------------------------
+% Draw dotted lines across a multiple column table
+%----------------------------------------------------------------------
+\newcommand{\multicolumnDottedLine}[1]{%
+%	\multicolumn{#1}{@{\hspace{-2mm}}c}{\dotfill}\\%
+	\multicolumn{#1}{@{}c}{\dotfill}\\%
+}
+
+\newcommand{\dottedLine}{%
+	\\\noindent
+	\dotfill\\
+}
+
+%----------------------------------------------------------------------
+% Solid line
+%----------------------------------------------------------------------
+\newlength{\KLLineLength}
+\newcommand{\solidLine}[1]{
+%----------- keep an empty line between here and \noindent so that it works after normal text and list.
+
+	\noindent
+	\hspace*{-10pt}
+	\rule[10pt]{\textwidth}{#1}% #1 = 0.5pt, ....
+	\vspace*{-10pt}
+}
+
+\newcommand{\KLLine}{%
+	\solidLine{1pt}
+}
+
+%----------------------------------------------------------------------
+% publication list (Thanks to Tetsuo Iwakuma [bulletin board #876])
+%----------------------------------------------------------------------
+\newcounter{KLBibCounter}
+
+\makeatletter	
+	\newcommand{\KLbibitem}{%
+		\stepcounter{KLBibCounter}%
+		\let \@currentlabel \theKLBibCounter
+		\arabic{KLBibCounter}. %
+	}
+\makeatother
+
+\newcommand{\KLcite}[1]{[\ref{#1}]}
+
+%==================================================
+%Fair License
+
+%<Copyright Information>
+
+%Usage of the works is permitted provided that this
+%instrument is retained with the works, so that any entity
+%that uses the works is notified of this instrument.
+
+%DISCLAIMER: THE WORKS ARE WITHOUT WARRANTY.
+
+%[2004, Fair License: rhid.com/fair]
+%==================================================
+% You may edit/modify this package at your own risk.
+% If there are important fixes or changes that you think should be 
+% reflected in the standard distribution, please notify:
+%	taku@hep.sci.osaka-u.ac.jp  .
+%==================================================

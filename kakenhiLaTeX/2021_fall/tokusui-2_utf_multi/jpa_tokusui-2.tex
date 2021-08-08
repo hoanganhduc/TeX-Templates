@@ -1,0 +1,74 @@
+%\documentclass[11pt,a4paper,uplatex,dvipdfmx]{ujarticle} 		% for uplatex
+\documentclass[11pt,a4j,dvipdfmx]{jarticle} 					% for platex
+\input{pieces/form00_header} % pieces
+\input{pieces/kakenhi7} % pieces
+\input{pieces/form01_header} % pieces
+\input{pieces/form02_2022_header} % pieces
+\input{pieces/hook3} % pieces
+%#Name: tokusui-2
+\input{pieces/form04_jsps_headers} % pieces
+\input{pieces/form04_tokusui-2_header} % pieces
+% ===== Global definitions for the Kakenhi form ======================
+%　基本情報
+%
+%------ 研究課題名  -------------------------------------------
+\newcommand{\研究課題名}{象の卵}
+
+%----- 研究機関名と研究代表者の氏名-----------------------
+\newcommand{\研究機関名}{逢坂大学}
+\newcommand{\研究代表者氏名}{湯川秀樹}
+\newcommand{\me}{\underline{\underline{H.~Yukawa}}} 
+%---- 研究期間の最終年度 ----------------
+\newcommand{\研究期間の最終元号年度}{8}  %令和で、半角数字のみ
+%========================================
+
+\input{pieces/inst_general} % pieces
+\input{pieces/inst_tokusui-2} % pieces
+% user07_header
+% ===== my favorite packages ====================================
+% ここに、自分の使いたいパッケージを宣言して下さい。
+\usepackage{wrapfig}
+%\usepackage{amssymb}
+%\usepackage{mb}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{lineno}
+
+% ===== my personal definitions ==================================
+% ここに、自分のよく使う記号などを定義して下さい。
+\newcommand{\klpionn}{K_L \to \pi^0 \nu \overline{\nu}}
+\newcommand{\kppipnn}{K^+ \to \pi^+ \nu \overline{\nu}}
+
+% ----- 業績リスト用 -------------
+\newcommand{\paper}[6]{%
+	% paper{title}{authors}{journal}{vol}{pages}{year}
+	\item ``#1'', #2, #3 {\bf #4}, #5 (#6).			% お好みに合わせて変えてください。
+}
+
+\newcommand{\etal}{\textit{et al.\ }}
+\newcommand{\ca}[1]{*#1}	% corresponding author;   \ca{\yukawa}  みたいにして使う
+\newcommand{\invitedtalk}{招待講演}
+
+\newcommand{\yukawa}{H.~Yukawa}					% no underline
+%\newcommand{\yukawa}{\underline{\underline{H.~Yukawa}}}	% with 2 underlines
+\newcommand{\tomonaga}{S.~Tomonaga}
+
+\newcommand{\prl}{Phys.\ Rev.\ Lett.\ }		% よく使う雑誌も定義すると楽
+
+% ===== 欄外メモ ==================
+\newcommand{\memo}[1]{\marginpar{#1}}
+%\renewcommand{\memo}[1]{}	% 全てのメモを表示させないようにするには、行頭の"%"を消す
+
+
+%\input{../../sample/simple/contents}	% skip
+\input{pieces/hook5} % pieces
+
+\begin{document}
+\input{pieces/hook7} % pieces
+\input{tokusui-2_01_purpose_background}
+\input{tokusui-2_02_importance}
+\input{tokusui-2_03_plan}
+\input{tokusui-2_04_competence}
+%#Split: 99_tail
+\input{pieces/hook9} % pieces
+\end{document}
+

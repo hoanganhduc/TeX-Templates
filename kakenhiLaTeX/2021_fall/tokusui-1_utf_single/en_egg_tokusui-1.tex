@@ -1,0 +1,122 @@
+%\documentclass[11pt,a4paper,uplatex,dvipdfmx]{ujarticle} 		% for uplatex
+\documentclass[11pt,a4j,dvipdfmx]{jarticle} 					% for platex
+\input{pieces/form00_header} % pieces
+\input{pieces/kakenhi7} % pieces
+\input{pieces/form01_header} % pieces
+\input{pieces/form02_2022_header} % pieces
+\input{pieces/hook3} % pieces
+%#Name: tokusui-1
+\input{pieces/form04_jsps_headers} % pieces
+\input{pieces/form04_tokusui-1_header} % pieces
+% ===== Global definitions for the Kakenhi form ======================
+%　基本情報
+%
+%------ 研究課題名  -------------------------------------------
+\newcommand{\研究課題名}{象の卵}
+
+%----- 研究機関名と研究代表者の氏名-----------------------
+\newcommand{\研究機関名}{逢坂大学}
+\newcommand{\研究代表者氏名}{湯川秀樹}
+\newcommand{\me}{\underline{\underline{H.~Yukawa}}} 
+%---- 研究期間の最終年度 ----------------
+\newcommand{\研究期間の最終元号年度}{8}  %令和で、半角数字のみ
+%========================================
+
+\input{pieces/inst_general} % pieces
+\input{pieces/inst_tokusui-1} % pieces
+% user07_header
+% ===== my favorite packages ====================================
+% ここに、自分の使いたいパッケージを宣言して下さい。
+\usepackage{wrapfig}
+%\usepackage{amssymb}
+%\usepackage{mb}
+%\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{lineno}
+
+% ===== my personal definitions ==================================
+% ここに、自分のよく使う記号などを定義して下さい。
+\newcommand{\klpionn}{K_L \to \pi^0 \nu \overline{\nu}}
+\newcommand{\kppipnn}{K^+ \to \pi^+ \nu \overline{\nu}}
+
+% ----- 業績リスト用 -------------
+\newcommand{\paper}[6]{%
+	% paper{title}{authors}{journal}{vol}{pages}{year}
+	\item ``#1'', #2, #3 {\bf #4}, #5 (#6).			% お好みに合わせて変えてください。
+}
+
+\newcommand{\etal}{\textit{et al.\ }}
+\newcommand{\ca}[1]{*#1}	% corresponding author;   \ca{\yukawa}  みたいにして使う
+\newcommand{\invitedtalk}{招待講演}
+
+\newcommand{\yukawa}{H.~Yukawa}					% no underline
+%\newcommand{\yukawa}{\underline{\underline{H.~Yukawa}}}	% with 2 underlines
+\newcommand{\tomonaga}{S.~Tomonaga}
+
+\newcommand{\prl}{Phys.\ Rev.\ Lett.\ }		% よく使う雑誌も定義すると楽
+
+% ===== 欄外メモ ==================
+\newcommand{\memo}[1]{\marginpar{#1}}
+%\renewcommand{\memo}[1]{}	% 全てのメモを表示させないようにするには、行頭の"%"を消す
+
+
+%\input{../../sample/simple/contents}	% skip
+\input{pieces/hook5} % pieces
+
+\begin{document}
+\input{pieces/hook7} % pieces
+%#Split: 01_project_description  
+%#PieceName: p01_project_description
+\input{pieces/p01_project_description_00}
+\section{Project Description}
+%　　　　＜＜最大　4ページ＞＞
+
+%s02_project_description
+%begin projectDescription ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+	\vspace*{-12mm}
+\subsection*{Abstract}
+	We will search for elephant eggs.
+	
+\subsection*{(1) Background of the Research Project}
+	We have been searching for whale eggs for many years.
+	
+\subsection*{(2) Research Objectives and Targeted Goals of Project}
+	Our goal is to find elephant eggs.
+
+\subsection*{(3) Research Plan and Method}
+	In the first year, we will visit major zoos in the world.
+	We will search for the eggs in Africa in the second year, 
+	and in India in the third year.
+	
+\subsection*{(4) Importance and Necessity of this Project and its Expected Impact on Broader Research Fields}
+	A discovery of an elephant egg will completely change the concept of mammals.
+
+\subsection*{(5) Research Achievements of the Applicant(s) Relevant to this Project}
+	The applicant has been searching for whale eggs.
+	
+\JSPSInstructions	% <-- 留意事項。これは消すか、コメントアウトしてください。
+
+\input{blahblah}
+%end projectDescription ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+\input{pieces/p01_project_description_01}
+
+%#Split: members_info % keep
+
+% Principal Investigator　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+\input{info_pi}
+
+% Co-investigators　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+\input{info_coi}
+
+% To add co-investigators, make a copy of info_coi.tex, rename it, and 
+% add the file below.
+
+%\input{info_taro}
+%\input{info_hanako}
+%\input{info_jiro}
+%\input{info_saburo}
+
+
+%#Split: 99_tail
+\input{pieces/hook9} % pieces
+\end{document}
+
