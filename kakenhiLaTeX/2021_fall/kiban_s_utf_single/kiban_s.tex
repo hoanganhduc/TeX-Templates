@@ -1,5 +1,8 @@
 %\documentclass[11pt,a4paper,uplatex,dvipdfmx]{ujarticle} 		% for uplatex
-\documentclass[11pt,a4j,dvipdfmx]{jarticle} 					% for platex
+\documentclass[10pt,a4j,dvipdfmx]{jarticle} 					% for platex
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage{wasysym}
+\renewcommand\refname{\textbf{References}}
 \input{pieces/form00_header} % pieces
 \input{pieces/kakenhi7} % pieces
 \input{pieces/form01_header} % pieces
@@ -67,42 +70,44 @@
 %#Split: 01_purpose_plan  
 %#PieceName: p01_purpose_plan
 \input{pieces/p01_purpose_plan_00}
-\section{１　研究目的、研究方法など}
+%\section{１　研究目的、研究方法など}
+\section{1. Research Objectives, Research Method, etc.}
+\vspace*{-0.3cm}
 %　　　　＜＜最大　6ページ＞＞
 
 %s02_purpose_plan_with_abstract
 \noindent
-\textbf{（概要）}\\
+\textbf{[SUMMARY]}\\
 %begin 研究目的及び研究計画の概要空行付き ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-	象の卵の研究の目的は．．．	
-
-	象の卵の研究計画と方法は．．．
+	The purpose of research on elephant eggs is. .. ..
+	
+	What is the research plan and method for elephant eggs? .. ..
 	\vspace*{10zw}	% （概要）と（本文）の間が10行程度になるよう、必要に応じて値を調整してください。	
 %end 研究目的及び研究計画の概要空行付き ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
 \noindent
 \rule{\linewidth}{1pt}\\
 \noindent
-\textbf{（本文）}
+\textbf{[MAIN TEXT]}
 %begin 研究目的と研究計画	＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 \JSPSInstructions	% <-- 留意事項。これは消すか、コメントアウトしてください。
 
-\textbf{\\　　　　　＊＊＊　以下は、あくまで例です。真似しないでください。　＊＊＊\\
-　　　　　＊＊＊　本文はもちろん、節の切り方や論理の組み方は　　　＊＊＊\\
-　　　　　＊＊＊　ご自分の気に入ったスタイルで書いてください。　　＊＊＊}
-
-	 象の卵の研究目的は．．．
-
-	象の卵の研究計画は．．．
-
-	\input{blahblah}  % << only for demonstration. Please delete it or comment it out.
-	\input{blahblah}  % << only for demonstration. Please delete it or comment it out.
-		
-
-	\vspace{1cm}
-	\begin{thebibliography}{99}
-		\bibitem{teramura} 寺村輝夫、「ぼくは王様 - ぞうのたまごのたまごやき」.
-	\end{thebibliography}
+%\textbf{\\　　　　　＊＊＊　以下は、あくまで例です。真似しないでください。　＊＊＊\\
+%　　　　　＊＊＊　本文はもちろん、節の切り方や論理の組み方は　　　＊＊＊\\
+%　　　　　＊＊＊　ご自分の気に入ったスタイルで書いてください。　　＊＊＊}
+%
+%	 象の卵の研究目的は．．．
+%
+%	象の卵の研究計画は．．．
+%
+%	\input{blahblah}  % << only for demonstration. Please delete it or comment it out.
+%	\input{blahblah}  % << only for demonstration. Please delete it or comment it out.
+%		
+%
+%	\vspace{1cm}
+%	\begin{thebibliography}{99}
+%		\bibitem{teramura} 寺村輝夫、「ぼくは王様 - ぞうのたまごのたまごやき」.
+%	\end{thebibliography}
 %end 研究目的と研究計画	＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
 \input{pieces/p01_purpose_plan_01}
@@ -110,14 +115,15 @@
 %#Split: 02_rights  
 %#PieceName: p02_rights
 \input{pieces/p02_rights_00}
-\section{２　人権の保護及び法令等の遵守への対応}
+%\section{２　人権の保護及び法令等の遵守への対応}
+\section{2. Issues Relevant to Human Right Protection and Legal Compliance}
 %　　　　＜＜最大　1ページ＞＞
 
 % s09_rights
 %begin 人権の保護及び法令等の遵守への対応 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-	象の卵のES細胞の培養、象のクローンの生成などは行わない。
-
-	\LaTeX の便利な機能については、\texttt{egg\_***.tex} や\texttt{sample\_pdf/egg\_***.pdf}をご覧ください。
+%	象の卵のES細胞の培養、象のクローンの生成などは行わない。
+%
+%	\LaTeX の便利な機能については、\texttt{egg\_***.tex} や\texttt{sample\_pdf/egg\_***.pdf}をご覧ください。
 %end 人権の保護及び法令等の遵守への対応 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
 \input{pieces/p02_rights_01}
@@ -125,7 +131,8 @@
 %#Split: 03_final_year  
 %#PieceName: p03_final_year
 \input{pieces/p03_final_year_00}
-\section{３　研究計画最終年度前年度応募を行う場合の記述事項}
+%\section{３　研究計画最終年度前年度応募を行う場合の記述事項}
+\section{3. Items to be Entered When New Application is Made in the Fiscal Year Previous to the Final Year of the Research Period of an On-Going KAKENHI Project}
 %　　　　＜＜最大　1ページ＞＞
 
 %s04_prep_finalyear
@@ -139,16 +146,19 @@
 \input{pieces/p03_final_year_01}
 
 \noindent
-\textbf{当初研究計画及び研究成果}\\
+%\textbf{当初研究計画及び研究成果}\\
+\textbf{The original plan at the time of application/adoption and the research accomplishment of the ongoing project.}\\
+\vspace*{10zw} % remove this when filling the form
 %begin 研究計画最終年度の応募の計画と成果 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-	研究課題の通り、シロナガスクジラの卵は見つけられなかった。
+%	研究課題の通り、シロナガスクジラの卵は見つけられなかった。
 %end 研究計画最終年度の応募の計画と成果 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 \\
 
 \noindent
-\textbf{前年度応募する理由}\\
+%\textbf{前年度応募する理由}\\
+\textbf{The reason for submission of this new proposal.}\\
 %begin 研究計画最終年度の応募の理由 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
-	さっさと次の研究に移りたいので。
+%	さっさと次の研究に移りたいので。
 %end 研究計画最終年度の応募の理由 ＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
 
 \input{pieces/p03_final_year_02}

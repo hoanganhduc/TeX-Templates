@@ -1,0 +1,39 @@
+\documentclass[8pt]{extarticle}
+\usepackage{newtxtext,newtxmath} % Times New Roman
+\usepackage[top=0pt, bottom=0pt]{geometry}
+\setlength{\oddsidemargin}{-8pt}
+\setlength{\evensidemargin}{-8pt}
+\usepackage{tabularx}
+\usepackage{mathptmx}
+\usepackage{array}
+%https://tex.stackexchange.com/questions/41758/how-can-i-reproduce-this-table-with-thick-lines
+\makeatletter
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\vrule width 1pt}}
+\makeatother
+\usepackage{graphicx}
+\usepackage{multirow}
+
+\begin{document}	
+\noindent\textbf{\fontsize{12}{12}\selectfont 4. Proposal of the Researcher Conducting Scientific Research (S) for FY2022 (co-I)}\\
+\begin{tabularx}{1.1\linewidth}{"|c|c|X|c|X|"}
+	\thickhline
+	\fontsize{10}{10}\selectfont \multirow{2}{*}{\parbox{2.3cm}{\centering\vspace*{5mm} \textbf{Researcher (co-I)}}} & \fontsize{10}{10}\selectfont Name & \fontsize{10}{10}\selectfont \quad & \fontsize{10}{10}\selectfont \parbox{1.1cm}{\centering Date of Birth\\ (age)} & \fontsize{10}{10}\selectfont \parbox{4.3cm}{\flushright\vspace*{-3mm}year \quad month \quad date \hspace*{3mm} \\ \vspace*{1mm} (\_\_\_ years old)} \quad\\
+	\cline{2-5}
+	\fontsize{10}{10}\selectfont \quad & \fontsize{10}{10}\selectfont \parbox{2.5cm}{\centering\vspace*{1mm} Institution,\\ Academic Unit,\\ Position\vspace*{1mm} } & \fontsize{10}{10}\selectfont \quad & \fontsize{10}{10}\selectfont \parbox{1.3cm}{\centering Academic\\ Degree} & \fontsize{10}{10}\selectfont \quad\\
+	\hline
+	\multicolumn{5}{"|X|"}{\parbox{1.07\textwidth}{\fontsize{10}{10}\selectfont\vspace*{1mm} \textbf{Ability to Conduct the Research and the Research Environment} 
+	
+	\fontsize{8}{8}\selectfont
+	Descriptions of (1) Co-I's hitherto research activities, and (2) Co-I's research environments including research facilities and equipment, research materials, etc. relevant to the conduct of the proposed research should be given within 1 page to show the feasibility of the research plan by the applicant.
+	
+	If the applicant has taken leave of absence from research activity for some period (e.g. due to maternity and/or child-care), he/she may choose to write about it in ``(1) Co-I's hitherto research activities''.
+	\vspace*{1mm}}}
+	\\
+	\thickhline
+\end{tabularx}
+\end{document}
+
