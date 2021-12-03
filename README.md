@@ -19,6 +19,7 @@ The followings are available on Overleaf:
 * [A Simple Article Template](https://www.overleaf.com/latex/templates/a-simple-article-template/gdsdkccmjnxg)
 * [A Simple Vietnamese CV](https://www.overleaf.com/latex/templates/ly-lich-khoa-hoc/tgxzgkzdsbpk).
 * [Springer LNCS LaTeX2e](https://www.overleaf.com/latex/templates/springer-lecture-notes-in-computer-science/kzwwpvhwnvfj#.WuA4JS5uZpi). (See [this page](https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines) for more recent versions of this template.)
+* [A Beamer Poster Template with Logos based on Gemini Theme](https://www.overleaf.com/latex/templates/a-beamer-poster-template-with-logos-based-on-gemini-theme/bzfyqysncqjb).
 
 ## kakenhiLaTeX
 
