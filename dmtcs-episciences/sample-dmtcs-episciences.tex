@@ -1,0 +1,697 @@
+\documentclass[
+%%% one of
+submission
+%final
+%proceedings
+%%% if you compile a final version for the old OJS platform
+% , ojs
+%%% if all authors have the same affiliation
+% , nomarks
+]{dmtcs-episciences}
+
+% DON'T LOAD ANY STYLES THAT CHANGE THE PAGE LAYOUT
+% AND DON'T CHANGE THE PAGE LAYOUT BY HAND, EITHER.
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{subfigure}
+
+% graphicx is now loaded automatically no need to put this in here anymore.
+%
+%\usepackage{graphicx}
+
+% We strongly recommend to use natbib. Your colleagues deserve to be
+% named in your text. PLEASE, ADAPT YOUR TEXT ACCORDINGLY, such that
+% citations are grammatically correct.
+\usepackage[round]{natbib}
+
+\author{Jens Gustedt\affiliationmark{1,2}\thanks{I am fully supported.}
+  \and Somebody Who\affiliationmark{3}\thanks{And he is, too!}
+  \and Some Dummy\affiliationmark{3}}
+\title[Formatting an article for DMTCS]{How to format an article
+  for DMTCS\\
+  with the journal's own \LaTeX-style}
+% put your affiliation here, not your full address.
+% If you like to give away your email or other parts of your address,
+% THIS IS NOT THE RIGHT PLACE, your address will change, this paper
+% will not.
+% Just watch that your personal data that you want to communicate on
+% the episcience server is always up to date.
+\affiliation{
+  % one line per affiliation, no postal codes, grant numbers or similar
+  INRIA, France\\
+  ICube, university of Strasbourg, France\\
+  Alma Mater, campus universalis, terra incognita}
+\keywords{some, well classifying, words}
+% don't try to cheat here, we will check the dates!
+\received{1998-10-14}
+\revised{2002-07-19, 2014-02-05, 2015-09-09}
+\accepted{2015-09-09}
+\begin{document}
+\publicationdetails{VOL}{2015}{ISS}{NUM}{SUBM}
+\maketitle
+\begin{abstract}
+  DMTCS is an open access scientific journal that is build on top of
+  public archives. It is implemented by the \emph{episcience}
+  platform, see Berthaud et al., 2014, for an overview of the
+  strategy. One implication of that strategy is that authors have to
+  provide good quality \LaTeX{} for their articles themselves. This
+  paper here is supposed to provide you with the necessary tools to do
+  so. \emph{Please read it carefully.}
+\end{abstract}
+
+DMTCS is an open access scientific is implemented by the
+\emph{episcience} platform, see \cite{berthaud:hal-01002815} for an
+overview of the strategy. It combines high scientific and editorial
+quality with an open access policy. It is priceless, neither authors
+nor readers pay money for the access. Access is granted by giving
+episcience an irrevocable license to publish the articles, the
+copyright remains with the authors. The platform itself is run by
+French government services that do their best to warrant continuous
+access and a high quality of service.
+
+This document describes the use of the \texttt{dmtcs-episcience.cls}
+document class. It should be used
+\begin{center}
+  \emph{\textbf{for all DMTCS publications}}.
+\end{center}
+
+If you are still preparing a document for our previous \texttt{OJS}
+platform, please add \texttt{ojs} to the classes options, see
+Section~\ref{sec:options}.
+
+\section{Introduction}
+\label{sec:in}
+These pages here show you how to prepare your final version of a
+manuscript before publication, once you have received the OK from the
+editorial board. Nevertheless, we encourage you to prepare it already
+according to these hints here during the submission phase. In fact,
+what we ask from you isn't really so special. It should even be useful
+if your paper doesn't make it into DMTCS, and you later submit it to
+some other scientific journal.
+
+The \LaTeX-style for DMTCS is derived straight forward from the
+usual \texttt{article.sty}. Its main purpose is to ensure a common
+layout policy of all articles in DMTCS and to provide editors,
+referees and readers with the necessary information. If you think you
+need an introduction to \LaTeX{} or search for pointers to other
+literature on that, you should consider
+reference~\cite{oetiker99:_not_so_short_introd_latex} given at the
+end.
+
+Before you read on to know how to use our style file please ensure
+that the manuscript fits well into DMTCS.
+\begin{enumerate}
+\item DMTCS covers \emph{Discrete Mathematics} and \emph{Theoretical 
+    Computer Science} as domain of interest. 
+\item DMTCS is a \emph{scientific journal}. This requires that your
+  work is
+
+  \begin{description}
+  \item[original] The main results of your paper must not have
+    appeared elsewhere in a journal, neither by yourself nor by
+    somebody else.
+
+    There is no excuse for plagiarism, not even self-plagiarism. We
+    have a good record in tracking such things down, be warned.
+  \item[important] Your results must be of importance to a wider
+    public and should be of interest for more readers than just the
+    referees. 
+  \item[self contained] Other than for conference proceedings, we
+    don't have any restrictions on the number of pages for an
+    article. So there is no excuse to suppress proofs or not to give
+    verbose examples. On the other hand, self containing short notes
+    are highly welcome.
+  \item[complete] Your work must relate to the current state of the
+    art of the domain in question. In particular, foreign and own
+    results external to the manuscript must be correctly credited and
+    complete reference to such related work must be given. 
+  \item[legible] The journal's language is \emph{English}, all
+    conventions for scientific work in that language apply. 
+
+  \item[correct] Your work must be mathematical correct \emph{and}
+    its quality of writing must be such that the referees will agree
+    upon this fact.
+
+    Your writing must be grammatically correct. Be ensured, that
+    especially authors that are non-native speakers of English will
+    receive all possible help to correct flaws. But also have in mind,
+    that incorrect grammar might be the cause of severe
+    misunderstandings and finally result in a rejection of the
+    paper.  
+  \end{description}
+\item DMTCS is 
+  \begin{description}
+  \item[no] circular letter, and
+  \item[no] preprint server.
+  \end{description}
+  If you are looking for that, please consider the wide
+  possibilities that the web offers nowadays.
+\end{enumerate}
+
+% You may scarsely use \clearpage to advance to a new page if this
+% improves the readability of the document structure
+\clearpage
+\section{Providing Information for the first Page}
+\label{sec:first}
+
+First of all, for a correct submission we need some basic information.
+Consider this file here itself as an example how this should be done.
+We need the following type of information:
+
+\begin{itemize}
+\item The name(s) of the author(s), provided by the \verb!\author!
+  command.
+
+  This is about the same as for standard \LaTeX. Please refer to
+  your \LaTeX\ book to see how this is usually done, or look at the
+  examples given here in this file. 
+  
+  \begin{center}
+    \emph{Don't put homebrewn \LaTeX-commands or special characters here.}
+  \end{center}
+
+  They will disturb the extraction of the meta-data. Please write out
+  everything you may, in particular encode accented characters with
+  \LaTeX-commands, e.g \verb!{\'e}! for an `{\'e}'.
+
+  \begin{description}
+  \item[\emph{and}] If there is more than one author, the names are
+    separated by \verb!\and! commands. If all fits well on one line,
+    the author names should automatically be spread out equally over
+    that line. If there are too many, place a line terminating
+    \verb!\\!  after the last name of an author line. The next line
+    then should start with the next \verb!\and!.
+  \item[\emph{mark(s)}] If authors have different affiliations, put an
+    appropriate \verb!\affiliationmark{i}!  \emph{directly} after the
+    last name of an author, where $i$ corresponds to affiliation
+    number $i$. See below, on how to include several affiliations into
+    the affiliation command.
+
+    If all authors share one or all affiliations, there is no need to
+    have the \verb!\affiliationmark{i}! since it is redundant. In that
+    case, please add \verb!nomarks! to the options of the document
+    class, see below.
+  \item[thanks] If individual authors have to express their gratitude
+    towards a particular grant institution, a \verb!\thanks! command
+    that immediately follows the name is the right place.
+    \begin{itemize}
+    \item There should only be one \verb!\thanks! per author.
+    \item It should not contain address information such as phone
+      numbers or email addresses.
+    \item If the text concerns all of the paper, then the appropriate
+      place for the \verb!\thanks! is the title, not the author name.
+    \end{itemize}
+
+  \end{description}
+\item The title of the manuscript, provided by the \verb!\title!
+  command.
+
+  The title command may be given in two different forms. The first is 
+\begin{verbatim}
+\title{Your title goes here}
+\end{verbatim}
+  If done like that, the title that you give is used as running head
+  for the odd numbered pages as well. If your title is too long such
+  that it doesn't fit into the running head you should use the
+  alternative form
+\begin{verbatim}
+\title[Formatting a submission for DMTCS]{How to format a submission 
+for DMTCS with the journal's own \LaTeX-style}
+\end{verbatim}
+  Here the string that inside the \verb![ ]! is used in the
+  running head.
+
+  The same rule as for the author command applies here, don't use
+  avoidable specialties in here.
+
+  Use \verb!\thanks! to express gratitude to people or organizations
+  that help the paper as a whole, not only just one particular
+  author.
+\item The affiliation(s) of the author(s), provided by the \verb!\affiliation!
+  command.
+
+  If authors have different affiliations or several of them, put each
+  such affiliation on a line of its own, separate the lines by a
+  \verb!\\!  command. For an example, look at the \LaTeX-source of
+  this file here. As you can see I am listed for two different
+  institutions. These appear on separate lines.
+
+  The affiliations will appear as numbered lines in the order they are
+  given. These numbers are the ones that you should use for the
+  \verb!\affiliationmark! command for the authors that we have seen above.
+
+  The text here should be the way how your institutions is usually
+  cited and identified by others, this is \emph{not} the postal
+  address, nor should it contain cryptic grant numbers, lab counters
+  or anything of that kind.
+
+  If you have to refer to such things as grant or lab numbers, that is
+  things that are usually not interesting for your readers by for your
+  controlling or evaluation institutions, put them in a \verb!\thanks!
+  command.
+
+  This also isn't a good place to give away your address, be it
+  postal, email or phone number. Addresses change, papers
+  shouldn't. Your episciences account gives you the opportunity to
+  have all your address data up-to-date, always.
+\item Some keywords that classify your work, provided by the
+  \verb!\keywords!  command. This is mandatory. Be careful on the
+  choice of these keywords, you are the author, you should know best
+  what is adequate such that your article can be easily and correctly
+  identified by search engines and alike. Give it in the form
+\begin{verbatim}
+\keywords{first item, second, third}
+\end{verbatim}
+  So each ``\emph{key word}'' might consist of several words in the
+  usual sense. To separate several key words use commas.
+
+  These keywords must be the same as the ones that are given when you
+  fill out the http-form for submission.
+
+  The same rule as for the author command applies here, don't use
+  avoidable specialties in here.
+\item Most of the editorial details for the paper come with the
+  \verb!\publicationdetails! command. It has five arguments, for the
+  volume, the year, the issue, the number of the paper and the
+  original submission ID. You should have received information what to
+  put here when you were notified about the acceptance of your
+  paper. If you are using the DMTCS \texttt{.cls} file for a
+  submission, just update the date and otherwise leave it as it is.
+
+  In addition to that, some dates of the reviewing procedure should
+  also be given with \verb!\received!, \verb!\revised! and
+  \verb!\accepted!, respectively. Dates must be of the form
+  \texttt{yyyy-mm-dd}. If there have been several revisions, separate
+  the dates with commas.
+\item
+  An abstract of you manuscript, provided by the \verb!abstract!
+  environment. This should be no longer than a paragraph and concisely
+  reflect the main contributions of your work.
+
+  This abstract should be some brief description of
+  your work and how it advances our science.
+  \begin{description}
+  \item[Don't] put complicated mathematical expressions here.
+  \item[Don't] use commands you defined yourself here.
+  \item[Don't] put \verb!\cite! commands here. If you feel that a
+    reference is important for the overall estimation of your work,
+    spell that reference out by using something like
+    ``\emph{This result has been conjectured by Erd\H{o}s et al. (1931)}''.
+  \end{description}
+  The basic rule is that this abstract must be ``understandable by its
+  own'' and this both for its contents \emph{and} for its
+  TeXnicalities.
+
+  Many readers (such as editors) base their selection whether to look
+  at a paper more closely on that abstract. In particular there are
+  high chances that the decision which referees are assigned to your
+  manuscript is mainly based on that abstract. \emph{You have been
+    warned.}
+\end{itemize}
+
+
+\section{Hints for the manuscript itself}
+\label{sec:hints}
+We suppose in the following that you write a paper since you want to
+\emph{publish} it, \textit{i.e.}, make it publicly available, and
+that you want it to be read and understood. Therefore it is imperative
+that you stay inside the established conventions for mathematical or
+TCS texts. People are used to these conventions.  They help them to
+easily and quickly access the real contents of your text and to not to
+be diverted by its appearance.
+
+\subsection{Numbering commands}
+\label{sec:numbering}
+
+Please use the standard conventions for all commands and environments
+that provide a numbering such as theoremlike environments or sections.
+In particular usual counting starts at $1$ and not at $0$. An
+introduction is an integral part of a paper and should be counted as
+one ($=1$!).
+
+\begin{center}
+  \emph{Never ever number items, paragraphs, equations, cases theorems
+    or whatsoever manually.}
+\end{center}
+
+This is the age of computers, use them before they use you. \LaTeX{}
+automatically produces numbers to put hyperlinks into your text, such
+that reading a paper in DMTCS becomes a real `electronic' experience.
+
+If you have a case analysis that goes over several pages, the
+extensions of the \verb!enumerate! package can be interesting. It is
+as simple as the following\\[3ex]
+
+\hfil
+\begin{minipage}{0.45\linewidth}
+\begin{verbatim}
+% in the preable
+\usepackage{enumerate}
+...
+...
+% in the document itself
+\begin{enumerate}[{Case }1:]
+\item when all begins ...
+\item when it all ends
+\end{enumerate}
+\end{verbatim}
+\end{minipage}%
+\hfil
+\begin{minipage}{0.45\linewidth}
+\vspace*{12ex}
+\begin{enumerate}[{Case }1:]
+\item when all begins ...
+\item when it all ends
+\end{enumerate}
+\end{minipage}\\[3ex]
+
+
+
+
+\subsection{Markup commands}
+\label{sec:markup}
+
+Don't use markup of text according to some layout or style, but to
+stress semantic differences. The correct way to \emph{emphasize} a
+certain part of your text is \verb!\emph{emphasize}!. Don't use the
+\verb!\text..! family for that purpose, in particular don't use
+\verb!\textit! or \verb!\it!. \emph{They have \emph{different}
+  meanings} and rendering. \textit{E.g.}, observe the word
+\emph{different} in the previous phrase: this is rendered in an
+upright font since this is an \verb!\emph! inside another
+\verb!\emph!. On the other hand \verb!\texit! for the abbreviations
+``\textit{e.g.}'' and ``\textit{i.e.}'' is appropriate. This is
+because they are Latin (for \textit{exempli gratia} and \textit{id
+  est}), and all foreign text inside English text has to be put in
+italics.
+
+If ever you use commands that change the font use the modern form
+\verb!\text..! for them, such as \verb!\textbf{text}!,
+\verb!\textit{text}! or \verb!\textsc{text}!. These commands know
+better what has to be done when they switch back to normal than the
+ancient commands \verb!{\bf text}!, \verb!{\it text\/}! or
+\verb!{\sc text}!.
+
+\subsection{Headings}
+\label{sec:headings}
+Use the standard heading and structuring commands \verb!\section!,
+\verb!\subsection! \textit{etc.} to structure your document. For
+theorems use the corresponding environments that you may define by
+means of the \verb!\newtheorem! command.
+
+\subsection{Proper Names}
+\label{sec:names}
+Names of theorems and alike are considered to be proper names. In
+English (!) proper names are capitalized. So please write
+something like ``\emph{In Section~\ref{sec:first} we have seen...}''
+and ``\emph{By the Main~Theorem we know...}''. But distinguish
+properly from the use of the word ``theorem'' as ordinary noun as it
+is for example in ``\emph{In the following theorem we prove ...}''.
+
+Please also be careful in the writing of personal names. Customs in
+different countries are different! Be sure to use a standard
+transcription of names that use a different alphabet than English, and
+also be sure to use the full capabilities of \LaTeX{} for accentuated
+character sets that are based on the Latin alphabet. Be sure to catch
+the correct concept of ``last name'' in that language.
+
+
+\subsection{Use a Spell Checker}
+\label{sec:check}
+
+It is considered as being very impolite to leave obvious spelling
+errors in the manuscript before sending it out. Computers are made for 
+these, \emph{use them}.
+
+You might either use the North American variant for spelling or the
+British one, but please don't mix them in one paper. The same holds
+for different possible spellings for the same word as for example
+``\emph{acknowledg(e)ment}'' or ``\emph{formulae}'' versus
+``\emph{formulas}''. Be coherent.
+
+\subsection{Mathematics}
+\label{sec:math}
+Running text must always constitute correct English phrases.  An
+English phrase needs a verb and an `$=$'-sign can not be a replacement
+for it.
+  
+All complicated mathematical formulas should be given on separate
+lines and should not be spread out into the running text.  Never use
+the \verb!$! form of the math environment for these. Human or automatic
+taggers have a hard time to recognize which is an opening or a closing
+\verb!$!. Use
+\begin{verbatim}
+\begin{math}...\end{math} 
+\end{verbatim}
+for all formulas that spread over several words and
+\begin{verbatim}
+\begin{displaymath}...\end{displaymath}
+\end{verbatim}
+(or \texttt{equation} \textit{etc.}) that should be rendered on a line
+of their own. Using the old fashioned double-dollar environment
+\begin{verbatim}
+$$ some complicated formula $$ 
+\end{verbatim}
+is frowned upon.
+
+You should use \LaTeX{} environments that provide a numbering for all
+formulas that are rendered on line of the their own. Use environments
+such as \texttt{equation} or \texttt{eqnarray}. Such numbers ease the
+referee process very much, and after eventual publication easily allow
+readers to refer to in their own work.
+  
+  
+The quantifiers ``$\exists$'' and ``$\forall$'' don't stand as abbreviations of
+the partial phrases ``\emph{there is}'' and ``\emph{for all}''. They
+are reserved for logical formulas as \emph{such}, that is for work
+that talks itself of logical formulas as a subject.
+  
+  
+The equal sign ``$=$'' has different meanings in parts of the two
+communities that DMTCS addresses.
+\begin{enumerate}
+\item It might stand for mathematical identity that is discovered
+  \emph{a posteriori}. As an example take the following phrase:
+  \begin{center}
+    \emph{An easy computation shows that $4!=24$}.
+  \end{center}
+\item It might stand for a \emph{definition}, as in
+  \begin{center}
+    \emph{For convenience, set $0!=1$.}
+  \end{center}
+\end{enumerate}
+For the later use of ``$=$'' Computer Scientist often tend to use
+``$:=$''. Referees should be tolerant to these different customs.
+
+
+\subsection{Proofs}
+\label{sec:proofs}
+
+Put all proofs that you provide in your article in a \texttt{proof}
+environment, such as this
+\begin{verbatim}
+\begin{proof}
+  Use this for proofs ...
+\end{proof}
+\end{verbatim}
+
+\begin{proof}
+  Use this for proofs. This helps the reader to understand
+  the general structure of your paper easily. In particular, we easily
+  see where the proof ends.
+\end{proof}
+
+\begin{proof}[of Main Theorem]
+  Use this form, if the proof doesn't follow directly after the
+  theorem so you have to refer it by name or number.
+\end{proof}
+
+
+\subsection{Cross-references and citations}
+\label{sec:cross}
+Use cross-references throughout your whole paper. Use \verb!\label! and
+\verb!\ref! for that and don't do the work of the computer by
+yourself. Not only that it is easier (\emph{believe me!}) but also
+it helps to insert hyperlinks across the final document in the pdf
+version, see Section~\ref{sec:pdf}. 
+
+The same holds for citations.
+\begin{center}
+  \emph{Never ever number citations by hand.}
+\end{center}
+This only can go wrong and it will. Use \LaTeX{}' \verb!\cite!
+command. Again, in the pdf version this will have the advantage of a
+hyperlink that lets you jump directly to the bibliography item.
+
+Use \texttt{bibtex} to produce your bibliography. With a little bit of
+initial overhead it lets you easily maintain your references. This
+pays off when you will write more than one article in your life...
+Have a look into \cite{oetiker99:_not_so_short_introd_latex} and to
+the
+\href{http://www.dmtcs.org/abstracts/bib/DMTCS.bib}{\texttt{.bib}-file}
+of DMTCS to see how this works.
+
+I personally prefer the so-called \emph{natural} citation style as it
+is used herein (via \texttt{natbib}). It has the advantage that the
+author names of the work that is cited appear properly. Papers are to
+the merits of people. In addition, such a citation by
+name has the advantage of being easily recognizable without looking in
+the bibliography. 
+
+
+\section{PDF Files}
+\label{sec:pdf}
+\texttt{PDF} has become the de-facto standard for scientific documents
+in our domains. To produce that format with our style supports
+\texttt{PDF} you would typically use \texttt{pdflatex}
+as the formatting command. If you are viewing this document in its pdf
+form you may see some of the advantages this has: in particular pdf
+documents produced in that way have included \emph{hyperlinks}. If you
+want to know more about these features please refer to
+\href{http://xxx.lanl.gov/hypertex/}{\texttt{http://xxx.lanl.gov/hypertex/}}.
+
+The switching between pdf or the traditional dvi format should be done
+automatically on whether you process your file with \texttt{pdflatex}
+or \texttt{latex}. If this doesn't work for you you could try to add
+the option \texttt{pdflatex} to the \verb!\documentclass! right at the
+start of the document.
+
+Only very old \LaTeX{} installations don't support the package
+\texttt{hyperref} these days. If you have such an old installation you
+should seriously think of switching to a newer one. It will pay off.
+
+\begin{figure}[htbp]
+  \begin{center}
+    %% Don't use epsfile!
+    \includegraphics{dmtcs}
+    \caption{The logo of \protect\href{http://www.dmtcs.org/}{DMTCS}.}
+    \label{fig:logo}
+  \end{center}
+\end{figure}
+\section{Graphics}
+\label{sec:graphics}
+
+Please use the (standard) packages \texttt{graphics} or
+\texttt{graphicx} to include graphical data and not
+\texttt{epsf} or similar. Something like the PostScript picture in the
+title of this document can be produced as simple as this
+\verb!\includegraphics[width=0.13\textwidth]{dmtcs}!. Note that in
+this command the width is given in relation to the width of the text
+and not in an absolute measure and that the file name is given without
+extension. 
+\begin{center}
+  \emph{Don't include the extension of the graphic file in the
+    command!}
+\end{center}
+Please, leave the choice of the desired format to the
+\texttt{graphicx} package.
+
+
+For a realistic graphic of your paper you should chose a
+\texttt{figure} environment as is done with the following for 
+Figure~\ref{fig:logo} 
+\begin{verbatim}
+\begin{figure}%[htbp]
+  \begin{center}
+    %% Don't use epsfile!
+    \includegraphics{dmtcs}
+    \caption{The logo of DMTCS.}
+    \label{fig:logo}
+  \end{center}
+\end{figure}
+\end{verbatim}
+
+If you have several (small) figures that are related to each other you may
+place them inside one figure environment. As you may see in
+Figure~\ref{fig:logo2} how this may look like and consider the source
+of this description here on how to refer to each part (that is
+Figure~\ref{logo1cm} and \ref{logo3cm}) individually.
+\begin{figure}[htbp]
+  \begin{center}
+    \subfigure[height of 1 cm\label{logo1cm}]{\includegraphics[height=1cm]{dmtcs}}
+    \hfil
+    \subfigure[width of 3 cm\label{logo3cm}]{\includegraphics[width=3cm]{dmtcs}}
+    \caption{The scaled logo of \protect\href{http://www.dmtcs.org/}{DMTCS}.}
+    \label{fig:logo2}
+  \end{center}
+\end{figure}
+
+\section{Summary of Options}
+\label{sec:options}
+\begin{tabular}{|l|p{8cm}|}
+\hline
+option & description\\
+\hline
+submission & whether or not this is considered as a submission or\\
+final & being the final document for journal papers\\
+proceedings & or proceedings volumes\\
+ojs & if you are providing a paper for our old OJS platform\\
+\hline
+nomarks & if all authors have the same affiliation(s)\\
+\hline
+pdftex & force production of pdf, if \texttt{pdflatex} doesn't work\\
+nohyperref & switch reference to \texttt{hyperref} off\\
+notimes & switch selection of the \texttt{times} package off\\
+\hline
+\end{tabular}
+
+
+\section{Summary of Relevant Commands}
+\label{sec:commands}
+
+\begin{tabular}{|l|p{10cm}|}
+\hline
+command & description\\
+\hline
+\verb!\affiliation! & the affiliation of the authors\\
+\verb!\affiliationmark! & to number different affiliations for different authors\\
+\hline
+\verb!\publicationdetails{V}{Y}{I}{N}{ID}! & In the final
+version: the information to identify your paper\\
+\verb!\received{YYYY-MM-DD}! & In the final version: the date of submission to DMTCS.\\
+\verb!\revised{YYYY-MM-DD}!  & In the final version: the date(s) of revisions.\\
+\verb!\accepted{YYYY-MM-DD}! & In the final version: the date of acceptance by the
+editorial board.\\
+\hline
+\verb!\keywords! & a comma separated list of keywords\\
+\hline
+\verb!\qed! & produces \qed. See \texttt{proof}-environment below.\\
+\hline
+\verb!\acknowledgements! & put an acknowledgment section at the end\\
+\hline
+& Use the following commands only for the indicated
+  purpose. If, \textit{e.g}, you wand to use a $\mathbb{P}$ that does
+  not denote the set of prime numbers use \verb!\mathbb{P}!\\
+\hline
+\verb!\naturals! & the positive integers or `naturals', \naturals\\
+\verb!\integers! & the ring of the integers, \integers\\
+\verb!\rationals! & the field of the rational numbers, \rationals\\
+\verb!\reals! & the field of the real numbers, \reals\\
+\verb!\complexes! & the field of the complex numbers, \complexes\\
+\verb!\primes! & the set of prime numbers, \primes\\
+\hline
+\end{tabular}
+
+\section{Summary of Relevant Environments}
+\label{sec:environments}
+
+\begin{tabular}{lp{8cm}}
+  \texttt{abstract} & The abstract of your paper, see Section~\ref{sec:first}.\\
+  \texttt{proof} & Use this for proofs, see Section~\ref{sec:proofs}
+\end{tabular}
+
+\acknowledgements
+\label{sec:ack}
+At the end of the manuscript, right before the bibliography you might
+want to place an acknowledgment. This can be easily done by using the 
+command \verb!\acknowledgements! as you can see here.
+
+\nocite{*}
+\bibliographystyle{abbrvnat}
+% use the following instead if you encounter problems 
+%\bibliographystyle{alpha}
+\bibliography{sample-dmtcs}
+\label{sec:biblio}
+
+\end{document}
