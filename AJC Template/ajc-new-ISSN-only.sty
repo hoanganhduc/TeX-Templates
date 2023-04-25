@@ -1,0 +1,360 @@
+%% AJC STYLE FILE FOR LATEX209 AND LATEX2E
+%% Version 2.1f: May 2003
+%% Updated by Paul Bonnington 
+
+%% Nov 2013 modified for online-only with possible even page number start
+
+\typeout{AJC Style Version 2.1f for LaTeX and LaTeX2e(May 2003)}
+
+\textwidth 5.95in
+\textheight 9in
+%\oddsidemargin 8pt
+%\evensidemargin 8pt
+\oddsidemargin 18pt
+\evensidemargin 18pt
+\topmargin 0pt
+\headheight 18pt
+\headsep 18pt
+
+\newfont{\hv}{cmss10 scaled \magstep1}
+\newfont{\sltt}{cmsltt10 scaled \magstep1}
+
+\def\therunninghead{Define the Running Head with {\tt $\backslash$runninghead\{...\}}}
+\def\runninghead#1{\def\therunninghead{\uppercase{#1}}}
+%\def\runninghead#1{\def\therunninghead{#1}}
+
+%\def\title#1{\gdef\@title{#1}}
+%\def\@title{\@latex@error{No \noexpand\title given}\@ehc}
+
+\def\theshortauthors{Define the short authors with {\tt $\backslash$shortauthors\{...\}}}
+\def\shortauthors#1{\def\theshortauthors{\uppercase{#1}}}
+%\def\shortauthors#1{\def\theshortauthors{#1}}
+
+
+\def\Volume@#1{\relax}
+%\def\Volume#1{\gdef\Volume@{\underbar{#1}}}
+\def\Volume#1{\gdef\Volume@{#1}}
+\def\Year@#1{\relax}
+\def\Year#1{\gdef\Year@{#1}}
+\newif\iffirstpage@ \firstpage@false
+\def\firstpage#1{\global\firstpage@true\gdef\firstpage@{#1}
+      \setcounter{page}{#1}}
+\newif\iflastpage@
+\def\lastpage#1{\global\lastpage@true\gdef\lastpage@{#1}}
+\newif\ifReceived@
+\def\Received#1{\global\Received@true\gdef\Received@{#1}}
+\newif\ifRevised@
+\def\Revised#1{\global\Revised@true\gdef\Revised@{#1}}
+\newif\ifAddr@\Addr@false
+\def\@addr#1{\relax}
+\def\Addr#1{\global\Addr@true\gdef\@addr{#1}}
+\newif\ifautii@\autii@false
+\def\authortwo#1{\global\autii@true\gdef\authorii@{#1}}
+\def\Addrtwo#1{\gdef\@addrii{#1}}
+\newif\ifautiii@\autiii@false
+\def\authorthree#1{\global\autiii@true\gdef\authoriii@{#1}}
+\def\Addrthree#1{\gdef\@addriii{#1}}
+\newif\ifautiv@\autiv@false
+\def\authorfour#1{\global\autiv@true\gdef\authoriv@{#1}}
+\def\Addrfour#1{\gdef\@addriv{#1}}
+\newif\ifautv@\autv@false
+\def\authorfive#1{\global\autv@true\gdef\authorv@{#1}}
+\def\Addrfive#1{\gdef\@addrv{#1}}
+\newif\ifautvi@\autv@false
+\def\authorsix#1{\global\autvi@true\gdef\authorvi@{#1}}
+\def\Addrsix#1{\gdef\@addrvi{#1}}
+\newif\ifautvii@\autv@false
+\def\authorseven#1{\global\autvii@true\gdef\authorvii@{#1}}
+\def\Addrseven#1{\gdef\@addrvii{#1}}
+
+\newcommand{\rcddate@}{
+\noindent\centerline
+{
+%\sltt
+\small (Received\enspace\ignorespaces\Received@\ifRevised@ ;\enspace%
+    revised\enspace\ignorespaces\Revised@)\else )\fi}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Style for title page
+\newcommand{\ps@ajcfirst}{%
+\renewcommand{\@oddfoot}{{\scriptsize ISSN: 2202-3518} \hfill }%{\scriptsize {\copyright The author[s]. Released under the CC BY 4.0 International License \quad}}}
+\renewcommand{\@oddhead}{\parbox{10cm}{\small AUSTRALASIAN JOURNAL OF COMBINATORICS\\Volume \ignorespaces{\bf \Volume@} (\Year@), Pages \firstpage@--\lastpage@}}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\maketitle{\par
+ \begingroup
+   \def\thefootnote{\fnsymbol{footnote}}%
+   \def\@makefnmark{{$\m@th^{\@thefnmark}$\hss}}%
+   \if@twocolumn
+     \twocolumn[\@maketitle]%
+     \else \newpage
+     \global\@topnum\z@
+     \@maketitle \fi
+\thispagestyle{ajcfirst}\@thanks
+ \endgroup
+ \setcounter{footnote}{0}%
+ \let\maketitle\relax
+ \let\@maketitle\relax
+ \gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\thanks\relax}
+
+\def\@maketitle{\newpage
+ \null
+ \vskip 2em
+ \begin{center}%
+  {\LARGE \@title \par}
+  \vskip 1.5em
+  {  \large
+   \lineskip .5em
+   \begin{tabular}[t]{c}\sc \@author
+   \end{tabular}\par}%
+  \ifAddr@ \vskip .5em
+  {\normalsize\em
+   \begin{tabular}[t]{c} \@addr
+   \end{tabular}\par}\fi%
+  \ifautii@ \vskip 1em
+  {  \large
+   \lineskip .5em
+   \begin{tabular}[t]{c}\sc \authorii@
+   \end{tabular}\par}%
+  \vskip .5em
+  {\normalsize\em
+   \begin{tabular}[t]{c}\@addrii
+   \end{tabular}\par}\fi%
+  \ifautiii@ \vskip 1em
+  {  \large
+   \lineskip .5em
+   \begin{tabular}[t]{c}\sc \authoriii@
+   \end{tabular}\par}%
+  \vskip .5em
+  {\normalsize\em
+   \begin{tabular}[t]{c}\@addriii
+   \end{tabular}\par}\fi%
+  \ifautiv@ \vskip 1em
+  {  \large
+   \lineskip .5em
+   \begin{tabular}[t]{c}\sc \authoriv@
+   \end{tabular}\par}%
+  \vskip .5em
+  {\normalsize\em
+   \begin{tabular}[t]{c}\@addriv
+   \end{tabular}\par}\fi%
+  \ifautv@ \vskip 1em
+  {  \large
+   \lineskip .5em
+   \begin{tabular}[t]{c}\sc \authorv@
+   \end{tabular}\par}%
+  \vskip .5em
+  {\normalsize\em
+   \begin{tabular}[t]{c}\@addrv
+   \end{tabular}\par}\fi%
+  \ifautvi@ \vskip 1em
+  {  \large
+   \lineskip .5em
+   \begin{tabular}[t]{c}\sc \authorvi@
+   \end{tabular}\par}%
+  \vskip .5em
+  {\normalsize\em
+   \begin{tabular}[t]{c}\@addrvi
+   \end{tabular}\par}\fi%
+  \ifautvii@ \vskip 1em
+  {  \large
+   \lineskip .5em
+   \begin{tabular}[t]{c}\sc \authorvii@
+   \end{tabular}\par}%
+  \vskip .5em
+  {\normalsize\em
+   \begin{tabular}[t]{c}\@addrvii
+   \end{tabular}\par}\fi%
+ \end{center}%
+ %\par
+ %\vskip 1.5em
+ }
+
+\def\abstract{
+\begin{center}%
+{\bf \abstractname\vspace{-.5em}\vspace{\z@}}%
+\end{center}%
+\quotation\noindent}
+
+\let\end@document\enddocument
+\def\enddocument{\ifReceived@\par\vskip 40pt plus20pt minus30pt
+  \rcddate@\par\fi\end@document}
+
+%%%%%%
+%fancyheadings
+
+\let\fancy@def\gdef
+\def\lhead{\@ifnextchar[{\@xlhead}{\@ylhead}}
+\def\@xlhead[#1]#2{\fancy@def\@elhead{#1}\fancy@def\@olhead{#2}}
+\def\@ylhead#1{\fancy@def\@elhead{#1}\fancy@def\@olhead{#1}}
+
+\def\chead{\@ifnextchar[{\@xchead}{\@ychead}}
+\def\@xchead[#1]#2{\fancy@def\@echead{#1}\fancy@def\@ochead{#2}}
+\def\@ychead#1{\fancy@def\@echead{#1}\fancy@def\@ochead{#1}}
+
+\def\rhead{\@ifnextchar[{\@xrhead}{\@yrhead}}
+\def\@xrhead[#1]#2{\fancy@def\@erhead{#1}\fancy@def\@orhead{#2}}
+\def\@yrhead#1{\fancy@def\@erhead{#1}\fancy@def\@orhead{#1}}
+
+\def\lfoot{\@ifnextchar[{\@xlfoot}{\@ylfoot}}
+\def\@xlfoot[#1]#2{\fancy@def\@elfoot{#1}\fancy@def\@olfoot{#2}}
+\def\@ylfoot#1{\fancy@def\@elfoot{#1}\fancy@def\@olfoot{#1}}
+
+\def\cfoot{\@ifnextchar[{\@xcfoot}{\@ycfoot}}
+\def\@xcfoot[#1]#2{\fancy@def\@ecfoot{#1}\fancy@def\@ocfoot{#2}}
+\def\@ycfoot#1{\fancy@def\@ecfoot{#1}\fancy@def\@ocfoot{#1}}
+
+\def\rfoot{\@ifnextchar[{\@xrfoot}{\@yrfoot}}
+\def\@xrfoot[#1]#2{\fancy@def\@erfoot{#1}\fancy@def\@orfoot{#2}}
+\def\@yrfoot#1{\fancy@def\@erfoot{#1}\fancy@def\@orfoot{#1}}
+
+\newdimen\headrulewidth
+\newdimen\footrulewidth
+\newdimen\plainheadrulewidth
+\newdimen\plainfootrulewidth
+\newdimen\headwidth
+\newdimen\footruleskip
+\newif\if@fancyplain \@fancyplainfalse
+\def\fancyplain#1#2{\if@fancyplain#1\else#2\fi}
+\headwidth=-123456789sp %magic constant
+
+% Command to reset various things in the headers:
+% a.o.  single spacing (taken from setspace.sty)
+% and the catcode of ^^M (so that epsf files in the header work if a
+% verbatim crosses a page boundary)
+% It also defines a \nouppercase command that disables \uppercase and
+% \Makeuppercase. It can only be used in the headers and footers.
+\def\fancy@reset{\restorecr
+ \def\baselinestretch{1}%
+ \def\nouppercase##1{{\let\uppercase\relax\let\MakeUppercase\relax##1}}%
+ \ifx\undefined\@newbaseline% NFSS not present; 2.09 or 2e
+   \ifx\@normalsize\undefined \normalsize % for ucthesis.cls
+   \else \@normalsize \fi
+ \else% NFSS (2.09) present
+  \@newbaseline%
+ \fi}
+
+% Initialization of the head and foot text.
+
+\headrulewidth 0.4pt
+\footrulewidth\z@
+\plainheadrulewidth\z@
+\plainfootrulewidth\z@
+\footruleskip .3\normalbaselineskip
+
+\lhead[\fancyplain{}{\sl\rightmark}]{\fancyplain{}{\sl\leftmark}}
+%  i.e. empty on ``plain'' pages, \rightmark on even, \leftmark on odd pages
+\chead{}
+\rhead[\fancyplain{}{\sl\leftmark}]{\fancyplain{}{\sl\rightmark}}
+%  i.e. empty on ``plain'' pages, \leftmark on even, \rightmark on odd pages
+\lfoot{}
+\cfoot{\rm\thepage} % page number
+\rfoot{}
+
+% Put together a header or footer given the left, center and
+% right text, fillers at left and right and a rule.
+% The \lap commands put the text into an hbox of zero size,
+% so overlapping text does not generate an errormessage.
+
+\def\@fancyhead#1#2#3#4#5{#1\hbox to\headwidth{\fancy@reset\vbox{\hbox
+{\rlap{\parbox[b]{\headwidth}{\raggedright#2\strut}}\hfill
+\parbox[b]{\headwidth}{\centering#3\strut}\hfill
+\llap{\parbox[b]{\headwidth}{\raggedleft#4\strut}}}\headrule}}#5}
+
+\def\@fancyfoot#1#2#3#4#5{#1\hbox to\headwidth{\fancy@reset\vbox{\footrule
+\hbox{\rlap{\parbox[t]{\headwidth}{\raggedright#2\strut}}\hfill
+\parbox[t]{\headwidth}{\centering#3\strut}\hfill
+\llap{\parbox[t]{\headwidth}{\raggedleft#4\strut}}}}}#5}
+
+\def\headrule{{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+\hrule\@height\headrulewidth\@width\headwidth \vskip-\headrulewidth}}
+
+\def\footrule{{\if@fancyplain\let\footrulewidth\plainfootrulewidth\fi
+\vskip-\footruleskip\vskip-\footrulewidth
+\hrule\@width\headwidth\@height\footrulewidth\vskip\footruleskip}}
+
+\def\ps@fancy{%
+\@ifundefined{@chapapp}{\let\@chapapp\chaptername}{}%for amsbook
+% Define \MakeUppercase for old LaTeXen.
+% Note: we used \def rather than \let, so that \let\uppercase\relax (from
+% the original documentation) will still work.
+\@ifundefined{MakeUppercase}{\def\MakeUppercase{\uppercase}}{}
+\@ifundefined{chapter}{\def\sectionmark##1{\markboth
+{\MakeUppercase{\ifnum \c@secnumdepth>\z@
+ \thesection\hskip 1em\relax \fi ##1}}{}}%
+\def\subsectionmark##1{\markright {\ifnum \c@secnumdepth >\@ne
+ \thesubsection\hskip 1em\relax \fi ##1}}}%
+{\def\chaptermark##1{\markboth {\MakeUppercase{\ifnum \c@secnumdepth>\m@ne
+ \@chapapp\ \thechapter. \ \fi ##1}}{}}
+\def\sectionmark##1{\markright{\MakeUppercase{\ifnum \c@secnumdepth >\z@
+ \thesection. \ \fi ##1}}}}%
+%\csname ps@headings\endcsname % use \ps@headings defaults if they exist
+\ps@@fancy
+\gdef\ps@fancy{\@fancyplainfalse\ps@@fancy}%
+% Initialize \headwidth if the user didn't
+\ifdim\headwidth<0sp
+% This catches the case that \headwidth hasn't been initialized and the
+% case that the user added something to \headwidth in the expectation that
+% it was initialized to \textwidth. We compensate this now. This loses if
+% the user intended to multiply it by a factor. But that case is more
+% likely done by saying something like \headwidth=1.2\textwidth The doc
+% says you have to change \headwidth after the first call to,
+% \pagestyle{fancy}. This code is just to catch the most common cases were
+% that requirement is violated.
+    \advance\headwidth123456789sp\advance\headwidth\textwidth\fi}
+\def\ps@fancyplain{\ps@fancy \let\ps@plain\ps@plain@fancy}
+\def\ps@plain@fancy{\@fancyplaintrue\ps@@fancy}
+\def\ps@@fancy{%
+\ps@empty % This is for amsbook/amsart, which do strange things with \topskip
+\def\@mkboth{\protect\markboth}%
+\def\@oddhead{\@fancyhead\@lodd\@olhead\@ochead\@orhead\@rodd}%
+\def\@oddfoot{\@fancyfoot\@lodd\@olfoot\@ocfoot\@orfoot\@rodd}%
+\def\@evenhead{\@fancyhead\@rodd\@elhead\@echead\@erhead\@lodd}%
+\def\@evenfoot{\@fancyfoot\@rodd\@elfoot\@ecfoot\@erfoot\@lodd}%
+}
+\def\@lodd{\if@reversemargin\hss\else\relax\fi}
+\def\@rodd{\if@reversemargin\relax\else\hss\fi}
+
+\let\latex@makecol\@makecol
+\def\@makecol{\let\topfloat\@toplist\let\botfloat\@botlist\latex@makecol}
+\def\iftopfloat#1#2{\ifx\topfloat\empty #2\else #1\fi}
+\def\ifbotfloat#1#2{\ifx\botfloat\empty #2\else #1\fi}
+\def\iffloatpage#1#2{\if@fcolmade #1\else #2\fi}
+
+\newcommand{\fancypagestyle}[2]{%
+  \@namedef{ps@#1}{\let\fancy@def\def#2\relax\ps@fancy}}
+
+\lhead[\small \thepage]{}
+%\chead[\small \uppercase{\theshortauthors}]{\small \uppercase{\therunninghead}}
+%%original%%\chead[\small {\sc \theshortauthors}]{\small {\sc \therunninghead}}
+\chead[\scriptsize{\sc \theshortauthors}]{\scriptsize{\sc \therunninghead}}
+%%%too big still?%% \chead[\footnotesize{\sc \theshortauthors}]{\footnotesize {\sc \therunninghead}}
+%%%too small %%%\chead[\tiny{\sc \theshortauthors}]{\tiny{\sc \therunninghead}}
+\rhead[]{\small \thepage}
+
+\lfoot[]{}
+\cfoot[]{}
+\rfoot[]{}
+\headrulewidth 0pt
+\pagestyle{fancy}
+
+%%%%%%%%%%%%%%%%%%
+% Section style changes
+
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\normalfont\large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+
+%%%%%%%%%%%%%%%%%%%%%
+% Always use these packages
+%\usepackage{latexsym}
+
+
+\endinput

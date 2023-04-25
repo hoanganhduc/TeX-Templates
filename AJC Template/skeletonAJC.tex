@@ -1,0 +1,235 @@
+%\documentclass[12pt,twoside]{article}
+\documentclass[12pt]{article}
+
+\usepackage[a4paper]{geometry}
+\usepackage{ajc-new-ISSN-only}
+\usepackage{amsmath,amsfonts,latexsym}
+\usepackage{draftcopy}
+
+\Volume{XY(2)}
+\Year{2014}
+\firstpage{123}
+\lastpage{126}
+\Received{today}
+\Revised{tomorrow}
+%%% The 6 lines above are completed by us later; the line
+%%% below we modify. 
+\runninghead{F. Bloggs et al.\,/\,Australas. J. Combin. XY\,(2) (2014), 123--126}
+
+\parskip=.3em
+
+
+\numberwithin{equation}{section}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma}[theorem]{Lemma}
+
+
+
+\newenvironment*{proof}
+{\begin{list}{}{\setlength{\leftmargin}{0em}\setlength{\rightmargin}{0em}}
+\item[] {\sc Proof:}} {\hfill$\Box$
+\end{list}}
+
+
+
+\begin{document}
+
+\title{This is the title of the paper and might be long,\\
+in which case we decide where it should be split}
+\author{Fred Bloggs\thanks{Supported by Antarctic Grant G12345}}
+\Addr{Department of Oceanography\\
+University of Here\\
+Townplace\\
+Country\\
+{\tt fred.bloggs@ocean.gov}}
+
+\authortwo{Amy Person \quad Joe Someone-same-address}
+\Addrtwo{Department of Mathematics\\
+University of Neverland\\
+Thistown\\
+Country\\
+{\tt js@math.neverland \quad amyp@math.neverland}}
+
+\authorthree{Josie Zimmer}
+\Addrthree{Department of Oceanography\\
+University of Here\\
+Townplace\\
+Country\\
+{\tt josie.zimmer@ocean.gov}}
+
+%%% ALL countries should be stated; we have noticed that a
+%%% surprising number of papers from the U.S.A.\ fail to state their country!
+%%% If an author requires two addresses, the second one should be placed
+%%% in a ``thanks'' footnote.
+
+\maketitle
+
+\begin{abstract}Make sure that the abstract begins immediately after the closing right brace, 
+with no space, so that the alignment of the abstract is correct. Please do not include
+references such as [6] in the abstract; 
+instead refer directly and briefly to papers, 
+such as Jones [{\em J. Combin. Des.} 32 (1997), 23--45].
+In this way, the abstract will stand alone.
+Also please avoid long definitions in the abstract. 
+An abstract should state briefly what the paper shows, 
+and not have long details about what earlier papers have shown; 
+those can be included in the introduction.
+\end{abstract}
+
+\section{Introduction}
+
+This is the introduction to the paper.
+
+Avoid capital letters in the paper title, 
+apart from the initial letter and in proper names (such as ``Kirkman").
+Mathematical text in the title and elsewhere must be written in \LaTeX\ math mode;
+for instance, the title of \cite{hall+} is written 
+\begin{center}\verb|On designs $(22,33,12,8,4)$|\,.\end{center}
+
+
+\section{Some hints on typesetting}
+
+Do not use ``iff"; write ``if and only if'' instead.
+Note that the opening quote here is formed by two left single quotes.
+
+\smallskip
+
+Please do not use \ \verb|\\| \
+for a newline or extra space; instead use
+\verb|\smallskip| or 
+\verb|\medskip| or even
+\verb|\bigskip|.
+
+You may set a \verb|\parskip|, although we reserve the right to change this if
+the final page has very little on it.
+
+
+If using ``e.g.'' or ``i.e.'' in a sentence, then please make sure that
+you include the correct space afterwards; i.e.\ we add \verb|\| 
+to ensure that the space is the same as after a word in a sentence
+rather than the longer space at the end of a sentence.
+The abbreviation {\sl et al.}\ is short for et aliter, 
+and as in the case of ``e.g.'' you want
+a backslash after the dot, in ``et al.'',
+unless this occurs at the end of a sentence.
+
+Use two dashes (\verb|--|)  between numbers,
+especially between page numbers in the references.
+Also, use three dashes (\verb|---|)  for a dash in a sentence --- like this one!
+A~single dash (\verb|-|) is a hyphen as in the word X-ray or intra-word.
+
+\begin{theorem} 
+This is a theorem, and thanks to Kirkman,
+we know that a Steiner triple system exists if and only if $v\equiv 1$ or $3 \ ({\rm mod}\ 6)$.
+\end{theorem}
+
+\begin{proof}
+Here is the proof of the theorem.
+We prefer an open square to indicate the end of a proof rather than a black square, 
+especially if the black square is large!
+\end{proof}
+
+The final pagination and page breaks are determined by the machine on which 
+we make our final version.
+On rare occasions, different page breaks occur when a paper is run on different machines
+which may be running slightly different versions of \LaTeX!
+
+\section{Another section as required}
+
+If the bibliography has ten or more references, 
+then please  replace 
+\begin{center}
+\verb|\begin{thebibliography}{9}| \
+\end{center}
+by \ \verb|\begin{thebibliography}{99}|.
+
+Ensure that references are in alphabetical order of the first author's last name.
+Write ``A.B. Bloggs" rather than ``Bloggs, A.B.".
+When there are two or more authors, 
+precede the last author by ``and", with no comma before the ``and".
+
+If you prefer a space between double initials, then please be consistent; 
+we recommend a smaller space than that between words, such as
+A.\,B. Bloggs (which is typed as \verb|A.\,B. Bloggs|).
+
+{\it Always\/} use two dashes between page numbers: so 12--14 and {\it not\/} 12-14.
+
+Only include references which are actually cited within the paper. (This skeleton file fails
+that requirement!)
+
+When writing dots, as in a list, type \verb|\dots| rather than three dots;
+note the difference between $1,2,3,\dots$ and $1,2,3,...$ for instance.
+Also avoid using \verb|\cdots|; it is usually
+best to let \LaTeX\ decide itself where to place the dots!
+
+Here is a list of items:
+\begin{enumerate}
+\item
+The first item.
+\item
+The second item.
+\item
+If a mathematical term is abbreviated and involves two or three letters,
+as in ``IRS'' for the irredundance saturation number of a graph $G$,
+then it should {\em not\/} be typeset in math mode, but should be in roman font, as in
+\[
+  {\rm IRS}(G) = \min\{{\rm IRS}(v,G) \mid v \in V\}\,.
+\]
+\end{enumerate}
+Here is some displayed mathematics:
+\[
+  27x^2-15y+p^3 = 234x-\sqrt{yp}\,.
+\]
+For several lines of equations, you can use ``eqnarray'', as follows:
+\begin{eqnarray*}
+  x &=& 27z^2\\
+  y &>& a+b+c+d+e\,.
+\end{eqnarray*}
+The asterisk here in the .tex file means that the equations are not numbered.
+
+
+\section{Further reading}
+
+The pages
+\begin{center}
+\tt http://web.maths.unsw.edu.au/$\sim$michaelc/mc\_writing.pdf
+\end{center}
+and
+\begin{center}
+\tt http://web.maths.unsw.edu.au/$\sim$michaelc/lms\_writing.pdf
+\end{center}
+include excellent comments on writing mathematics well.
+
+
+\begin{thebibliography}{9}
+
+\bibitem{FredB}
+F. Bloggs and J. Zimmer,
+This is the end of the world,
+{\em J. Oceanography} 13 (2000), 13--21.
+
+\bibitem{bb+erdos}
+B. Bollob\'as and P. Erd\H os,
+Graphs of extremal weights,
+{\em Ars Combin.} 50 (1998), 225--233.
+
+\bibitem{hall+}
+M. Hall Jr., R. Roth, G.\,H.\,J. van Rees and S.\,A. Vanstone,
+On designs $(22,33,12,8,4)$,
+{\em J. Combin. Theory Ser. A} 47 no.\,2 (1988), 157--175.
+
+\bibitem{book}
+F. Kloggs, {\it This is a book title in italics},
+Cambridge University Press, 2010.
+
+\end{thebibliography}
+
+\end{document}
+
+
+
