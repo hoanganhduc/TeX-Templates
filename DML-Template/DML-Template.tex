@@ -1,0 +1,158 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.1cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd,cite,graphicx}
+
+
+
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\fontsize{12}{15}\bfseries}{\thesection}{1em.}{}
+
+
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{counterexample}{Counter Example}[section]
+\newtheorem{observation}{Observation}[section]
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\allowdisplaybreaks[4]
+
+\let\oldbibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+  \oldbibliography{#1}%
+  \setlength{\itemsep}{-2pt}%
+}
+
+
+
+\baselineskip=1.20in
+
+
+
+\begin{document}
+
+\baselineskip=0.20in
+
+
+
+
+\makebox[\textwidth]{%
+\hglue-15pt
+\begin{minipage}{0.6cm}	
+%\vfill
+\vskip9pt
+\end{minipage} \vspace{-\parskip}
+\begin{minipage}[t]{6cm}
+\footnotesize{ {\bf Discrete Mathematics Letters} \\ \underline{www.dmlett.com}}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{6.5cm}
+\normalsize {\it Discrete Math. Lett.}  {\bf X} (202X) XX--XX
+\end{minipage}}
+\vskip36pt
+
+
+\noindent
+{\large \bf Title of the article should be in sentence case}\\
+
+
+
+
+\noindent
+First Author$^{1,}\footnote{Corresponding author (xyz1@example.com)}$, Second Author$^{2}$\\
+
+\noindent
+\footnotesize $^1${\it Affiliation of the First Author}\\
+\noindent
+ $^2${\it Affiliation of the Second Author\/} \\
+
+
+
+
+\noindent
+ (\footnotesize Received: Day Month 202X. Received in revised form: Day Month 202X. Accepted: Day Month 202X. Published online: Day Month 202X.)\\
+
+
+\setcounter{page}{1} \thispagestyle{empty}
+
+
+\baselineskip=0.20in
+
+
+\normalsize
+
+ \begin{abstract}
+ \noindent
+ Write the abstract here.  If possible, please avoid writing mathematical formula in the abstract. 
+ .
+ .
+ .
+ \\[2mm]
+ {\bf Keywords:} keyword 1; keyword 2; keyword 3; keyword 4; keyword 5 (provide at least three keywords).\\[2mm]
+ {\bf 2020 Mathematics Subject Classification:} Classification 1, Classification 2, Classification 3 (provide at least one classification number).
+ \end{abstract}
+
+\baselineskip=0.20in
+
+
+
+\section{Introduction}
+
+References to the literature should be numbered in square brackets like \cite{Burns-1995,debonothesis}.
+The entries in the reference list should be in alphabetical order according to the first author listed. Also, please follow the way by which references are quoted at the end of this document.
+
+
+
+\section{Main Results}\label{sec-2}
+
+
+Make the sections and subsections according to your paper. Please organize all your theorems, lemmas, definitions, remarks, etc., into the appropriate LaTeX environments.
+
+\begin{theorem}\label{thm-1}
+Let
+.
+.
+.
+\end{theorem}
+
+\begin{proof}
+Suppose that	
+    .
+	.
+	.
+\end{proof}
+
+In LaTeX, the environment eqnarray or eqnarray* is an old configured command. If we use this old environment, the spaces before and after the suitable operators, e.g. ``+'' or ``='', will be larger than the normal case. Please don't use this old environment. Replace it with other stable and well defined other mathematical environments to handle formulas with multiple rows. For example, please use the environments align (align*) or aligned (aligned*) or multline (multline*) or gather (gathered*) etc.
+
+
+
+\section*{Acknowledgment}
+
+Acknowledgment to funding bodies or any other acknowledgment could be made here.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\footnotesize
+
+ \begin{thebibliography}{00}
+
+
+
+\bibitem{Bondy08} J. A. Bondy, U. S. R. Murty, {\it Graph Theory}, Springer, London, 2008.
+
+\bibitem{Burns-1995} K. Burns, R. C. Entringer, A graph-theoretic view of the United States postal service, In: Y. Alavi, A. J. Schvenk (Eds.), {\it Graph Theory, Combinatorics and Algorithms}, Wiley, New York, 1995, pp. 323--334.
+
+\bibitem{Caporossi-2000}  G. Caporossi, P. Hansen, Variable neighborhood search for extremal graphs: 1 The AutoGraphiX system, {\it Discrete Math.} {\bf 212} (2000) 29--44.
+
+\bibitem{debonothesis} M. Debono, {\it Threshold Graphs as Models of Real-World Networks}, Master's thesis, University of Malta, 2012.
+
+
+
+\end{thebibliography}
+\end{document}
