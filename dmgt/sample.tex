@@ -1,0 +1,127 @@
+\documentclass{dmgt}
+
+
+%% do not change the next command
+%% \setarticle{1}{xx}{yyyy}
+
+\newauthor{%
+John Rambo}{%
+J. Rambo}{%
+Affilation line 1\\
+Affilation line 2\\
+Affilation line 3}[%
+Author1Email@domain.com]
+
+\newauthor{%
+John McClane}{%
+J. McClane }{%
+Affilation line 1\\
+Affilation line 2\\
+Affilation line 3}[%
+Author2Email@domain.com]
+
+\title{Sample article based on \texttt{\journalacronym{}} class}
+
+\keywords{Type Keywords of your paper here}
+
+\classnbr{Type \mscyear{} Mathematics Subject Classification of your paper here}
+
+
+\begin{document}
+
+\begin{abstract}
+This sample article contains typical elements of article: definitions, theorems, proofs etc. 
+\end{abstract}
+
+\section{Introduction}
+
+Here we have some definitions.
+
+\begin{dnt}[\cite{gtwa}]
+A graph is said to be \emph{embeddable in the plane} or \emph{planar}, if it can be drawn in the plane
+so that its edges intersect only at their ends.
+\end{dnt}
+
+
+\begin{theorem}
+$K_5$ is not planar.
+\end{theorem}
+
+\begin{proof}
+See \cite{gtwa}.
+
+\end{proof}
+
+\begin{theorem}[(Eulers's formula)]
+If $G$ is a connected plane graph, then 
+$$v-e+f=2,$$
+where $v$ -- number of vertices of $G$, $e$ -- number of edges of $G$ and $f$ -- number of faces of $G$.
+\end{theorem}
+
+\begin{proof}[Proof of Euler's formula]
+See \cite{gtwa}.
+
+\end{proof}
+
+\begin{theorem}[(Kuratowski)]
+A graph is planar if, and only if it contains no subdivision of $K_5$ or $K_{3,3}$.
+\end{theorem}
+
+\begin{proof}[Proof of Kuratowski's theorem]
+In the proof we need two lemmatas:
+
+\begin{lemma}\label{lemma1}
+Lemma 1.
+\end{lemma}
+
+\begin{proof}[Proof of lemma {\bf \ref{lemma1}}]
+Proof inside other proof is ended with white square.
+
+\end{proof}
+
+
+\begin{lemma}\label{lemma2}
+Lemma 2.
+
+\end{lemma}
+
+\begin{proof}[Proof of lemma {\bf \ref{lemma2}}]
+This is a proof for second lemma.
+
+\end{proof}
+
+Here should be a proper proof.
+
+\end{proof}
+
+\begin{rem}
+Example of remark. Remarks, examples, notes and problems are displayed with non-italic font, like definitions, but with numbers.
+\end{rem}
+
+\begin{thebibliography}{99}
+
+\bibitembook{gtwa}{J.A. Bondy, U.S.R. Murty}{Graph Theory with Applications}{North-Holland, NewYork-Amsterdam-Oxford}{1982}
+
+\bibitemart{r3}{G. Chartrand, F. Harary and P. Zhang}{On the geodetic number of a graph}{Networks}{39}{2002}{1--6}
+
+\bibitemproc{r5}{R.J. Gould, M.S. Jacobson and J. Lehel}{Potentially G-graphic degree sequences}{%
+Combinatorics, Graph Theory, and Algorithms Vol. I}{Alavi, Lick and Schwenk}{New York: Wiley \& Sons, Inc.}{%
+1999}{387--400}
+
+\bibiteminpress{SK-11}{P. Sittitrai and  K. Nakprasit}{An analogue of DP-coloring for variable degeneracy and its applications}{Discuss. Math. Graph Theory}{2019}\\
+\doi{10.7151/dmgt.2238}
+
+\bibitemarxiv{cela2019monotonic1}{E. Cela and E. Gaar}{Monotonic representations of outerplanar graphs  as edge intersection graphs of paths on  a grid}{2019}{1908.01981}
+
+\bibitemurl{oeis11}{N.J.A. Sloane}{The {O}n-{L}ine {E}ncyclopedia of {I}nteger {S}equences}{2021}{https://oeis.org}
+
+%% manuscript
+\bibitemman{hopI1}{S.K. Ayyaswamy and C.~Natarajan}{Hop domination in graphs}{2015}
+
+%% other bibliography item...
+\bibitemrem{bibr}{L. Ponomarenco}{Stochastic integral with respect to the multiparameter Brownian motion and attached stochastic equations}{1972}{in Russian}
+
+\end{thebibliography}
+
+
+\end{document}

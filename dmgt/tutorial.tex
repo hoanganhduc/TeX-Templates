@@ -1,0 +1,220 @@
+\documentclass{article}
+
+\newcommand \journalacronym{dmgt}
+\newcommand \JOURNALACRONYM{DMGT}
+\newcommand \volumetitle{Graph Theory}
+\newcommand \fullvolumetitle{Discussiones Mathematicae Graph Theory}
+\newcommand \voldoinbr{dmgt}
+\def\mscyear{2020}
+
+
+%\newcommand \clsname{\JOURNALACRONYM{}}
+\newcommand \clsname{\journalacronym{}}
+\newcommand \clsnamex{\ttcomm{\clsname{}}}
+\newcommand \journal{\textit{\fullvolumetitle}}
+
+
+\usepackage{color}
+
+\usepackage{section}
+\def\hddot{.} % after inline headings, theorems etc
+\def\cpdot{:} % in figure/table captions - also apears in list of figures
+\def\nmdot{.} % after section numbers etc
+
+\newcommand{\bs}{{$\backslash$}}
+\newcommand{\ttcomm}[1]{{\ttfamily{#1}}}
+\newcommand{\comm}[1]{{\textcolor{blue}{{\bs}#1}}}
+\newcommand{\cmpar}[1]{{$\{$}{#1}{$\}$}}
+\newcommand{\cmpary}[1]{{[{#1}]}}
+\newcommand{\cmparz}[1]{{<{#1}>}}
+\newcommand{\redbox}[1]{{\ttfamily{\textcolor{red}{#1}}}}
+\newcommand{\vbl}[1]{\comm{#1}}
+\newcommand{\vblx}[2]{{\redbox{\comm{#1}\cmpar{#2}}}}
+\newcommand{\vblyx}[3]{{\redbox{\comm{#1}\cmpary{#2}\cmpar{#3}}}}
+\newcommand{\vblxy}[3]{{\redbox{\comm{#1}\cmpar{#2}\cmpary{#3}}}}
+\newcommand{\vblxx}[3]{{\redbox{\comm{#1}\cmpar{#2}\cmpar{#3}}}}
+\newcommand{\vblxxxy}[5]{{\redbox{\comm{#1}\cmpar{#2}\cmpar{#3}\cmpar{#4}\cmpary{#5}}}}
+\newcommand{\vblxyx}[4]{{\redbox{\comm{#1}\cmpar{#2}\cmpary{#3}\cmpar{#4}}}}
+\newcommand{\vblz}[1]{{\redbox{\cmparz{#1}}}}
+\newcommand{\vblzx}[3]{{\redbox{\comm{#1}\cmparz{#2}\cmpar{#3}}}}
+\newcommand{\vblzxx}[4]{{\redbox{\comm{#1}\cmparz{#2}\cmpar{#3}\cmpar{#4}}}}
+\newcommand{\vblzxxx}[5]{{\redbox{\comm{#1}\cmparz{#2}\cmpar{#3}\cmpar{#4}\cmpar{#5}}}}
+\newcommand{\vblxxxxxxxx}[9]{{\redbox{\comm{#1}\cmpar{#2}\cmpar{#3}\cmpar{#4}\cmpar{#5}\cmpar{#6}\cmpar{#7}\cmpar{#8}\cmpar{#9}}}}
+\newcommand{\vblxxxxxxx}[8]{{\redbox{\comm{#1}\cmpar{#2}\cmpar{#3}\cmpar{#4}\cmpar{#5}\cmpar{#6}\cmpar{#7}\cmpar{#8}}}}
+\newcommand{\vblxxxxxx}[7]{{\redbox{\comm{#1}\cmpar{#2}\cmpar{#3}\cmpar{#4}\cmpar{#5}\cmpar{#6}\cmpar{#7}}}}
+\newcommand{\vblxxxxx}[6]{{\redbox{\comm{#1}\cmpar{#2}\cmpar{#3}\cmpar{#4}\cmpar{#5}\cmpar{#6}}}}
+\newcommand{\vblxxxx}[5]{{\redbox{\comm{#1}\cmpar{#2}\cmpar{#3}\cmpar{#4}\cmpar{#5}}}}
+\newcommand{\vblxxx}[4]{{\redbox{\comm{#1}\cmpar{#2}\cmpar{#3}\cmpar{#4}}}}
+
+
+\author{Grzegorz Arkit}
+\title{How to use \clsname{} style}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+
+\clsname{} style is intended for the preparation of articles which will be published in \journal{}. 
+The style is designed in such a way that its usage is simple and the rules which should be followed are similar 
+to the standard rules for publications in system \LaTeX{}.
+\end{abstract}
+
+\section{General rules}
+\begin{itemize}
+ 
+
+	\item in every command one should not use spaces between the brace brackets and parameters. In case when, there is a need to transfer the text, then after the brace bracket the comment sybol (\%) must be inserted and after that, one can start a new line (the example is in section The bibliography - command bibitemproc).\\
+	\item we recommend the full versions of  MiKTeX or TeXLive, because \clsname{} style requires the following packages: section,  amsthm,  textcase, setspace, amssymb,  lineno.\\
+	\item Since the numeration of pages changes during the editorial process, one cannot use the references to pages eg. "theorem on page 3".\\
+\end{itemize}
+\section{Setting the name of the class}\label{sec1}
+
+Every article which uses our style should begin with the call of the class \clsname{}:\\
+\vblx{documentclass}{\journalacronym{}} \\
+or\\
+\vblyx{documentclass}{options}{\journalacronym{}}.
+
+
+As \ttcomm{options} one can set the parameters:
+\begin{itemize}
+\item \ttcomm{thmsec} -- the theorems will be enumerated within the section, if one omitt this option, then the theorems will be enumerated continously in the whole article (default option).  
+\item \ttcomm{dntnbr} -- the definitions will be enumerated together with the theorems (this is not a default option).
+\item \ttcomm{note} --  the word {\sc Note} will appear before the title.
+\item \ttcomm{prblcol} -- the caption {\sc problems Column} will appear before the name of the magazine.
+\end{itemize}
+
+
+One can choose more than one from the above options (except both of the last ones) by separating them with a comma.
+
+\section{Setting the data of the paper  - authors, title, keywords, MSC} 
+ 
+To set the title of the paper one must use the command \vblx{title}{Article title}.
+The title is automatically converted to upper case, that is why if we want to have e.g. footnotes in the title, then we must use a special command. Otherwise also footones will be converted to upper case:\\
+
+\noindent
+\redbox{\comm{def}\bs{}tfn\cmpar{\bs{}footnote\{Footnote\}}}\\
+\vblxy{title}{Article title \vbl{tfn}}{Article title}.\\
+
+On the example there is presented the usage of a version of the command \ttcomm{title} with an additional parameter, which will be used as a title in the heading of the page.
+If we use the basic version of this command, then on every page which has a heading with a title, the footnote will also appear.
+
+
+The version with an optional parameter is also useful in case when the whole title does not fit to page. Then one can choose a proper part of the title which will appear in the heading of the page.
+
+
+After the title we add the authors of the paper. In principle every author should be added with a command:\\
+\vblxxxy{newauthor}{full author name}{short author name}{affiliation}{email}.
+
+After the title we add the authors of the paper. In principle every author should be added with a command:\\
+\vblxxxy{newauthor}{full author name}{short author name}{affiliation}{email}.
+
+
+In the fields
+\ttcomm{full author name}, \ttcomm{short author name} and \ttcomm{email} we can use brake-line commands (\bs{}\bs{}).
+
+
+The parameter \ttcomm{short author name} is used for automatic inserting the list of the authors in the heading of the page.
+
+
+Similarly as title also footnotes must be defined with a command.
+
+
+The list of the authors is build automatically. In case a larger number of the authors, before the last one the word {\sc and} is added on the title page and in the heading of the page.
+
+Sometimes there is a need to make authors list in a different way, then we can use the brake-line commands.
+
+If that is not enough (e.g. the list of the authors is too long), then we can redefine the command \vbl{authornames} to modify the list of the authors which will appear in the heading:\\
+\vblxx{def}{\bs{}authornames}{Author 1, Author 2 and Author 3}.
+
+In the preamble one must define keywords and MSC. For this purpose we have two commands
+\vblx{keywords}{value} and \vblx{classnbr}{value}.
+
+
+All data defined in the preamble are automatically inserted into the document:
+\begin{itemize}
+\item title and authors at the beginning of the document
+\item keywords and MSC at the end of the abstract.
+\end{itemize}
+
+
+
+\section{Theorems, proofs, definitions}
+
+
+The following theorem environments are defined:
+\begin{itemize}
+\item \ttcomm{theorem} -- Theorem 
+\item \ttcomm{lemma} -- Lemma
+\item \ttcomm{prop} -- Proposition
+\item \ttcomm{obs} -- Observation
+\item \ttcomm{cor} -- Corollary
+\item \ttcomm{con} -- Conjecture
+\end{itemize}
+
+The next environments are handled as theorems but are displayed in a different style (without italic font - like definitions):
+\begin{itemize}
+\item \ttcomm{rem} -- Remark
+\item \ttcomm{note} -- Note
+\item \ttcomm{exm} -- Example
+\item \ttcomm{prb} -- Problem
+\end{itemize}
+
+\noindent For the definitions there is also a special environment  \ttcomm{dnt}. If there is such need then one can define additional  environments\\
+\noindent\textbf{theorem-like}\\
+\vblx{theoremstyle}{plain}\\
+\vblxyx{newtheorem}{name}{theorem}{Title}\\
+\noindent \textbf{definition-like}\\
+\vblx{theoremstyle}{definition}\\
+\vblxyx{newtheorem}{name}{theorem}{Title}.\\
+Then the enumeration method will stay the same.
+If one would not like to enumerate the new environment, then one must use the following version with a star of the command  \ttcomm{\bs{}newthorem*}. 
+Then there is no need to give the optional parameter \ttcomm{\cmpary{theorem}}.
+
+The way of enumerating theorems depends on the parameter \ttcomm{thmsec} which is specified in the document class (\ref{sec1}).
+
+In the environments of theorems one can use optional parameter. However usually the optional parameter is put in round brackets, in our class these brackets are not showed - one must add them oneself.
+This allows using the optional parameter in case when the additional information should appear without brackets - e.g. reference to the bibliography.
+
+Examples: 
+\begin{itemize}
+\item typical use - \vblx{begin}{theorem} produces \\
+{\bf Theorem 1.} ...
+\item theorem or definition with name - \vblxy{begin}{theorem}{(Kuratowski)}
+produces \\
+{\bf Theorem 1 {\rm (Kuratowski)}.} ...
+\item theorem or definition with reference -
+\vblxy{begin}{theorem}{\bs{}cite\{label1\}} produces \\
+{\bf Theorem 1 {\rm [1]}.} ...
+\end{itemize}
+
+Of course instead \ttcomm{theorem} one can use the name of any environment.
+
+\subsection{Proofs}
+
+For proofs there is an environment \ttcomm{proof}. It also can have an optional parameter.
+This parameter will appear instead of the title of the proof (the full title - with the word \textit{\textbf{Proof}}- must be given).
+If in the title there should be also a number, then one must use the following commands 
+\vblx{begin}{proof}[Proof of theorem $\left\{\right.$\vblx{bf} 1]$\left.\right\}$.\\
+The black square is used for denoting the end of the proof. Nested subproofs are ended with the empty square.
+
+
+\section{The bibliography}
+
+The bibliography should be defined with the environment \ttcomm{thebibliography} with the parameter (obligatory) \ttcomm{99}.
+There are few commands which simplify the process of adding the most popular bibliography items.
+In other cases one can use the standard command \ttcomm{bibitem}.
+
+\begin{itemize}
+\item article -- \vblxxxxxxx{bibitemart}{refname}{authors}{title}{magazine}{\%\\volume}{year}{pages},
+\item book -- \vblxxxxx{bibitembook}{refname}{authors}{title}{publisher}{year},
+\item article in proceedings -- \vblxxxxxxxx{bibitemproc}{refname}{authors}{title}{\%\\procname}{editors}{publisher}{year}{pages},
+\item article in press-- \vblxxxxx{bibiteminpress}{refname}{authors}{title}{\%\\ magazine}{year},
+\item manuscript -- \vblxxxx{bibitemman}{refname}{authors}{title}{year},
+\item article (position) published in arXiv -- \vblxxxxx{bibitemarxiv}{refname}{\%\\authors}{title}{year}{arXiv ID},
+\item article (position) published somewhere on Internet-- \vblxxxxx{bibitemurl}{\%\\refname}{authors}{title}{year}{url/address},
+\item article (position) with some remarks-- \vblxxxxx{bibitemrem}{refname}{authors}{\%\\title}{year}{remarks}.
+\end{itemize}
+In particular, a \vbl{bibitemrem} can be helpful if none of the other options is fit for use.
+
+\end{document}
