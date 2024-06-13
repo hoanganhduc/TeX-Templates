@@ -1,0 +1,229 @@
+%   This is a sample bibliography file, with examples of references
+% to books, articles, articles in books and unpublished works.
+%
+%   Each entry is of the form -at sign-XXXXX{....} (do not forget the closing brace), 
+% where AAA is the code used in the \cite{AAA} command to refer to this entry.
+%   Note that each element must be included within quotation marks "..." or
+% braces {...}, and that a comma must follow.
+%   If you wish to capitalize letters in titles, put them into braces (this is
+% not necessary for the first letter of the first word).
+
+
+% Example of book protect TeX command with braces
+@BOOK{Knu84,
+  Author = {Knuth, Donald E.},
+  Title = {The {\TeX}book},
+  Publisher = {Addison Wesley Professional},
+  Address = {Massachusetts},
+  ISBN = {0-201-13447-0; 0-201-13448-9},
+  Year = {1984},
+}
+% Example of a book
+@Book{Die17,
+ Author = {Diestel, Reinhard},
+ Title = {Graph theory},
+ Edition = {5th},
+ FSeries = {Graduate Texts in Mathematics},
+ Series = {Grad. Texts Math.},
+ ISSN = {0072-5285},
+ Volume = {173},
+ ISBN = {978-3-662-53621-6; 978-3-662-57560-4; 978-3-662-53622-3},
+ Year = {2017},
+ Publisher = {Berlin: Springer},
+ DOI = {10.1007/978-3-662-53622-3},
+ Keywords = {05-01,05Cxx,05D10},
+ zbMATH = {6644777},
+ Zbl = {1375.05002},
+}
+
+
+% Example of article protect TeX accents with braces, or use latin1 encoding when applicable
+%% Following BibTeX documentation, please use {\symbol letter}, e.g. {\v S},
+%% and not \symbol{letter}, e.g. \v{S}.
+%%% Use \url for URLs, which will be printed only if there is no doi given
+%%% The field eprint is always printed, whatever the values of doi/url.
+%%% Same behaviour for inproceedings and incollection
+@article{GGS20,
+    AUTHOR = {Goldschmidt, Christina and Griffiths, Simon and Scott, Alex},
+     TITLE = {Moderate deviations of subgraph counts in the
+              {E}rd\H{o}s-{R}{\'e}nyi random graphs {$G(n,m)$} and
+              {$G(n,p)$}},
+   JOURNAL = {Trans. Amer. Math. Soc.},
+  FJOURNAL = {Transactions of the American Mathematical Society},
+    VOLUME = {373},
+      YEAR = {2020},
+    NUMBER = {8},
+     PAGES = {5517--5585},
+      ISSN = {0002-9947,1088-6850},
+   MRCLASS = {05C80 (60F99 60G42)},
+  MRNUMBER = {4127885},
+MRREVIEWER = {Lyuben\ R.\ Mutafchiev},
+       DOI = {10.1090/tran/8117},
+       URL = {https://doi.org/10.1090/tran/8117},
+}
+
+@book{Mat10Wrong,
+    AUTHOR = {Matou{\v s}ek, Ji{\v r}{\'\i}},
+     TITLE = {Thirty-three miniatures},
+    SERIES = {Student Mathematical Library},
+    VOLUME = {53},
+      NOTE = {Mathematical and algorithmic applications
+              of linear algebra},
+ PUBLISHER = {American Mathematical Society, Providence, RI},
+      YEAR = {2010},
+     PAGES = {x+182},
+      ISBN = {978-0-8218-4977-4},
+   MRCLASS = {15-01 (05A10 05C70)},
+  MRNUMBER = {2656313},
+MRREVIEWER = {Torsten\ Sander},
+       DOI = {10.1090/stml/053},
+       URL = {https://doi.org/10.1090/stml/053},
+}
+
+@book{Mat10Right,
+    AUTHOR = {Matou{\v s}ek, Ji{\v r}{\'\i}},
+     TITLE = {Thirty-three miniatures. {M}athematical and
+              algorithmic applications of linear algebra},
+    SERIES = {Student Mathematical Library},
+    VOLUME = {53},
+ PUBLISHER = {American Mathematical Society, Providence, RI},
+      YEAR = {2010},
+     PAGES = {x+182},
+      ISBN = {978-0-8218-4977-4},
+  MRNUMBER = {2656313},
+       DOI = {10.1090/stml/053},
+}
+
+% Example of article in a book
+@incollection{Alo13,
+    AUTHOR = {Alon, Noga},
+     TITLE = {Paul {E}rd{\H o}s and probabilistic reasoning},
+ BOOKTITLE = {Erd{\H o}s centennial},
+    SERIES = {Bolyai Soc. Math. Stud.},
+    VOLUME = {25},
+     PAGES = {11--33},
+ PUBLISHER = {J\'{a}nos Bolyai Math. Soc., Budapest},
+      YEAR = {2013},
+      ISBN = {978-963-9453-18-0; 978-3-642-39285-6},
+   MRCLASS = {11Kxx (01A70 60-03 60C05)},
+  MRNUMBER = {3203592},
+MRREVIEWER = {M.\ Iosifescu},
+       DOI = {10.1007/978-3-642-39286-3\_1},
+       URL = {https://doi.org/10.1007/978-3-642-39286-3_1},
+}
+
+% Example of a PhD thesis
+@phdthesis{Sch84,
+author = {Scheinerman, Edward R.},
+title = {Intersection classes and multiple intersection parameters of graphs},
+school = {Princeton University},
+year = {1984},
+}
+
+% Examples of unpublished work
+
+%% on arXiv
+@unpublished{Bab15,
+  author =	 {Babai, L\'{a}szl\'{o}},
+  title =	 {Graph isomorphism in quasipolynomial time},
+  year =	 {2015},
+  eprint = {1512.03547}
+}
+
+%% on another repository
+@unpublished{BHLM07,
+  TITLE = {Algorithmic aspects of a general modular
+           decomposition theory},
+  AUTHOR = {Bui-Xuan, Binh-Minh  and Habib, Michel
+            and Limouzy, Vincent and de Montgolfier, Fabien},
+  year = {2007},
+  eprint = {hal-00111235v2},
+  archiveprefix = {HAL},
+  archive = {https://hal.archives-ouvertes.fr}
+}
+
+%% on a non-repository website (e.g. personal webpage, MathOverflow)
+@unpublished {Ham10,
+  title = {What is the minimal size of a partial order that
+           is universal for all partial orders of size $n$?},
+  author = {Joel David Hamkins},
+  date = {2010-05-25},
+  howpublished = {MathOverflow},
+  url = {https://mathoverflow.net/q/25874},
+  urldate = {2024-01-26},
+  year={2010},
+}
+
+% Example of publication in a journal
+@Article{Sey81,
+ Author = {Seymour, Paul D.},
+ Title = {Nowhere-zero $6$-flows},
+ FJournal = {Journal of Combinatorial Theory. Series B},
+ Journal = {J. Comb. Theory, Ser. B},
+ ISSN = {0095-8956},
+ Volume = {30},
+ Pages = {130--135},
+ Year = {1981},
+ DOI = {10.1016/0095-8956(81)90058-7},
+ Keywords = {05C15,05C38,90B10},
+ zbMATH = {3743282},
+ Zbl = {0474.05028}
+}
+
+% Example of a journal article with a unique ID
+@Article{MoTa10,
+ Author = {Moser, Robin A. and Tardos, G{\'a}bor},
+ Title = {A constructive proof of the general {Lov{\'a}sz} local lemma},
+ FJournal = {Journal of the ACM},
+ Journal = {J. ACM},
+ ISSN = {0004-5411},
+ Volume = {57},
+ Number = {2},
+ Pagetotal = {15},
+ eid = {11},
+ Year = {2010},
+ DOI = {10.1145/1667053.1667060},
+ Keywords = {60C05,05C85,05D99,68W05},
+ zbMATH = {5748299},
+ Zbl = {1300.60024}
+}
+
+% Example of publication in a CS conference with both doi & url
+%% Both fields doi and url are filled: only doi will be printed as it has priority
+%% The field eprint is always printed, whatever the values of doi/url.
+%% same behaviour in article and incollection
+@inproceedings{Pat08,
+author = {P{\v{a}}tra{\c{s}}cu, Mihai},
+title = {Succincter},
+year = {2008},
+isbn = {9780769534367},
+publisher = {IEEE Computer Society},
+address = {USA},
+url = {https://doi.org/10.1109/FOCS.2008.83},
+doi = {10.1109/FOCS.2008.83},
+booktitle = {Proceedings of the 2008 49th Annual IEEE Symposium on Foundations of Computer Science},
+pages = {305--313},
+numpages = {9},
+keywords = {succinct data structures, arithmetic coding, locally decodable},
+series = {FOCS '08}
+}
+
+% Example of publication in a CS conference with url & not doi
+%% The field doi is not filled: the field url will be printed
+%% The field eprint is always printed, whatever the values of doi/url.
+%% same behaviour in article and incollection
+@inproceedings{Lok08,
+    AUTHOR = {Lokshtanov, Daniel},
+     TITLE = {Wheel-free deletion is {$W[2]$}-hard},
+ BOOKTITLE = {Parameterized and exact computation},
+    SERIES = {Lecture Notes in Comput. Sci.},
+    VOLUME = {5018},
+     PAGES = {141--147},
+ PUBLISHER = {Springer, Berlin},
+      YEAR = {2008},
+      ISBN = {978-3-540-79722-7; 3-540-79722-X},
+   MRCLASS = {68Q17 (05C85 68R10 68W40)},
+  MRNUMBER = {2503560},
+       URL = {https://doi.org/10.1007/978-3-540-79723-4_14},
+}
+

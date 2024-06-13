@@ -1,0 +1,5 @@
+\setpublname{Innovations in Graph Theory}
+\let\iftagsleft@\iftrue
+\cdr@uppercaseheadauthorsfalse
+\cdr@EqCountersInSectionstrue
+\PassOptionsToPackage{leqno}{amsmath}%

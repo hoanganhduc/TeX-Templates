@@ -1,0 +1,609 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cedram-IGT}
+[2024/05/02 v1.0 LaTeX package for the journal Innovations in Graph Theory]
+\RequirePackage[papersize={158mm,240mm},body={27pc,43pc},hcentering,headsep=18pt,footskip=36pt,vcentering]{geometry}
+\RequirePackage{cedram-graphics}
+\RequirePackage{amssymb}
+\RequirePackage[USenglish,english]{isodate}
+\RequirePackage{mathtools}
+\RequirePackage[shortlabels]{enumitem}
+
+\def\currentjournaltitle{Innovations in Graph Theory}
+\def\currentjournalpublisher{XXXXXX}
+\def\currentjournalshorttitle{Innov.\ Graph Theory}
+
+\definecolor{IGTGreen}{HTML}{709B31}
+\def\CDRHyperSetup{\hypersetup{colorlinks=true,allcolors=IGTGreen}}
+\AtBeginDocument{\CDRHyperSetup}
+
+% \ISSN{XXXX-XXXX}
+\eISSN{pending}
+\CDRjournalURL{igt}
+\CDRsetmeta{license}{ccby4}
+
+\def\footnoterule{\kern-6\p@ \hrule width 1truein \kern 5.6\p@}
+\skip\footins=12pt plus 4pt minus 4pt
+
+\parskip=0pt
+\parindent=10pt
+\normalparindent=10pt
+\smallskipamount=3pt plus 1pt minus .6pt
+\medskipamount=5pt plus 1pt minus .6pt
+\bigskipamount=13pt plus 2pt minus 1pt
+\@titletopskip=3cm
+\renewcommand\baselinestretch{}
+\frenchspacing
+\let\bbl@nonfrenchspacing\frenchspacing
+
+\StandardFootnotes
+\def\@mainsize{10}\def\@ptsize{0}%
+  \def\@typesizes{%
+    \or{5}{6}\or{6}{7}\or{7}{8}\or{8}{9}\or{9}{11}%
+    \or{10}{13}% normalsize
+    \or{\@xipt}{13}\or{\@xiipt}{14}\or{\@xivpt}{17}%
+    \or{\@xviipt}{20}\or{\@xxpt}{24}}%
+  \normalsize \linespacing=\baselineskip
+\let\ept\Small
+
+\let\le\leqslant
+\let\ge\geqslant
+\let\leq\leqslant
+\let\geq\geqslant
+\def\vcorr{~\\*[-2\baselineskip]}
+
+\def\todo{{\`A} faire !}
+\def\pointir{\discretionary{.}{}{.\kern.3em---\kern.4em\ignorespaces}}
+
+\def\@upn#1{#1}
+\let\cdr@up\relax
+
+\AtBeginDocument{%%
+  %% compatibilit{\'e} enumerate.sty
+  \@ifpackageloaded{enumerate}{%
+  \def\@@enum@[#1]{%
+    \@enLab{}\let\@enThe\@enQmark
+    \@enloop#1\@enum@
+    \ifx\@enThe\@enQmark\@warning{The counter will not be printed.%
+    ^^J\space\@spaces\@spaces\@spaces The label is: \the\@enLab}\fi
+    \expandafter\edef\csname label\@enumctr\endcsname{\the\@enLab}%
+    \expandafter\let\csname the\@enumctr\endcsname\@enThe
+    \csname c@\@enumctr\endcsname7
+    \expandafter\settowidth
+              \csname leftmargin\romannumeral\@enumdepth\endcsname
+              {\the\@enLab\hspace{\labelsep}}%
+    \advance\leftmargini by \normalparindent
+    \@enum@}
+  \def\@enum@{\list{\csname label\@enumctr\endcsname}%
+            {\usecounter{\@enumctr}\def\makelabel##1{\hss\llap{\upshape##1}}}}%
+  }{}%
+  \@ifpackageloaded{cleveref}{%
+    \Crefname{theo}{Theorem}{Theorems}%
+    \Crefname{lemm}{Lemma}{Lemmata}%
+    \Crefname{prop}{Proposition}{Propositions}%
+    \Crefname{coro}{Corollary}{Corollarys}%
+    \Crefname{proof}{Proof}{Proofs}%
+    \Crefname{conj}{Conjecture}{Conjectures}%
+    \Crefname{ques}{Question}{Questions}%
+    \Crefname{defi}{Definition}{Definitions}%
+    \Crefname{rema}{Remark}{Remarks}%
+    \Crefname{nota}{Notation}{Notation}%
+    \crefname{theo}{Theorem}{Theorems}%
+    \crefname{lemm}{Lemma}{Lemmata}%
+    \crefname{prop}{Proposition}{Propositions}%
+    \crefname{coro}{Corollary}{Corollarys}%
+    \crefname{proof}{Proof}{Proofs}%
+    \crefname{conj}{Conjecture}{Conjectures}%
+    \crefname{ques}{Question}{Questions}%
+    \crefname{defi}{Definition}{Definitions}%
+    \crefname{rema}{Remark}{Remarks}%
+    \crefname{nota}{Notation}{Notation}%
+    \newcommand{\Crefrangeconjunction}{--}
+    \newcommand{\crefrangeconjunction}{--}
+  }{}%
+}
+
+\newcommand\nfrac[2]{#1/#2}
+\newcommand\pfrac[2]{(#1/#2)}
+
+\pagenumbering{arabic}
+\def\abstractheadfont{\scshape}
+\def\@setabstracthead{{\abstractheadfont\hspace*{1em}\abstractname\unskip\pointir\ignorespaces}}
+\def\@setaltabstracthead{{\abstractheadfont\hspace*{1em}\altabstractname\unskip\pointir\ignorespaces}}
+
+\def\cdr@evenheadcode{\def\lastname##1{\def\l@stmp@{##1}\uppercasenonmath\l@stmp@\l@stmp@}}
+
+\def\cdr@article@ref{%
+  \ifnum\currentyear>\z@%
+    \currentjournalshorttitle\ \textbf{\currentvolume} (\currentissue), \currentyear, pp.\ \pageinfo
+  \else
+    Article in preparation
+  \fi
+}
+
+\def\ps@aif{%\ps@empty
+  \def\@evenhead{%
+    \normalfont%
+    \rlap{\thepage}{}\hfil
+    \def\thanks{\protect\thanks@warning}%
+    {\scriptsize\leftmark}{}{}\hfil}%
+  \def\@oddhead{%
+    \normalfont \hfil
+    \def\thanks{\protect\thanks@warning}%
+    {\scriptsize\rightmark}{}{}\hfil \llap{\thepage}{}}%
+  \def\@oddfoot{\footnotesize\noindent\hss\cdr@article@ref}
+  \def\@evenfoot{\footnotesize\noindent\cdr@article@ref\hss}
+  \let\@mkboth\cdr@markboth
+}
+\pagestyle{aif}
+
+\def\ps@firstpage{\ps@plain
+  \def\@oddfoot{\global\topskip\normaltopskip}%
+  \let\@evenfoot\@oddfoot
+  \def\@oddhead{\@serieslogo\hss}%
+  \let\@evenhead\@oddhead % in case an article starts on a left-hand page
+}
+
+\def\@logofont{\Small}
+
+\def\article@logo{
+  \begin{minipage}{\hsize}
+    \footnotesize \cdr@article@ref
+
+    \url@sfstyle \printDOI \hfill
+    \smash{\raisebox{-2.5ex}{\includegraphics[width=.4\hsize]{IGT-logo}}}
+  \end{minipage}
+}
+
+
+\long\def\SetSpecialTitle#1{%
+  \vspace*{10mm}\bgroup
+    \centering
+    \fontsize{12}{15}\fontseries{b}\selectfont
+    #1
+    \vskip20pt plus 6pt minus 8pt
+  \egroup
+}
+
+\def\@settitle{
+  \vspace*{-1cm}
+  \begin{center}
+    \fontsize{12}{15}\fontseries{b}\selectfont
+    \uppercasenonmath\@title
+    \@title
+  \end{center}
+}
+
+\def\author@andify{%
+  \nxandlist {\unskip ,\penalty-2 \space\ignorespaces}%
+    {\unskip {} \@@and~}%
+    {\unskip {} \penalty-1  \@@and~}%
+}
+\def\@setredactor@contribs{%
+\if@francais
+R{\'e}dig{\'e} par
+\else
+Written by
+\fi
+\author@andify\redactor@contribs
+\redactor@contribs
+}
+\def\@setappendixwriter@contribs{%
+\if@francais
+Avec un appendice par
+\else
+With an appendix by
+\fi
+\author@andify\appendixwriter@contribs
+\appendixwriter@contribs
+}
+\def\@setauthors{%
+  \begingroup
+  \def\thanks{\protect\thanks@warning}%
+  \trivlist
+  \centering\normalfont\bfseries \@topsep30\p@\relax
+  \advance\@topsep by -\baselineskip
+  \item\relax
+  \author@andify\authors
+  \def\\{\protect\linebreak}%
+  \def\lastname##1{\def\l@stmp@{##1}\uppercasenonmath\l@stmp@\l@stmp@}%
+  \def\junior##1{\unskip, ##1}%
+  \if@francais par\else by\fi\
+  \authors\unskip\ifx\@empty\thankses\else
+  \kern3pt(*)\fi
+  \ifx\@empty\redactor@contribs
+  \else \vskip6pt \@setredactor@contribs
+  \fi
+  \ifx\@empty\appendixwriter@contribs
+  \else \vskip6pt \@setappendixwriter@contribs
+  \fi
+  \endtrivlist
+  \vskip0.6cm
+  \endgroup
+}
+\def\@setsubtitle{%
+  \bgroup
+  \centering
+  \vglue-3mm
+  \fontsize{12}{15}\fontseries{b}\selectfont
+  %\usefont{T1}{lmr}{b}{n}%
+%  \uppercasenonmath\@subtitle
+  \@subtitle
+  \vskip10pt plus 3pt minus 4pt
+  \egroup
+}
+\def\@setafterauthor{%
+  \bgroup
+  \centering
+  \vglue-3mm
+  \fontsize{12}{15}\fontseries{b}\selectfont
+  %\usefont{T1}{lmr}{b}{n}%
+%  \uppercasenonmath\@afterauthor
+  \@afterauthor
+  \vskip10pt plus 3pt minus 4pt
+  \egroup
+}
+\def\@setdedicatory{%
+	\vskip-6pt
+	\vtop{\raggedleft{\footnotesize\slshape\@dedicatory\@@par}}
+\vskip6pt}
+\advance\@titlebotskip-7mm
+\def\cdr@preabstracthook{%
+  \centerline{\vrule depth0pt height0.4pt width 1.3cm}%
+\vskip 5mm
+}
+%% Pb num{\'e}rotations relatives {\`a} la section si pas de section !
+\newif\ifcdr@nosections\cdr@nosectionsfalse
+\def\NoSections{\global\cdr@nosectionstrue}
+\def\cdr@postabstracthook{%
+  \ifcdr@nosections\gdef\thesection##1{}\fi}
+%% Notes
+\def\@makefnmark{%
+  \leavevmode
+	\raise.9ex\hbox{\fontsize\sf@size\z@\normalfont(\@thefnmark)\kern.15em}\ignorespaces%
+}
+\def\@makefntext{\noindent\@makefnmark}
+%% Notes de la premi{\`e}re page
+\def\@adminfootnotes{%
+  \let\@makefnmark\relax  \let\@thefnmark\relax
+  \begingroup\parindent=0pt\normalparindent=0pt
+  \ifx\@empty\@keywords\else \@footnotetext{\@setkeywords}\fi
+  \ifx\@empty\@subjclass\else \@footnotetext{\@setsubjclass}\fi
+  \ifx\@empty\@translators \else\@footnotetext{\@settranslators}\fi
+  \ifx\@empty\thankses\else \@footnotetext{%
+    \def\par{\let\par\@par}\@setthanks}%
+  \fi
+\endgroup}
+\def\@settranslators{%
+  \def\lastname##1{\def\l@stmp@{##1}\uppercasenonmath\l@stmp@\l@stmp@}%
+  \def\junior##1{\unskip, ##1}%
+\andify\@translators
+\if@francais
+Traduit par
+\else
+Translated by
+\fi
+\@translators\@addpunct.}
+\def\@setthanks{\def\thanks##1{\par##1\@addpunct.}%
+  (*)\kern\fontdimen2\font\thankses}%
+\def\@setsubjclass{%
+  {\slshape\subjclassname\thsp:}\space\@subjclass\@addpunct.}
+\def\@setkeywords{%
+  {\slshape \keywordsname\thsp:}\space \@keywords\@addpunct.}
+\if@francais
+ \def\keywordsname{Mots-cl{\'e}s}
+ \def\subjclassname{Classification math.}
+\else
+ \def\keywordsname{Keywords}
+ \def\subjclassname{Math. classification}
+\fi
+\@xp\let\csname subjclassname@2000\endcsname \subjclassname
+
+\def\@setdatereceived{\nobreak\par\nobreak {\selectlanguage{english}Manuscript received \printdate{\@datereceived}},}
+\def\@setdaterevised{\nobreak\par\nobreak {\selectlanguage{english}revised \printdate{\@daterevised}},}
+\def\@setdateaccepted{\nobreak\par\nobreak {\selectlanguage{english}accepted \printdate\@dateaccepted}.}
+
+\def\rightragged{%
+  \let\\\@centercr\@rightskip\@flushglue \rightskip\@rightskip
+%  \leftskip\z@skip
+%  \parindent\z@
+}
+\def\@setaddresses{\par
+  \begingroup
+  \url@samestyle
+   \rightragged
+  \interlinepenalty\@M
+    \def\lastname##1{\def\l@stmp@{##1}\uppercasenonmath\l@stmp@\l@stmp@}%
+  \def\junior##1{\unskip, ##1}%
+  \def\author##1{\par\allowbreak\addvspace\medskipamount\ignorespaces##1\unskip}%
+  \def\noauthor##1##2{\par\allowbreak\addvspace\medskipamount\ignorespaces##2\unskip}%
+  \def\address##1##2{\begingroup
+    \newline\nopagebreak%\addvspace\bigskipamount\indent
+    \@ifnotempty{##1}{(\ignorespaces##1\unskip)\newline\nopagebreak }%
+    {\ignorespaces##2\unskip}\endgroup}%
+  \def\curraddr##1##2{\begingroup
+    \newline\nopagebreak
+    \@ifnotempty{##2}{\curraddrname{}%
+      \@ifnotempty{##1}{(\ignorespaces##1\unskip)}\thsp:\\*
+      ##2}\endgroup}%
+  \def\email##1##2{\begingroup\nopagebreak\par\addvspace\smallskipamount
+    \@ifnotempty{##2}{%\nobreak%\indent
+      \@ifnotempty{##1}{\emailaddrname \space (\ignorespaces##1\unskip):\\*}%
+      \href{mailto:##2}{##2}}\endgroup}%
+  \def\urladdr##1##2{\begingroup\newline\nopagebreak
+%    \def~{\char`\~}%
+    \@ifnotempty{##2}{%\nobreak\indent\urladdrname
+      \@ifnotempty{##1}{\urladdrname \space (\ignorespaces##1\unskip):\\*}%
+      \url{##2}}\endgroup}%
+  \addresses
+  \endgroup
+}
+
+\ExplSyntaxOn
+\def\@printauthors{
+  \samepage\par\normalfont\footnotesize
+  \nobreak\addvspace{.4cm}\leftskip4.5cm\parindent=0pt\parskip0pt\relax
+  \ifx\@empty\@datereceived\else\@setdatereceived
+    \ifx\@empty\@daterevised\else\@setdaterevised\fi
+    \ifx\@empty\@dateaccepted\newline\nopagebreak Manuscrit ~ not ~ yet ~ accepted\else\@setdateaccepted\fi
+  \fi
+  \vspace{.3cm}
+  \ifx\@empty\addresses\else\@setaddresses\fi
+  \par
+  \vspace{1cm}
+  \vfill
+  \texorpdfstring{\textcopyright\ ~}{© }
+  \int_compare:nNnTF {\seq_count:N \cdr_db_author_seq} = {1} {The ~ author} {The ~ authors}
+  \int_compare:nNnF {\currentyear} = {-1} {, ~ \currentyear}
+  \par
+  \vspace{.3cm}
+  {\raisebox{-.5mm}[0pt][0pt]{\includegraphics[width=1.7cm]{cc-by-small.pdf}}\;
+  This ~ article ~ is ~ licensed ~ under ~ the\\
+  \textsc{Creative ~ Commons ~ Attribution ~ 4.0 \\ International ~ License.}\\
+  \url{http://creativecommons.org/licenses/by/4.0/}\par}
+  \vspace{1cm}
+  \scalebox{.5}{\MersenneLogo}
+  \par
+  \emph{\currentjournaltitle} ~ is ~ a ~ member ~ of ~ the ~ Mersenne ~ Center ~ for ~ Open ~ Publishing
+  \par
+  ISSN: ~ \@Eissn
+}
+\ExplSyntaxOff
+
+\def\printauthors{\xdef\enddoc@text{}{\@printauthors}}
+\ifcdr@special\def\enddoc@text{}\else
+\def\enddoc@text{\@printauthors}
+\fi
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% sections
+% \section remplace TITRE
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+{27pt plus 6pt minus 8pt}{14pt plus 6pt minus 8pt}%%
+{\center\normalfont\large\bfseries}}
+% \subsection remplace \titre
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+{27pt plus 6pt minus 8pt}{14pt plus 6pt minus 8pt}%%
+{\center\normalfont\bfseries}}
+% \subsubsection ne remplace rien, mais sert pour la biblio
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+{18pt plus 6pt minus 8pt}{14pt plus 6pt minus 8pt}%%
+{\center\normalfont}}
+% \paragraph remplace \sect
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\parindent}%
+{3mm}{-.33em}{\normalfont\bfseries}}
+% \paragraphc ne remplace rien
+\newcommand\paragraphc{\@startsection{paragraph}{4}{\parindent}%
+{3mm}{1sp}{\normalfont\bfseries}}
+% \subparagraph remplace \ssection ?
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+{3mm}{-.3em}{\normalfont\scshape}}
+% \subparagraphc remplace \ssect ?
+\newcommand{\subparagraphc}{\@startsection{subparagraph}{5}{\parindent}%
+{3mm}{1sp}{\normalfont\scshape}}
+\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname .\hspace{0.5em}\ignorespaces}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\def\TOCNoIndent{\hbox to 2.6em}
+\AtBeginDocument{\pdfstringdefDisableCommands{\let\TOCNoIndent\relax}{}}
+\renewcommand{\tocsection}[3]{%
+ \@ifnotempty{#2}{\TOCNoIndent{\ignorespaces#1 #2.\hfill}}#3}
+\let\tocsubsection\tocsection
+\let\tocsubsubsection\tocsection
+\def\l@section{\@tocline{1}{0pt}{\abstractmargin}{1em}{}}
+\def\l@subsection{\@tocline{2}{0pt}{\abstractmargin}{1em}{}}
+\def\l@subsubsection{\@tocline{3}{0pt}{\abstractmargin}{1em}{}}
+% \renewcommand{\tocsection}[3]{%
+%   \indentlabel{\@ifnotempty{#2}{\ignorespaces#1 #2.\quad}}#3}
+%% Biblio
+%% Un peu autoritaire !
+\AtBeginDocument{\bibliographystyle{cdraifplain-IGT}%
+\if@francais
+\def\Refname{BIBLIOGRAPHIE}%
+\def\refname{Bibliographie}%
+\else
+\def\Refname{BIBLIOGRAPHY}%
+\def\refname{Bibliography}%
+\fi}
+\newcommand\refnamefont{\normalfont}
+\renewcommand{\@bibtitlestyle}{%
+  \par\removelastskip\vskip\z@skip
+   \@startsection{}\@M\z@{18pt plus 6pt minus 8pt}{14pt plus 6pt minus 8pt}%%
+{\centering\refnamefont}{\Refname}%
+     \phantomsection\addcontentsline{toc}{section}{\protect\tocsection {}{}{\refname}}%
+}
+\bibitemsep\smallskipamount
+%% ToC
+\let\tableofcontentsfontsize\footnotesize
+\def\tableofcontents{%
+  \begingroup
+  \par\removelastskip\vskip\z@skip
+   \@startsection{}\@M\z@{18pt plus 6pt minus 8pt}{14pt plus 6pt minus 8pt}%%
+  {\centering\contentsnamefont}{\contentsname}%
+  \makeatletter
+  \sloppy\tableofcontentsfontsize
+  \@input{\jobname.toc}%
+  \if@filesw
+    \@xp\newwrite\csname tf@toc\endcsname
+    \immediate\@xp\openout\csname tf@toc\endcsname \jobname.toc\relax
+  \fi
+  \global\@nobreakfalse \endgroup
+  \addvspace{32\p@\@plus14\p@}%
+  \let\tableofcontents\relax
+}
+%% Th{\'e}or{\`e}mes
+\OneNumberAllTheorems
+\def\th@plain{%
+  \thm@bodyfont{\normalfont\slshape}%
+  \thm@headfont{\normalfont\scshape}%
+  \thm@notefont{\normalfont}%
+  \thm@headpunct{\pointir}%
+  \thm@headsep 0\p@\relax
+  \let\thm@indent\indent
+  \def\thm@space@setup{%
+    \thm@preskip=\smallskipamount
+    \thm@postskip=\thm@preskip}%
+  \slshape
+}
+\def\th@remark{%
+  \thm@bodyfont{\normalfont}%
+  \thm@headfont{\normalfont\slshape}%
+  \thm@notefont{\normalfont\slshape}%
+  \thm@headpunct{\pointir}%
+  \thm@headsep 0\p@\relax
+  \let\thm@indent\indent
+  \def\thm@space@setup{%
+    \thm@preskip=\smallskipamount
+    \thm@postskip=\thm@preskip}%
+}
+\let\th@definition\th@plain
+% Versions coup{\'e}es -- sans pointir !
+ \def\th@plainc{%
+   \th@plain
+   \thm@headpunct{.}%
+   \def\thmheadnl{\newline\indent}%
+   \thm@headsep\z@skip
+ }
+ \def\th@remarkc{%
+   \th@remark
+   \thm@headpunct{.}%
+   \def\thmheadnl{\newline\indent}%
+   \thm@headsep\z@skip
+ }
+\AtBeginDocument{%
+\theoremstyle{plainc}%
+  \newtheorem{theoc}[\cdr@thm]{\theoname}%
+  \newtheorem{propc}[\cdr@thm]{\propname}%
+  \newtheorem{conjc}[\cdr@thm]{\conjname}%
+  \newtheorem{coroc}[\cdr@thm]{\coroname}%
+  \newtheorem{lemmc}[\cdr@thm]{\lemmname}%
+  \newtheorem{defic}[\cdr@thm]{\definame}%
+  \newtheorem*{theoc*}{\theoname}%
+  \newtheorem*{propc*}{\propname}%
+  \newtheorem*{conjc*}{\conjname}%
+  \newtheorem*{coroc*}{\coroname}%
+  \newtheorem*{lemmc*}{\lemmname}%
+  \newtheorem*{defic*}{\definame}%
+  \theoremstyle{remarkc}%
+  \newtheorem{notac}[\cdr@thm]{\notaname}%
+  \newtheorem{notasc}[\cdr@thm]{\notasname}%
+  \newtheorem{remac}[\cdr@thm]{\remaname}%
+  \newtheorem{remasc}[\cdr@thm]{\remasname}%
+  \newtheorem{exemc}[\cdr@thm]{\exemname}%
+  \newtheorem{exemsc}[\cdr@thm]{\exemsname}%
+  \newtheorem*{notac*}{\notaname}%
+  \newtheorem*{notasc*}{\notasname}%
+  \newtheorem*{remac*}{\remaname}%
+  \newtheorem*{remasc*}{\remasname}%
+  \newtheorem*{exemc*}{\exemname}%
+  \newtheorem*{exemsc*}{\exemsname}%
+\theoremstyle{plain}%
+}%
+%\def\proofheadfont{\slshape}
+\renewenvironment{proof}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep\smallskipamount
+  \trivlist
+  \item\hskip\parindent
+        \slshape
+        #1\@addpunct{\pointir}\ignorespaces\normalfont
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+\newenvironment{proofc}[1][\proofname]{\par
+  \pushQED{\qed}%
+  \normalfont \topsep\smallskipamount
+  \trivlist
+  \item\hskip\parindent
+        \slshape
+        #1\@addpunct{.}\ignorespaces\nobreak\par\normalfont
+}{%
+  \popQED\endtrivlist\@endpefalse
+}
+%
+%% Floats
+\def\@captionheadfont{\slshape}
+\def\@captionfont{\slshape}
+\newskip\abovecaptionskip \abovecaptionskip=12pt \relax
+\newskip\belowcaptionskip \belowcaptionskip=12pt \relax
+\newdimen\captionindent \captionindent=\normalparindent
+%% Page de garde
+\if@francais
+\def\proofsname{\'Epreuves}
+\else
+\def\proofsname{Proofs}
+\fi
+\ifcdr@epreuves
+\RequirePackage{eso-pic}
+\definecolor{grisclair}{gray}{.85}
+\fi
+\def\@makePagedeGarde{
+  \ifcdr@pagedegarde
+    {\makeatletter\cdr@input{pagedegarde}}
+    \newpage
+    \gdef\GPT@pageliteral{}
+  \else\ifcdr@epreuves
+    {\makeatletter\cdr@input{pagedemetas}}
+    \newpage
+    \pagecolor{white}\gdef\GPT@pageliteral{}
+    \thispagestyle{empty}\null
+    \newpage
+    \AddToShipoutPicture{%
+      \unitlength=1cm
+      \put(2.5,4.5){\rotatebox{60}{\textcolor{grisclair}{\resizebox{.8\textheight}{!}{%
+      \bfseries\upshape \proofsname\ \today}}}}}%
+  \fi\fi
+}
+%
+\ifcdr@sommaire
+\def\lastname#1{\MakeUppercase{#1}}
+\def\junior#1{\unskip, #1}%
+\advance\@titlebotskip7mm
+\renewcommand{\@pnumwidth}{4.5em}
+\def\enddoc@text{}
+\newcommand\SomLine[9]{%
+  \par \addpenalty\@secpenalty\addvspace{\medskipamount}%
+    \begingroup\def\\{\allowbreak}%
+	\hyphenpenalty50
+    \parindent-\normalparindent \leftskip\normalparindent\relax
+    \rightskip\@pnumwidth% plus6em
+	 \parfillskip-\@pnumwidth
+    \ignorespaces#2\unskip\pointir\ignorespaces\if@francais#5\else#4\fi\unskip\leavevmode
+    \nobreak\hskip2pt\nobreak \leaders\hbox{$\m@th \mkern 1.5mu\hbox{.}\mkern
+      1.5mu$}\hfill \nobreak
+     \hb@xt@\@pnumwidth{\@tocpagenum{\ignorespaces#8\unskip-\ignorespaces#9\unskip}}%
+     \par\nobreak\vskip6pt%
+    \endgroup
+    \begingroup\parindent\normalparindent\parskip\z@
+	\leftskip2.4em\footnotesize\ignorespaces\if@francais#7\else#6\fi\unskip\par
+    \endgroup
+}
+\fi
+
+\ifcdr@volume
+\def\@makefront{%
+  \cleardoublepage
+}
+
+\def\enddoc@text{}
+\fi
+
+%\RequirePackage{cleveref}
