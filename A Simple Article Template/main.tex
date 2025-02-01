@@ -1,44 +1,95 @@
+% !TeX root = main.tex
 \documentclass[a4paper]{article}
 
-\usepackage[pages=all, color=black, position={current page.south}, placement=bottom, scale=1, opacity=1, vshift=5mm]{background}
-\SetBgContents{
-	\tt This work is shared under a \href{https://creativecommons.org/licenses/by-sa/4.0/}{CC BY-SA 4.0 license} unless otherwise noted
-}      % copyright
+\DeclareFontShape{OT1}{cmr}{m}{scit}{<->ssub*cmr/m/sc}{}
+\DeclareFontShape{OT1}{cmr}{m}{scit}{<->ssub*cmr/m/sc}{}
+\usepackage{slantsc}
 
-\usepackage[margin=1in]{geometry} % full-width
+%%%%%%%%%%% PACKAGES AND SETTING %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Full-width
+\usepackage[margin=1in]{geometry} % at least 1inch or 1.5cm
 
-% AMS Packages
+%% Hyperref + PDF info
+\usepackage{hyperref}
+\hypersetup{
+	% hidelinks,
+		colorlinks,
+		allcolors=blue,
+		unicode,
+		% bookmarks,
+		bookmarksopen,
+		bookmarksdepth=2,
+		pdftitle={A Simple Article Template},
+		pdfauthor={Anonymous},
+		pdfkeywords={Article, Template, Example}
+}
+
+%% License, update the information accordingly
+\usepackage[
+type={CC},
+modifier={by-nc-sa},
+version={4.0},
+]{doclicense}
+
+%% Some common used packages
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
-
-% Unicode
+\usepackage{graphicx}
+\graphicspath{{fig/}} % 
+\usepackage{xcolor}
+\usepackage{mathrsfs} % for \mathscr command
 \usepackage[utf8]{inputenc}
+\usepackage{adjustbox}
+\usepackage{enumerate}
+\usepackage{verbatim}
+\usepackage{lipsum} % for dummy text
+
+%% Drawing figures
+\usepackage{tikz}
+\usetikzlibrary{shapes,calc,math,backgrounds,matrix}
+
+%% Hyperref + PDF info
 \usepackage{hyperref}
 \hypersetup{
-	unicode,
-%	colorlinks,
-%	breaklinks,
-%	urlcolor=cyan, 
-%	linkcolor=blue, 
-	pdfauthor={Author One, Author Two, Author Three},
-	pdftitle={A simple article template},
-	pdfsubject={A simple article template},
-	pdfkeywords={article, template, simple},
-	pdfproducer={LaTeX},
-	pdfcreator={pdflatex}
+	% hidelinks,
+		colorlinks,
+		allcolors=blue,
+		unicode,
+		% bookmarks,
+		bookmarksopen,
+		bookmarksdepth=2,
+		pdftitle={A Simple Article Template},
+		pdfauthor={Anonymous},
+		pdfkeywords={Article, Template, Example}
 }
 
-% Vietnamese
-%\usepackage{vntex}
+\usepackage[capitalise,noabbrev]{cleveref} % must be loaded after hyperref
+\crefname{cond}{Condition}{Conditions}
+\creflabelformat{cond}{(#2C#1#3)}
+\crefname{eitem}{}{}
+\creflabelformat{eitem}{(#2#1#3)}
+\crefname{step}{\textbf{Step}}{\textbf{Steps}}
+\creflabelformat{step}{{\bf #2#1#3}}
 
-% Natbib
-\usepackage[sort&compress,numbers,square]{natbib}
-\bibliographystyle{mplainnat}
+%%% Natbib
+%\usepackage[sort&compress,numbers,square]{natbib}
+%\bibliographystyle{plainnat}
 
-% Theorem, Lemma, etc
+%%% Biblatex
+\usepackage[%
+backend=biber, 
+bibstyle=numeric, 
+citestyle=numeric-comp,
+maxcitenames=3,
+maxbibnames=20,
+sorting=ydnt
+]{biblatex}
+\addbibresource{refs.bib}
+
+%% Theorem, Lemma, etc
 \theoremstyle{plain}
-\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{claim}{Claim}[theorem]
@@ -56,14 +107,65 @@
 \newtheorem{problem}[theorem]{Problem}
 \newtheorem{principle}[theorem]{Principle}
 
-\usepackage{graphicx, color}
-\graphicspath{{fig/}}
+%% Move to appendix with apxproof package
+\usepackage[appendix=append, bibliography=common]{apxproof} % 3 modes: append (proofs moved to appendix, use in a submission), inline (no appendix, use in a preprint full version), and strip (cutting off proofs instead of moving to appendix, use in a camera-ready version)
+\renewcommand{\appendixsectionformat}[2]{Omitted Details for Section~#1 (#2)}
+\newtheoremrep{theorem}{Theorem}
+\newtheoremrep{lemma}{Lemma}
+\newtheoremrep{proposition}{Proposition}
+\newtheoremrep{claim}{Claim}
+\newtheoremrep{corollary}{Corollary}
 
-%\usepackage[linesnumbered,ruled,vlined,commentsnumbered]{algorithm2e} % use algorithm2e for typesetting algorithms
-\usepackage{algorithm, algpseudocode} % use algorithm and algorithmicx for typesetting algorithms
-\usepackage{mathrsfs} % for \mathscr command
+%% Algorithm typeset
+\usepackage[linesnumbered,ruled,vlined,commentsnumbered]{algorithm2e} % use algorithm2e for typesetting algorithms
+%\usepackage{algorithm, algpseudocode} % use algorithm and algorithmicx for typesetting algorithms
 
-\usepackage{lipsum}
+%% Line numbering
+\usepackage[pagewise]{lineno}
+
+%% Todonotes
+\usepackage[colorinlistoftodos]{todonotes}
+%%%% Define colors for todos
+\definecolor{done}{rgb}{0.55, 0.71, 0.0}
+\definecolor{highpriority}{rgb}{0.82, 0.1, 0.26}
+\definecolor{lowpriority}{rgb}{1.0, 0.75, 0.0}
+\definecolor{mediumpriority}{rgb}{1.0, 0.49, 0.0}
+%%%% Define todo commands
+\newcommand{\Mcomment}[3]{%
+\ifsubmission%
+	\else%
+	{\color{#1}\bfseries\sffamily(#3)%
+	}%
+	\marginpar{\textcolor{#1}{\bfseries\sffamily #2}}%
+	\fi%
+}
+\newcommand{\TaskNewPerson}[3]{%
+	\expandafter\newcommand\csname #2\endcsname[1]{\Mcomment{#3}{#2}{##1}}%
+	\expandafter\newcommand\csname Task#1\endcsname[2][mediumpriority]{\expandafter\TaskPerson[backgroundcolor=##1]{#1}{##2}}
+	%\expandafter\newcommand*\csname \Task#1Done\endcsname[1][mediumpriority]{\TaskPerson[backgroundcolor=done]{#1}{##2}}
+	}
+\newcommand*{\Task}[2][mediumpriority]{
+\ifsubmission%
+	\else%
+	\todo[inline,backgroundcolor=#1]{#2}
+	\fi%
+}
+\newcommand*{\TaskPerson}[3][]{
+\ifsubmission%
+	\else%
+	\todo[inline,#1]{\textbf{(#2)} #3}
+	\fi%
+}
+\newcommand*{\TaskDone}[1]{\TaskPerson[backgroundcolor=done]{Done}{#1}}
+
+%% Commands for authors to comment and assign tasks
+\newcommand{\CommentAuthorA}[1]{{\color{red}\textbf{Author A:} #1}} % Author A's comments, use \CommentAuthorA{<comment>}
+\newcommand{\CommentAuthorB}[1]{{\color{blue}\textbf{Author B:} #1}} % Author B's comments, use \CommentAuthorB{<comment>}
+\newcommand{\CommentAuthorC}[1]{{\color{brown}\textbf{Author C:} #1}} % Author C's comments, use \CommentAuthorC{<comment>}
+\TaskNewPerson{AuthorA}{Author~A}{red} % Tasks for Author A, use \TaskAuthorA{<task>}
+\TaskNewPerson{AuthorB}{Author~B}{blue} % Tasks for Author B, use \TaskAuthorB{<task>}
+\TaskNewPerson{AuthorC}{Author~C}{brown} % Tasks for Author C, use \TaskAuthorC{<task>}
+\TaskNewPerson{All}{All}{gray} % Tasks for all authors, use \TaskAll{<task>}
 
 % Author info
 \title{A simple article template}
@@ -75,7 +177,13 @@
 %	\today
 }
 
+% Set submission status
+\newif\ifsubmission
+\submissiontrue % No comments and tasks
+\submissionfalse % Uncomment this line to show comments and tasks
+
 \begin{document}
+	\linenumbers
 	\maketitle
 	
 	\begin{abstract}
@@ -84,11 +192,21 @@
 		\noindent\textbf{Keywords:} article, template, simple
 	\end{abstract}
 
+	\ifsubmission
+	\else
+	\listoftodos
+	\fi
+
 	\tableofcontents
+
+	\vfill
+	\doclicenseThis
+	\clearpage
 	
 	\section{Introduction}
 	\label{sec:intro}
 	
+	\TaskAll{Revise the introduction}
 	\lipsum[2]
 	
 	\subsection{Preliminaries}
@@ -102,14 +220,15 @@
 	Null graphs are discussed in \cite{HararyR74}
 	The concept of ``internally stable set'' was used in \cite{Berge57, Berge58}.
 	
-	\begin{theorem}
+	\begin{theoremrep}
 		\label{thrm:1}
 		\lipsum[4]
-	\end{theorem}
+	\end{theoremrep}
 	\begin{proof}
 		content...
 	\end{proof}
 
+	\TaskAuthorA{Prove this corollary}
 	\begin{corollary}
 	\label{cor:1}
 	
@@ -160,13 +279,7 @@
 	\paragraph{Acknowledgements} \lipsum[6]
 	
 %	\newpage
-	\bibliography{refs}
+	% \bibliography{refs}
 	
-	\appendix
-	
-	\section{Omitted Proof in Section~\ref{sec:examples}}
-	\label{app:1}
-	
-	\lipsum[7]
-	
+	\printbibliography
 \end{document}
