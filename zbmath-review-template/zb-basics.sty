@@ -1,0 +1,41 @@
+% Copyright 2021 by FIZ-Karlsruhe
+%
+% This file is part of the ctan package zbmath-review-template
+% and may be distributed and/or modified under the
+% conditions of the GNU General Public License, version 3:
+%
+% https://www.gnu.org/licenses/gpl-3.0.en.html
+%
+% It defines some macros used in zbMATH.cls.
+%
+
+% standard LaTeX packages
+\RequirePackage{amsmath,amsfonts,amssymb}
+\RequirePackage{mathtools}
+\RequirePackage{stmaryrd}
+\RequirePackage{mathrsfs}
+\RequirePackage{tikz-cd}
+\RequirePackage{textcomp,gensymb}
+
+% \Im, \Re (redefinition)
+\let\Im\relax\DeclareMathOperator{\Im}{Im}
+\let\Re\relax\DeclareMathOperator{\Re}{Re}
+
+% \Aut, \Hom
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Hom}{Hom}
+
+% \ran (analogous to \ker)
+\DeclareMathOperator{\ran}{ran}
+
+% \1 (indicator function, from package bbold)
+\DeclareSymbolFont{bbold}{U}{bbold}{m}{n}
+\DeclareMathSymbol{\1}{\mathord}{bbold}{`1}
+
+% \fint (integral average with slash, from package esint)
+\DeclareSymbolFont{esint}{U}{esint}{m}{n}
+\DeclareMathSymbol{\fintsymbol}{\mathop}{esint}{'037}
+\def\fint{\fintsymbol\nolimits}
+
+% \Sha (Tate-Shafarevich group)
+\DeclareMathOperator{\Sha}{\textup{Ш}}
