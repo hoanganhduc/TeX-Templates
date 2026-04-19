@@ -13,6 +13,14 @@ WORK_DIR="$(PWD)"
 # List of files to delete when merging master onto overleaf
 DELETE_FILES := Makefile make.bat exclude.txt .devcontainer README.md
 
+# Common LaTeX junk files for the current template and likely future article additions
+CLEAN_GLOBS := \
+	*.acn *.acr *.alg *.aux *.bak *.bcf *.bbl *.blg *.dvi *.fdb_latexmk *.fls \
+	*.glg *.glo *.gls *.glsdefs *.idx *.ilg *.ind *.ist *.listing *.loa *.lof \
+	*.log *.lol *.lot *.maf *.mtc* *.nav *.nlo *.nls *.nlg *.out *.ps *.pyg \
+	*.run.xml *.snm *.spl *.synctex.gz *.tdo *.toc *.xdv *.xml *~ *-blx.bib *SAVE-ERROR
+CLEAN_DIRS := tikz-cache _minted-*
+
 # Default target to build the main PDF
 all: main.pdf
 
@@ -23,7 +31,8 @@ all: main.pdf
 
 # Rule to clean up auxiliary files generated during compilation
 clean:
-	@rm -rf *.bbl *.dvi *.log *.bak *.aux *.blg *.idx *.ps *.toc *.out *.snm *.nav *.xml *.bcf *.spl *.synctex.gz *~ *.aux *.blg *.fdb_latexmk *.fls *.log*.synctex* *-blx.bib *SAVE-ERROR >/dev/null
+	@latexmk -c >/dev/null
+	@rm -rf $(CLEAN_GLOBS) $(CLEAN_DIRS) >/dev/null 2>&1 || true
 	@echo "Junk files removed"
 
 # Rule to clean all files except main.pdf and main.zip
