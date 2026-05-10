@@ -1,20 +1,364 @@
 % !TeX root = main.tex
 \documentclass[a4paper]{article}
 
-\usepackage[
-	submission,
-	biblatex
-]{ducha}
-% Switch to [draft,natbib] when you want visible todo notes and BibTeX citations.
+% Template settings formerly provided by a separate style file.
+% Current settings mirror the former submission/biblatex defaults.
+% Set \submissionfalse for visible todo notes.
+% Set \usebiblatexfalse for BibTeX/natbib citations.
+\newif\ifsubmission
+\submissiontrue
+\newif\ifusebiblatex
+\usebiblatextrue
+
+\newif\ifhasbibfile
+\IfFileExists{refs.bib}{%
+	\hasbibfiletrue
+}{%
+	\hasbibfilefalse
+}
+
+\DeclareFontShape{OT1}{cmr}{m}{scit}{<->ssub*cmr/m/sc}{}
+\usepackage{slantsc}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{aliascnt}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\graphicspath{{figs/}}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{mathrsfs}
+\usepackage[utf8]{inputenc}
+\usepackage{adjustbox}
+\usepackage{microtype}
+\usepackage{enumerate}
+\usepackage{verbatim}
+\usepackage{tikz}
+\usetikzlibrary{shapes,calc,math,backgrounds,matrix}
+
+\ifusebiblatex
+\usepackage[%
+backend=biber,
+bibstyle=numeric,
+citestyle=numeric-comp,
+maxcitenames=3,
+maxbibnames=20,
+sorting=ydnt
+]{biblatex}
+\ifhasbibfile
+	\addbibresource{refs.bib}%
+\fi
+\else
+\usepackage[sort&compress,numbers,square]{natbib}
+\bibliographystyle{plainnat}
+\fi
+
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks,
+	allcolors=blue,
+	unicode,
+	bookmarksopen,
+	bookmarksdepth=2,
+	pdftitle={An Article Template},
+	pdfauthor={Anonymous},
+	pdfkeywords={article template, placeholder text, LaTeX}
+}
+
+\newcommand{\duchaversion}{full}
+\newcommand{\duchaversionlabel}{Full Version}
+\newcommand{\duchalicense}{}
+\newcommand{\duchalicenseurl}{}
+\newcommand{\duchacopyright}{}
+\newcommand{\duchacode}{}
+\newcommand{\duchacodeurl}{}
+\newcommand{\duchadata}{}
+\newcommand{\duchadataurl}{}
+\newcommand{\duchaproject}{}
+\newcommand{\duchaprojecturl}{}
+\newcommand{\duchapreprint}{}
+\newcommand{\duchapreprinturl}{}
+\newcommand{\duchadoi}{}
+\newcommand{\duchanote}{}
+
+\pgfkeys{
+	/ducha/.is family,
+	/ducha,
+	version/.is choice,
+	version/full/.code={%
+		\renewcommand{\duchaversion}{full}%
+		\renewcommand{\duchaversionlabel}{Full Version}%
+	},
+	version/draft/.code={%
+		\renewcommand{\duchaversion}{draft}%
+		\renewcommand{\duchaversionlabel}{Draft Version}%
+	},
+	version/conference/.code={%
+		\renewcommand{\duchaversion}{conference}%
+		\renewcommand{\duchaversionlabel}{Conference Submission}%
+	},
+	version/journal/.code={%
+		\renewcommand{\duchaversion}{journal}%
+		\renewcommand{\duchaversionlabel}{Journal Submission}%
+	},
+	version/arxiv/.code={%
+		\renewcommand{\duchaversion}{arxiv}%
+		\renewcommand{\duchaversionlabel}{arXiv Version}%
+	},
+	version/preprint/.code={%
+		\renewcommand{\duchaversion}{preprint}%
+		\renewcommand{\duchaversionlabel}{Preprint}%
+	},
+	version/working-paper/.code={%
+		\renewcommand{\duchaversion}{working-paper}%
+		\renewcommand{\duchaversionlabel}{Working Paper}%
+	},
+	version/tech-report/.code={%
+		\renewcommand{\duchaversion}{tech-report}%
+		\renewcommand{\duchaversionlabel}{Technical Report}%
+	},
+	version/manuscript/.code={%
+		\renewcommand{\duchaversion}{manuscript}%
+		\renewcommand{\duchaversionlabel}{Manuscript}%
+	},
+	version/custom/.code={%
+		\renewcommand{\duchaversion}{custom}%
+	},
+	version label/.code={\renewcommand{\duchaversionlabel}{#1}},
+	license/.code={\renewcommand{\duchalicense}{#1}},
+	license url/.code={\renewcommand{\duchalicenseurl}{#1}},
+	copyright/.code={\renewcommand{\duchacopyright}{#1}},
+	code/.code={\renewcommand{\duchacode}{#1}},
+	code url/.code={\renewcommand{\duchacodeurl}{#1}},
+	data/.code={\renewcommand{\duchadata}{#1}},
+	data url/.code={\renewcommand{\duchadataurl}{#1}},
+	project/.code={\renewcommand{\duchaproject}{#1}},
+	project url/.code={\renewcommand{\duchaprojecturl}{#1}},
+	preprint/.code={\renewcommand{\duchapreprint}{#1}},
+	preprint url/.code={\renewcommand{\duchapreprinturl}{#1}},
+	doi/.code={\renewcommand{\duchadoi}{#1}},
+	note/.code={\renewcommand{\duchanote}{#1}},
+}
+
+\newcommand{\duchasetup}[1]{\pgfkeys{/ducha,#1}}
+
+\newcommand{\duchaprinttextfield}[2]{%
+	\ifstrempty{#2}{}{%
+		\par\noindent\textbf{#1:} #2\par
+	}%
+}
+
+\newcommand{\duchaprintlinkfield}[3]{%
+	\ifstrempty{#2}{%
+		\ifstrempty{#3}{}{%
+			\par\noindent\textbf{#1:} \url{#3}\par
+		}%
+	}{%
+		\par\noindent\textbf{#1:} %
+		\ifstrempty{#3}{#2}{\href{#3}{#2}}%
+		\par
+	}%
+}
+
+\newcommand{\printduchametadata}{%
+	\begingroup
+	\par\medskip
+	\noindent\textbf{Document Metadata}\par
+	\smallskip
+	\small
+	\duchaprinttextfield{Version}{\duchaversionlabel}
+	\duchaprintlinkfield{License}{\duchalicense}{\duchalicenseurl}
+	\duchaprinttextfield{Copyright}{\duchacopyright}
+	\duchaprintlinkfield{Code}{\duchacode}{\duchacodeurl}
+	\duchaprintlinkfield{Data}{\duchadata}{\duchadataurl}
+	\duchaprintlinkfield{Project}{\duchaproject}{\duchaprojecturl}
+	\duchaprintlinkfield{Preprint}{\duchapreprint}{\duchapreprinturl}
+	\ifstrempty{\duchadoi}{}{%
+		\par\noindent\textbf{DOI:} \href{https://doi.org/\duchadoi}{\duchadoi}\par
+	}
+	\duchaprinttextfield{Note}{\duchanote}
+	\par\medskip
+	\endgroup
+}
+
+\usepackage[capitalise,noabbrev]{cleveref}
+\crefname{cond}{Condition}{Conditions}
+\creflabelformat{cond}{(#2C#1#3)}
+\crefname{eitem}{}{}
+\creflabelformat{eitem}{(#2#1#3)}
+\crefname{step}{\textbf{Step}}{\textbf{Steps}}
+\creflabelformat{step}{{\bf #2#1#3}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+\newtheorem{claim}{Claim}[theorem]
+\newaliascnt{axiom}{theorem}
+\newtheorem{axiom}[axiom]{Axiom}
+\aliascntresetthe{axiom}
+\newaliascnt{conjecture}{theorem}
+\newtheorem{conjecture}[conjecture]{Conjecture}
+\aliascntresetthe{conjecture}
+\newaliascnt{fact}{theorem}
+\newtheorem{fact}[fact]{Fact}
+\aliascntresetthe{fact}
+\newaliascnt{hypothesis}{theorem}
+\newtheorem{hypothesis}[hypothesis]{Hypothesis}
+\aliascntresetthe{hypothesis}
+\newaliascnt{assumption}{theorem}
+\newtheorem{assumption}[assumption]{Assumption}
+\aliascntresetthe{assumption}
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+\newaliascnt{criterion}{theorem}
+\newtheorem{criterion}[criterion]{Criterion}
+\aliascntresetthe{criterion}
+\theoremstyle{definition}
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+\newaliascnt{example}{theorem}
+\newtheorem{example}[example]{Example}
+\aliascntresetthe{example}
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
+\newaliascnt{problem}{theorem}
+\newtheorem{problem}[problem]{Problem}
+\aliascntresetthe{problem}
+\newaliascnt{principle}{theorem}
+\newtheorem{principle}[principle]{Principle}
+\aliascntresetthe{principle}
+
+\crefname{theorem}{Theorem}{Theorems}
+\Crefname{theorem}{Theorem}{Theorems}
+\crefname{corollary}{Corollary}{Corollaries}
+\Crefname{corollary}{Corollary}{Corollaries}
+\crefname{lemma}{Lemma}{Lemmas}
+\Crefname{lemma}{Lemma}{Lemmas}
+\crefname{claim}{Claim}{Claims}
+\Crefname{claim}{Claim}{Claims}
+\crefname{axiom}{Axiom}{Axioms}
+\Crefname{axiom}{Axiom}{Axioms}
+\crefname{conjecture}{Conjecture}{Conjectures}
+\Crefname{conjecture}{Conjecture}{Conjectures}
+\crefname{fact}{Fact}{Facts}
+\Crefname{fact}{Fact}{Facts}
+\crefname{hypothesis}{Hypothesis}{Hypotheses}
+\Crefname{hypothesis}{Hypothesis}{Hypotheses}
+\crefname{assumption}{Assumption}{Assumptions}
+\Crefname{assumption}{Assumption}{Assumptions}
+\crefname{proposition}{Proposition}{Propositions}
+\Crefname{proposition}{Proposition}{Propositions}
+\crefname{criterion}{Criterion}{Criteria}
+\Crefname{criterion}{Criterion}{Criteria}
+\crefname{definition}{Definition}{Definitions}
+\Crefname{definition}{Definition}{Definitions}
+\crefname{example}{Example}{Examples}
+\Crefname{example}{Example}{Examples}
+\crefname{remark}{Remark}{Remarks}
+\Crefname{remark}{Remark}{Remarks}
+\crefname{problem}{Problem}{Problems}
+\Crefname{problem}{Problem}{Problems}
+\crefname{principle}{Principle}{Principles}
+\Crefname{principle}{Principle}{Principles}
+
+\usepackage[linesnumbered,ruled,vlined,commentsnumbered]{algorithm2e}
+\usepackage[pagewise]{lineno}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\definecolor{done}{rgb}{0.55, 0.71, 0.0}
+\definecolor{highpriority}{rgb}{0.82, 0.1, 0.26}
+\definecolor{lowpriority}{rgb}{1.0, 0.75, 0.0}
+\definecolor{mediumpriority}{rgb}{1.0, 0.49, 0.0}
+
+\newcommand{\Mcomment}[3]{%
+\ifsubmission%
+	\else%
+	{\color{#1}\bfseries\sffamily(#3)}%
+	\marginpar{\textcolor{#1}{\bfseries\sffamily #2}}%
+	\fi%
+}
+\newcommand{\TaskNewPerson}[3]{%
+	\expandafter\newcommand\csname #2\endcsname[1]{\Mcomment{#3}{#2}{##1}}%
+	\expandafter\newcommand\csname Task#1\endcsname[2][mediumpriority]{\expandafter\TaskPerson[backgroundcolor=##1]{#1}{##2}}%
+}
+\newcommand*{\Task}[2][mediumpriority]{%
+\ifsubmission%
+	\else%
+	\todo[inline,backgroundcolor=#1]{#2}%
+	\fi%
+}
+\newcommand*{\TaskPerson}[3][]{%
+\ifsubmission%
+	\else%
+	\todo[inline,#1]{\textbf{(#2)} #3}%
+	\fi%
+}
+\newcommand*{\TaskDone}[1]{\TaskPerson[backgroundcolor=done]{Done}{#1}}
+
+\newcommand{\email}[1]{\href{mailto:#1}{\texttt{#1}}}
+\newcommand{\MinkPVC}[2]{{#1}^{\star}_{#2}}
+\newcommand{\kPVC}[2]{{#1}_{#2}}
+\newcommand{\dist}{\mathsf{dist}}
+\newcommand{\msize}[1]{\vert #1 \vert}
+\newcommand{\Ip}{{I^\prime}}
+\newcommand{\Ipp}{{I^{\prime\prime}}}
+\newcommand{\Jp}{{J^\prime}}
+\newcommand{\Imaxs}{{I^{\max}_s}}
+\newcommand{\Jpp}{{J^{\prime\prime}}}
+\newcommand{\Gp}{{G^\prime}}
+\newcommand{\Gpp}{{G^{\prime\prime}}}
+\newcommand{\Hp}{{H^\prime}}
+\newcommand{\ReconfSeq}[1]{{\langle #1 \rangle}}
+\newcommand{\onestep}[1]{{\overset{#1}{\leftrightarrow}}}
+\newcommand{\sevstep}[1]{{\overset{#1}{\leftrightsquigarrow}}}
+\newcommand{\sfTS}{\mathsf{TS}}
+\newcommand{\sfTJ}{\mathsf{TJ}}
+\newcommand{\TS}[2]{\sfTS_{#1}(#2)}
+\newcommand{\TJ}[2]{\sfTJ_{#1}(#2)}
+\newcommand{\KTS}{\mathcal{K}^{\sfTS}}
+\newcommand{\KTJ}{\mathcal{K}^{\sfTJ}}
+\newcommand{\Int}{\mathsf{Int}}
+\newcommand{\CP}[1]{\text{CP}_{#1}}
+
+\newcommand{\templatelistoftodos}{%
+	\ifsubmission
+	\else
+		\listoftodos
+	\fi
+}
+
+\newcommand{\printtemplatebibliography}{%
+	\ifhasbibfile
+		\ifusebiblatex
+			\printbibliography
+		\else
+			\bibliography{refs}
+		\fi
+	\else
+		\paragraph{Bibliography note}
+		Add a file named \texttt{refs.bib} when you want to enable the bibliography block in this template, regardless of whether you use the default \texttt{biblatex} mode or the optional \texttt{natbib} mode.
+	\fi
+}
 
 \hypersetup{
-	pdftitle={User Guide for ducha.sty},
+	pdftitle={Self-Contained Article Template},
 	pdfauthor={Template Maintainer},
-	pdfkeywords={LaTeX package, template guide, article workflow}
+	pdfkeywords={LaTeX template, self-contained article, article workflow}
 }
 
 % Author info
-\title{\textbf{User Guide for \texttt{ducha.sty}}}
+\title{\textbf{Self-Contained Article Template}}
 \author{Template Maintainer \\ \email{template@example.com}}
 \date{\today}
 
@@ -39,9 +383,9 @@
 \maketitle
 
 \begin{abstract}
-	This document explains how to use the custom package \texttt{ducha.sty}. It shows how to load the package, choose build options, configure version and release metadata, call the helper commands, use the bundled theorem environments, and work with the included table, figure, algorithm, and bibliography support.
+	This document explains how to use the self-contained article template. It shows how to choose build modes, configure version and release metadata, call the helper commands, use the bundled theorem environments, and work with the included table, figure, algorithm, and bibliography support.
 
-	\noindent\textbf{Keywords:} custom package, usage guide, LaTeX template
+	\noindent\textbf{Keywords:} self-contained template, usage guide, LaTeX template
 \end{abstract}
 
 \printduchametadata
@@ -53,11 +397,12 @@
 \section{Quick Start}
 \label{sec:quickstart}
 
-Load \texttt{ducha.sty} immediately after the document class. The custom package already configures the page layout, theorem environments, cross-references, figures, tables, algorithms, todo notes, and bibliography support, so a minimal starting point looks like this:
+The template setup is inlined directly after the document class. It configures the page layout, theorem environments, cross-references, figures, tables, algorithms, todo notes, and bibliography support. A typical edit starts by choosing the build mode near the top of this file and then setting document metadata:
 
 \begin{verbatim}
-\documentclass[a4paper]{article}
-\usepackage[submission,biblatex]{ducha}
+\submissiontrue      % clean output
+\usebiblatextrue     % Biber/biblatex workflow
+
 \duchasetup{
   version=journal,
   license={CC BY 4.0},
@@ -79,26 +424,26 @@ Load \texttt{ducha.sty} immediately after the document class. The custom package
 \end{document}
 \end{verbatim}
 
-\cref{sec:options} explains the package options, \cref{sec:metadata} covers version profiles and release metadata, \cref{sec:helpers} shows the helper commands, \cref{sec:theorems} illustrates the theorem and reference setup, and \cref{sec:assets} shows the figure, table, and algorithm support. For broader LaTeX references, see~\cite{lamport1994latex,mittelbach2004latexcompanion}.
+\cref{sec:options} explains the build-mode toggles, \cref{sec:metadata} covers version profiles and release metadata, \cref{sec:helpers} shows the helper commands, \cref{sec:theorems} illustrates the theorem and reference setup, and \cref{sec:assets} shows the figure, table, and algorithm support. For broader LaTeX references, see~\cite{lamport1994latex,mittelbach2004latexcompanion}.
 
-\section{Package Options}
+\section{Build Mode Toggles}
 \label{sec:options}
 
-The package is controlled by two independent package-option groups: one for review visibility and one for bibliography mode. Rich document metadata such as version, license, copyright, code, and data availability is configured separately with \verb|\duchasetup{...}|.
+The template is controlled by two independent booleans near the top of the preamble: one for review visibility and one for bibliography mode. Rich document metadata such as version, license, copyright, code, and data availability is configured separately with \verb|\duchasetup{...}|.
 
 \begin{table}[ht]
 	\centering
 	\begin{tabular}{@{}lll@{}}
 		\toprule
-		\textbf{Option} & \textbf{Effect} & \textbf{Typical use} \\
+		\textbf{Setting} & \textbf{Effect} & \textbf{Typical use} \\
 		\midrule
-		\texttt{submission} & Hides todo notes and the todo list & Final or shareable PDF \\
-		\texttt{draft} & Shows todo notes and enables the todo list & Internal review build \\
-		\texttt{biblatex} & Uses Biber through the package helper & Default workflow \\
-		\texttt{natbib} & Uses BibTeX through the package helper & BibTeX-only submission flow \\
+		\texttt{\string\submissiontrue} & Hides todo notes and the todo list & Final or shareable PDF \\
+		\texttt{\string\submissionfalse} & Shows todo notes and enables the todo list & Internal review build \\
+		\texttt{\string\usebiblatextrue} & Uses Biber through the bibliography helper & Default workflow \\
+		\texttt{\string\usebiblatexfalse} & Uses BibTeX through the bibliography helper & BibTeX-only submission flow \\
 		\bottomrule
 	\end{tabular}
-	\caption{Core options provided by \texttt{ducha.sty}}
+	\caption{Core build toggles provided by the template}
 	\label{tbl:options}
 \end{table}
 
@@ -106,26 +451,33 @@ The package is controlled by two independent package-option groups: one for revi
 	\centering
 	\begin{tabular}{@{}llcc@{}}
 		\toprule
-		\multirow{2}{*}{Use case} & \multirow{2}{*}{Goal} & \multicolumn{2}{c}{Recommended option} \\
+		\multirow{2}{*}{Use case} & \multirow{2}{*}{Goal} & \multicolumn{2}{c}{Recommended setting} \\
 		\cmidrule(lr){3-4}
 		 & & Visibility & Bibliography \\
 		\midrule
-		\multirow{2}{*}{Working draft} & Keep review notes visible & \texttt{draft} & \texttt{biblatex} \\
-		 & Match a BibTeX-only workflow & \texttt{draft} & \texttt{natbib} \\
-		\multirow{2}{*}{Final output} & Hide review notes & \texttt{submission} & \texttt{biblatex} \\
-		 & Hide notes and use BibTeX & \texttt{submission} & \texttt{natbib} \\
+		\multirow{2}{*}{Working draft} & Keep review notes visible & \texttt{\string\submissionfalse} & \texttt{\string\usebiblatextrue} \\
+		 & Match a BibTeX-only workflow & \texttt{\string\submissionfalse} & \texttt{\string\usebiblatexfalse} \\
+		\multirow{2}{*}{Final output} & Hide review notes & \texttt{\string\submissiontrue} & \texttt{\string\usebiblatextrue} \\
+		 & Hide notes and use BibTeX & \texttt{\string\submissiontrue} & \texttt{\string\usebiblatexfalse} \\
 		\bottomrule
 	\end{tabular}
-	\caption{Example option combinations}
+	\caption{Example build-mode combinations}
 	\label{tbl:option-combos}
 \end{table}
 
-In practice, most users will start with \verb|\usepackage[submission,biblatex]{ducha}|, switch to \verb|draft| only when they want to surface inline review annotations, and then describe the release itself through \verb|\duchasetup{...}|.
+In practice, most final builds keep the two default toggles:
+
+\begin{verbatim}
+\submissiontrue
+\usebiblatextrue
+\end{verbatim}
+
+Switch to \verb|\submissionfalse| only when you want to surface inline review annotations, and then describe the release itself through \verb|\duchasetup{...}|.
 
 \section{Metadata and Release Profiles}
 \label{sec:metadata}
 
-Use \verb|\duchasetup{...}| to declare release metadata without rewriting the package. This is where you specify whether the file is a full version, draft version, conference submission, journal submission, arXiv version, working paper, or some other release profile, along with license, copyright, code, and data information.
+Use \verb|\duchasetup{...}| to declare release metadata without rewriting the setup block. This is where you specify whether the file is a full version, draft version, conference submission, journal submission, arXiv version, working paper, or some other release profile, along with license, copyright, code, and data information.
 
 \begin{verbatim}
 \duchasetup{
@@ -196,7 +548,7 @@ The current guide file is configured as \textbf{\duchaversionlabel}, which is wh
 \subsection{Document-Level Helpers}
 \label{sec:document-helpers}
 
-The package exposes several helpers that matter in most documents:
+The template exposes several helpers that matter in most documents:
 
 \begin{verbatim}
 \duchasetup{...}
@@ -220,7 +572,7 @@ It works with both \texttt{biblatex} and \texttt{natbib}.
 \subsection{Todo Commands}
 \label{sec:todo-helpers}
 
-Todo helpers are available in every document, but they only render visibly when the package is loaded with the \texttt{draft} option:
+Todo helpers are available in every document, but they only render visibly when \verb|\submissionfalse| is set:
 
 \begin{verbatim}
 \Task{Rewrite the introduction}
@@ -236,7 +588,7 @@ This design lets one source file serve both as a collaborative draft and as a cl
 \subsection{Domain-Specific Math Helpers}
 \label{sec:math-helpers}
 
-The package also bundles a set of graph-reconfiguration macros from the original project. If your article is in that area, they are ready to use:
+The template also bundles a set of graph-reconfiguration macros from the original project. If your article is in that area, they are ready to use:
 
 \[
 \TS{k}{G},\quad
@@ -247,40 +599,40 @@ I \onestep{\sfTS} J,\quad
 \CP{n}.
 \]
 
-If your document is unrelated to this notation, you can ignore those commands without affecting the rest of the package.
+If your document is unrelated to this notation, you can ignore those commands without affecting the rest of the template.
 
 \section{Theorems and Cross-References}
 \label{sec:theorems}
 
-The package predefines common theorem-style environments such as \texttt{theorem}, \texttt{lemma}, \texttt{corollary}, \texttt{proposition}, \texttt{definition}, \texttt{example}, \texttt{remark}, and \texttt{problem}. It also loads \texttt{cleveref}, so references are printed automatically with the correct labels.
+The template predefines common theorem-style environments such as \texttt{theorem}, \texttt{lemma}, \texttt{corollary}, \texttt{proposition}, \texttt{definition}, \texttt{example}, \texttt{remark}, and \texttt{problem}. It also loads \texttt{cleveref}, so references are printed automatically with the correct labels.
 
 \begin{definition}
 \label{def:configured-doc}
-A \emph{configured document} is a \LaTeX{} file that loads \texttt{ducha.sty} and uses its helper commands instead of duplicating preamble setup locally.
+A \emph{configured document} is a \LaTeX{} file that uses the inlined setup block and its helper commands instead of duplicating preamble setup elsewhere.
 \end{definition}
 
 \begin{theorem}
 \label{thm:submission-hides-notes}
-If a configured document is compiled with the \texttt{submission} option, then review annotations created by the todo helpers do not appear in the output.
+If a configured document is compiled with \verb|\submissiontrue|, then review annotations created by the todo helpers do not appear in the output.
 \end{theorem}
 
 \begin{proof}
-The package wraps the todo commands and the todo list helper in conditional checks on the \texttt{submission} flag. When that flag is true, the visible note-producing branches are skipped.
+The template wraps the todo commands and the todo list helper in conditional checks on the \texttt{submission} flag. When that flag is true, the visible note-producing branches are skipped.
 \end{proof}
 
 \begin{example}
 \label{ex:cref}
-The sentence ``\cref{def:configured-doc,thm:submission-hides-notes} describe the document setup and its clean-output behavior'' is generated with ordinary \verb|\cref| commands; the package handles the labels automatically.
+The sentence ``\cref{def:configured-doc,thm:submission-hides-notes} describe the document setup and its clean-output behavior'' is generated with ordinary \verb|\cref| commands; the template handles the labels automatically.
 \end{example}
 
 \begin{remark}
-If you need a new theorem-like environment that is not already bundled, add it in the package file so every document using the package receives the same numbering and reference behavior.
+If you need a new theorem-like environment that is not already bundled, add it in the setup block so the document receives the same numbering and reference behavior.
 \end{remark}
 
 \section{Figures, Tables, and Algorithms}
 \label{sec:assets}
 
-The package already loads \texttt{graphicx}, \texttt{booktabs}, \texttt{multirow}, \texttt{tikz}, \texttt{adjustbox}, and \texttt{algorithm2e}. Keep figure assets in \texttt{figs/}; the package sets \verb|\graphicspath{{figs/}}| for you.
+The template setup already loads \texttt{graphicx}, \texttt{booktabs}, \texttt{multirow}, \texttt{tikz}, \texttt{adjustbox}, and \texttt{algorithm2e}. Keep figure assets in \texttt{figs/}; the setup sets \verb|\graphicspath{{figs/}}| for you.
 
 \subsection{External Images}
 \label{sec:includegraphics}
@@ -318,7 +670,7 @@ The template wraps TikZ figures in \texttt{adjustbox} so they scale down automat
 	\centering
 	\begin{adjustbox}{max width=\textwidth}
 		\begin{tikzpicture}[thick]
-			\node[draw, rounded corners, minimum width=3.2cm, minimum height=1cm] (load) at (0,0) {Load package};
+			\node[draw, rounded corners, minimum width=3.2cm, minimum height=1cm] (load) at (0,0) {Configure setup};
 			\node[draw, rounded corners, minimum width=3.2cm, minimum height=1cm] (write) at (4.5,0) {Write content};
 			\node[draw, rounded corners, minimum width=3.2cm, minimum height=1cm] (compile) at (9,0) {Compile PDF};
 			\draw[->] (load) -- (write);
@@ -326,7 +678,7 @@ The template wraps TikZ figures in \texttt{adjustbox} so they scale down automat
 			\draw[->, bend right=25] (compile.north) to (write.north);
 		\end{tikzpicture}
 	\end{adjustbox}
-	\caption{A simple package-usage workflow drawn directly in the source}
+	\caption{A simple template workflow drawn directly in the source}
 	\label{fig:workflow}
 \end{figure}
 
@@ -339,11 +691,10 @@ The algorithm environment is ready for methods, procedures, or reproducibility n
 	\caption{Choosing a build configuration}
 	\label{alg:workflow}
 	\KwIn{A document state, a release target, and a bibliography preference}
-	\KwOut{A package option pair plus metadata settings}
-	Choose \texttt{draft} if review notes should remain visible; otherwise choose \texttt{submission}\;
-	Choose \texttt{biblatex} for the default Biber workflow; otherwise choose \texttt{natbib}\;
+	\KwOut{Build-mode toggles plus metadata settings}
+	Choose \verb|\submissionfalse| if review notes should remain visible; otherwise choose \verb|\submissiontrue|\;
+	Choose \verb|\usebiblatextrue| for the default Biber workflow; otherwise choose \verb|\usebiblatexfalse|\;
 	Set \verb|\duchasetup| keys for version, license, copyright, code, and data as needed\;
-	Load \texttt{ducha} with the resulting option pair\;
 	Print the metadata block if you want that information visible in the front matter\;
 	Compile the document and place the bibliography with \verb|\printtemplatebibliography|\;
 \end{algorithm}
@@ -351,24 +702,24 @@ The algorithm environment is ready for methods, procedures, or reproducibility n
 \section{Bibliography Workflow}
 \label{sec:bibliography}
 
-Store bibliography data in \texttt{refs.bib}. The package defaults to \texttt{biblatex} with Biber, but the same source file can switch to \texttt{natbib} with BibTeX by changing the package option:
+Store bibliography data in \texttt{refs.bib}. The template defaults to \texttt{biblatex} with Biber, but the same source file can switch to \texttt{natbib} with BibTeX by changing the bibliography toggle:
 
 \begin{verbatim}
-\usepackage[submission,biblatex]{ducha}
-\usepackage[submission,natbib]{ducha}
+\usebiblatextrue
+\usebiblatexfalse
 \end{verbatim}
 
 Use ordinary citation commands in the body, for example
 \cite{lamport1994latex,mittelbach2004latexcompanion}.
-Finish the document with \verb|\printtemplatebibliography| so the package can
+Finish the document with \verb|\printtemplatebibliography| so the template can
 select the correct bibliography command automatically.
 
 \section{Usage Checklist}
 \label{sec:checklist}
 
-When you start a new document with this package, the practical checklist is short:
+When you start a new document from this template, the practical checklist is short:
 \begin{enumerate}
-\item Load \texttt{ducha} with the right visibility and bibliography options.
+\item Choose the right visibility and bibliography toggles near the top of the preamble.
 \item Use \verb|\duchasetup{...}| to describe the release profile, license, copyright, code, and data information.
 \item Keep figure assets in \texttt{figs/} and bibliography data in \texttt{refs.bib}.
 \item Place \verb|\printduchametadata| near the front matter if that metadata should appear in the PDF.
