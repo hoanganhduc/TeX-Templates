@@ -29,7 +29,8 @@
 \graphicspath{{figs/}}
 \usepackage{booktabs}
 \usepackage{multirow}
-\usepackage{xcolor}
+% dvipsnames provides BrickRed, used by the jeffe.sty \Comment macro below
+\usepackage[dvipsnames]{xcolor}
 \usepackage{mathrsfs}
 \usepackage[utf8]{inputenc}
 \usepackage{adjustbox}
@@ -157,6 +158,61 @@ sorting=ydnt
 \Crefname{principle}{Principle}{Principles}
 
 \usepackage[linesnumbered,ruled,vlined,commentsnumbered]{algorithm2e}
+
+% ----------------------------------------------------------------------
+%  Algorithm and code environments from jeffe.sty by Jeff Erickson
+%  (jeffe@cs.uiuc.edu), "macros I use everywhere", last modified
+%  22 May 2010, https://jeffe.cs.illinois.edu/ -- "This is free;
+%  caveat emptor!"  Copied from the version modified by Duc
+%  (anhduc.hoang1990@gmail.com, CC BY 4.0) for the Vietnamese
+%  translation of Erickson's textbook "Algorithms"
+%  (~/Algorithms-JeffE-VN/jeffe.sty), together with the companion
+%  helpers \Comment, \mathsc, and \textul used by that style.
+%
+%  From the original: "Algorithms are set in normal text, with 2em
+%  indenting, surrounded by a box.  Code is set in typewriter text,
+%  with 4 space indenting, and no box."
+%
+%  WARNING (also from the original)!  The true width of the minipage
+%  environment is determined by the contents of the longest line,
+%  because the minipage environment contains a tabbing environment
+%  and nothing else.  It's a HaX!
+%
+%  Local changes for this template:
+%  (1) jeffe.sty's `algorithm' environment is renamed `algobox' here,
+%      because algorithm2e (loaded above) already defines `algorithm'.
+%  (2) \tt is replaced by \ttfamily in the `code' environment.
+% ----------------------------------------------------------------------
+\makeatletter
+\def\begin@lgo{\begin{minipage}{1in}\begin{tabbing}
+        \quad\=\qquad\=\qquad\=\qquad\=\qquad\=\qquad\=\qquad\=\qquad\=\qquad\=\qquad\=\qquad\=\qquad\=\qquad\=\kill}
+\def\end@lgo{\end{tabbing}\end{minipage}}
+
+\newenvironment{algobox}
+{\begin{tabular}{|l|}\hline\begin@lgo}
+{\end@lgo\\\hline\end{tabular}}
+
+\newenvironment{algo}
+{\begin{center}\small\begin{algobox}}
+{\end{algobox}\end{center}}
+
+% Pseudocode comments set as <<...>> in BrickRed.  ("Meh." -- Jeff)
+\def\Comment#1{{\color{BrickRed}\textsf{\textsl{$\langle\!\langle$#1\/$\rangle\!\rangle$}}}}
+
+\def\beginc@de{\noindent\begin{center}\begin{minipage}{1in}\ttfamily
+        \begin{tabbing}~~~~\=~~~~\=~~~~\=~~~~\=~~~~\=~~~~\=~~~~\=~~~~\=\kill}
+\def\endc@de{\end{tabbing}\end{minipage}\end{center}}
+
+\newenvironment{code}{\beginc@de}{\endc@de}
+\makeatother
+
+% Small caps in math mode for algorithm names such as $\mathsc{MergeSort}$
+% (from the TEXT STYLES section of jeffe.sty).
+\def\mathsc#1{\text{\textsc{#1}}}
+% Underline for pseudocode header lines; works on <1 line of text only
+% (from jeffe.sty: "Use sparingly!!").
+\def\textul#1{\underline{\smash{#1}\vphantom{.}}}
+
 \usepackage[pagewise]{lineno}
 \usepackage[colorinlistoftodos]{todonotes}
 
@@ -480,6 +536,31 @@ The algorithm environment is ready for methods, procedures, or reproducibility n
 	Choose \verb|\usebiblatextrue| for the default Biber workflow; otherwise choose \verb|\usebiblatexfalse|\;
 	Compile the document and place the bibliography with \verb|\printtemplatebibliography|\;
 \end{algorithm}
+
+\subsection{Jeff Erickson's Pseudocode Style}
+\label{sec:jeffe-pseudocode}
+
+The template also bundles the boxed pseudocode environments from Jeff Erickson's \texttt{jeffe.sty}, in the variant used by the Vietnamese translation of his textbook \emph{Algorithms}.
+Pseudocode is written line by line inside a \texttt{tabbing}-based box: \verb|\\| starts a new line, \verb|\+| and \verb|\-| change the indentation level, \verb|\mathsc| sets algorithm names in small caps, \verb|\textul| underlines the header line, and \verb|\Comment| produces angle-bracketed comments.
+
+\begin{verbatim}
+\begin{algo} ... \end{algo}        % centered, small, boxed pseudocode
+\begin{algobox} ... \end{algobox}  % bare boxed block (jeffe's `algorithm')
+\begin{code} ... \end{code}        % typewriter block, no box
+$\mathsc{MergeSort}(A[1..n])$      % algorithm name in small caps
+\Comment{a pseudocode comment}
+\end{verbatim}
+
+\begin{algo}
+	\textul{$\mathsc{Hanoi}(n, \mathit{src}, \mathit{dst}, \mathit{tmp})$:}\+
+	\\ \Comment{Move a stack of $n$ disks from $\mathit{src}$ to $\mathit{dst}$.}
+	\\ if $n > 0$\+
+	\\ $\mathsc{Hanoi}(n-1, \mathit{src}, \mathit{tmp}, \mathit{dst})$
+	\\ move disk $n$ from $\mathit{src}$ to $\mathit{dst}$
+	\\ $\mathsc{Hanoi}(n-1, \mathit{tmp}, \mathit{dst}, \mathit{src})$
+\end{algo}
+
+The \texttt{algo} environment is not a float, so it has no caption or number; use the \texttt{algorithm2e} environment shown in \cref{sec:algorithm} when you need numbered, captioned algorithm floats.
 
 \section{Bibliography Workflow}
 \label{sec:bibliography}
