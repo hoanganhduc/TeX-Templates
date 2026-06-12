@@ -224,7 +224,10 @@ sorting=ydnt
 \newcommand{\Mcomment}[3]{%
 \ifsubmission%
 	\else%
-	{\color{#1}\bfseries\sffamily(#3)}%
+	% \unskip\space gives exactly one space before the inline comment,
+	% so the no-space call convention (word\Editor{...}) does not glue
+	% the parenthetical to the preceding word in draft mode.
+	\unskip\ {\color{#1}\bfseries\sffamily(#3)}%
 	\marginpar{\textcolor{#1}{\bfseries\sffamily #2}}%
 	\fi%
 }
