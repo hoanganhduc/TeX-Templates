@@ -224,11 +224,11 @@ sorting=ydnt
 \newcommand{\Mcomment}[3]{%
 \ifsubmission%
 	\else%
-	% \unskip\space gives exactly one space before the inline comment,
-	% so the no-space call convention (word\Editor{...}) does not glue
-	% the parenthetical to the preceding word in draft mode.
-	\unskip\ {\color{#1}\bfseries\sffamily(#3)}%
-	\marginpar{\textcolor{#1}{\bfseries\sffamily #2}}%
+	% Self-contained inline reviewer comment: \unskip\space normalizes
+	% the spacing before the parenthetical, and the person's name sits
+	% inside it. The former \marginpar person flag is gone; a bare name
+	% alone in the margin read as a stray word.
+	\unskip\ {\color{#1}\bfseries\sffamily(#2: #3)}%
 	\fi%
 }
 \newcommand{\TaskNewPerson}[3]{%
