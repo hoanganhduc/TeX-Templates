@@ -68,122 +68,6 @@ sorting=ydnt
 	pdfkeywords={article template, placeholder text, LaTeX}
 }
 
-\newcommand{\duchaversion}{full}
-\newcommand{\duchaversionlabel}{Full Version}
-\newcommand{\duchalicense}{}
-\newcommand{\duchalicenseurl}{}
-\newcommand{\duchacopyright}{}
-\newcommand{\duchacode}{}
-\newcommand{\duchacodeurl}{}
-\newcommand{\duchadata}{}
-\newcommand{\duchadataurl}{}
-\newcommand{\duchaproject}{}
-\newcommand{\duchaprojecturl}{}
-\newcommand{\duchapreprint}{}
-\newcommand{\duchapreprinturl}{}
-\newcommand{\duchadoi}{}
-\newcommand{\duchanote}{}
-
-\pgfkeys{
-	/ducha/.is family,
-	/ducha,
-	version/.is choice,
-	version/full/.code={%
-		\renewcommand{\duchaversion}{full}%
-		\renewcommand{\duchaversionlabel}{Full Version}%
-	},
-	version/draft/.code={%
-		\renewcommand{\duchaversion}{draft}%
-		\renewcommand{\duchaversionlabel}{Draft Version}%
-	},
-	version/conference/.code={%
-		\renewcommand{\duchaversion}{conference}%
-		\renewcommand{\duchaversionlabel}{Conference Submission}%
-	},
-	version/journal/.code={%
-		\renewcommand{\duchaversion}{journal}%
-		\renewcommand{\duchaversionlabel}{Journal Submission}%
-	},
-	version/arxiv/.code={%
-		\renewcommand{\duchaversion}{arxiv}%
-		\renewcommand{\duchaversionlabel}{arXiv Version}%
-	},
-	version/preprint/.code={%
-		\renewcommand{\duchaversion}{preprint}%
-		\renewcommand{\duchaversionlabel}{Preprint}%
-	},
-	version/working-paper/.code={%
-		\renewcommand{\duchaversion}{working-paper}%
-		\renewcommand{\duchaversionlabel}{Working Paper}%
-	},
-	version/tech-report/.code={%
-		\renewcommand{\duchaversion}{tech-report}%
-		\renewcommand{\duchaversionlabel}{Technical Report}%
-	},
-	version/manuscript/.code={%
-		\renewcommand{\duchaversion}{manuscript}%
-		\renewcommand{\duchaversionlabel}{Manuscript}%
-	},
-	version/custom/.code={%
-		\renewcommand{\duchaversion}{custom}%
-	},
-	version label/.code={\renewcommand{\duchaversionlabel}{#1}},
-	license/.code={\renewcommand{\duchalicense}{#1}},
-	license url/.code={\renewcommand{\duchalicenseurl}{#1}},
-	copyright/.code={\renewcommand{\duchacopyright}{#1}},
-	code/.code={\renewcommand{\duchacode}{#1}},
-	code url/.code={\renewcommand{\duchacodeurl}{#1}},
-	data/.code={\renewcommand{\duchadata}{#1}},
-	data url/.code={\renewcommand{\duchadataurl}{#1}},
-	project/.code={\renewcommand{\duchaproject}{#1}},
-	project url/.code={\renewcommand{\duchaprojecturl}{#1}},
-	preprint/.code={\renewcommand{\duchapreprint}{#1}},
-	preprint url/.code={\renewcommand{\duchapreprinturl}{#1}},
-	doi/.code={\renewcommand{\duchadoi}{#1}},
-	note/.code={\renewcommand{\duchanote}{#1}},
-}
-
-\newcommand{\duchasetup}[1]{\pgfkeys{/ducha,#1}}
-
-\newcommand{\duchaprinttextfield}[2]{%
-	\ifstrempty{#2}{}{%
-		\par\noindent\textbf{#1:} #2\par
-	}%
-}
-
-\newcommand{\duchaprintlinkfield}[3]{%
-	\ifstrempty{#2}{%
-		\ifstrempty{#3}{}{%
-			\par\noindent\textbf{#1:} \url{#3}\par
-		}%
-	}{%
-		\par\noindent\textbf{#1:} %
-		\ifstrempty{#3}{#2}{\href{#3}{#2}}%
-		\par
-	}%
-}
-
-\newcommand{\printduchametadata}{%
-	\begingroup
-	\par\medskip
-	\noindent\textbf{Document Metadata}\par
-	\smallskip
-	\small
-	\duchaprinttextfield{Version}{\duchaversionlabel}
-	\duchaprintlinkfield{License}{\duchalicense}{\duchalicenseurl}
-	\duchaprinttextfield{Copyright}{\duchacopyright}
-	\duchaprintlinkfield{Code}{\duchacode}{\duchacodeurl}
-	\duchaprintlinkfield{Data}{\duchadata}{\duchadataurl}
-	\duchaprintlinkfield{Project}{\duchaproject}{\duchaprojecturl}
-	\duchaprintlinkfield{Preprint}{\duchapreprint}{\duchapreprinturl}
-	\ifstrempty{\duchadoi}{}{%
-		\par\noindent\textbf{DOI:} \href{https://doi.org/\duchadoi}{\duchadoi}\par
-	}
-	\duchaprinttextfield{Note}{\duchanote}
-	\par\medskip
-	\endgroup
-}
-
 \usepackage[capitalise,noabbrev]{cleveref}
 \crefname{cond}{Condition}{Conditions}
 \creflabelformat{cond}{(#2C#1#3)}
@@ -362,33 +246,15 @@ sorting=ydnt
 \author{Template Maintainer \\ \email{template@example.com}}
 \date{\today}
 
-\duchasetup{
-	version=conference,
-	license={CC BY 4.0},
-	license url={https://creativecommons.org/licenses/by/4.0/},
-	copyright={Copyright 2026 Template Maintainer},
-	code={Example repository},
-	code url={https://github.com/example/ducha-template},
-	data={Example dataset},
-	data url={https://example.com/data},
-	project={Project homepage},
-	project url={https://example.com/project},
-	preprint={Example arXiv page},
-	preprint url={https://arxiv.org/abs/1234.56789},
-	doi={10.0000/placeholder-doi},
-	note={Replace these placeholder values with the metadata relevant to your release.}
-}
-
 \begin{document}
 \maketitle
 
 \begin{abstract}
-	This document explains how to use the self-contained article template. It shows how to choose build modes, configure version and release metadata, call the helper commands, use the bundled theorem environments, and work with the included table, figure, algorithm, and bibliography support.
+	This document explains how to use the self-contained article template. It shows how to choose build modes, call the helper commands, use the bundled theorem environments, and work with the included table, figure, algorithm, and bibliography support.
 
 	\noindent\textbf{Keywords:} self-contained template, usage guide, LaTeX template
 \end{abstract}
 
-\printduchametadata
 \templatelistoftodos
 
 \tableofcontents
@@ -397,18 +263,11 @@ sorting=ydnt
 \section{Quick Start}
 \label{sec:quickstart}
 
-The template setup is inlined directly after the document class. It configures the page layout, theorem environments, cross-references, figures, tables, algorithms, todo notes, and bibliography support. A typical edit starts by choosing the build mode near the top of this file and then setting document metadata:
+The template setup is inlined directly after the document class. It configures the page layout, theorem environments, cross-references, figures, tables, algorithms, todo notes, and bibliography support. A typical edit starts by choosing the build mode near the top of this file and then setting the title information:
 
 \begin{verbatim}
 \submissiontrue      % clean output
 \usebiblatextrue     % Biber/biblatex workflow
-
-\duchasetup{
-  version=journal,
-  license={CC BY 4.0},
-  code={Repository},
-  code url={https://example.com/code}
-}
 
 \title{My Document}
 \author{Author Name}
@@ -416,7 +275,6 @@ The template setup is inlined directly after the document class. It configures t
 
 \begin{document}
 \maketitle
-\printduchametadata
 \templatelistoftodos
 \tableofcontents
 ...
@@ -424,12 +282,12 @@ The template setup is inlined directly after the document class. It configures t
 \end{document}
 \end{verbatim}
 
-\cref{sec:options} explains the build-mode toggles, \cref{sec:metadata} covers version profiles and release metadata, \cref{sec:helpers} shows the helper commands, \cref{sec:theorems} illustrates the theorem and reference setup, and \cref{sec:assets} shows the figure, table, and algorithm support. For broader LaTeX references, see~\cite{lamport1994latex,mittelbach2004latexcompanion}.
+\cref{sec:options} explains the build-mode toggles, \cref{sec:helpers} shows the helper commands, \cref{sec:theorems} illustrates the theorem and reference setup, and \cref{sec:assets} shows the figure, table, and algorithm support. For broader LaTeX references, see~\cite{lamport1994latex,mittelbach2004latexcompanion}.
 
 \section{Build Mode Toggles}
 \label{sec:options}
 
-The template is controlled by two independent booleans near the top of the preamble: one for review visibility and one for bibliography mode. Rich document metadata such as version, license, copyright, code, and data availability is configured separately with \verb|\duchasetup{...}|.
+The template is controlled by two independent booleans near the top of the preamble: one for review visibility and one for bibliography mode.
 
 \begin{table}[ht]
 	\centering
@@ -472,75 +330,7 @@ In practice, most final builds keep the two default toggles:
 \usebiblatextrue
 \end{verbatim}
 
-Switch to \verb|\submissionfalse| only when you want to surface inline review annotations, and then describe the release itself through \verb|\duchasetup{...}|.
-
-\section{Metadata and Release Profiles}
-\label{sec:metadata}
-
-Use \verb|\duchasetup{...}| to declare release metadata without rewriting the setup block. This is where you specify whether the file is a full version, draft version, conference submission, journal submission, arXiv version, working paper, or some other release profile, along with license, copyright, code, and data information.
-
-\begin{verbatim}
-\duchasetup{
-  version=conference,
-  license={CC BY 4.0},
-  license url={https://creativecommons.org/licenses/by/4.0/},
-  copyright={Copyright 2026 Author Name},
-  code={Project repository},
-  code url={https://github.com/user/project},
-  data={Companion dataset},
-  data url={https://example.com/data},
-  project={Project page},
-  project url={https://example.com/project},
-  preprint={arXiv page},
-  preprint url={https://arxiv.org/abs/1234.56789},
-  doi={10.0000/example},
-  note={Optional internal or public release note.}
-}
-\end{verbatim}
-
-The current guide file is configured as \textbf{\duchaversionlabel}, which is why the metadata block near the front matter shows a conference-oriented release profile.
-
-\begin{table}[ht]
-	\centering
-	\begin{tabular}{@{}ll@{}}
-		\toprule
-		\textbf{Version value} & \textbf{Default printed label} \\
-		\midrule
-		\texttt{full} & Full Version \\
-		\texttt{draft} & Draft Version \\
-		\texttt{conference} & Conference Submission \\
-		\texttt{journal} & Journal Submission \\
-		\texttt{arxiv} & arXiv Version \\
-		\texttt{preprint} & Preprint \\
-		\texttt{working-paper} & Working Paper \\
-		\texttt{tech-report} & Technical Report \\
-		\texttt{manuscript} & Manuscript \\
-		\bottomrule
-	\end{tabular}
-	\caption{Built-in release profiles supported by \texttt{\string\duchasetup}}
-	\label{tbl:version-values}
-\end{table}
-
-\begin{table}[ht]
-	\centering
-	\begin{tabular}{@{}ll@{}}
-		\toprule
-		\textbf{Key} & \textbf{Purpose} \\
-		\midrule
-		\texttt{version} / \texttt{version label} & Select or override the release label \\
-		\texttt{license} / \texttt{license url} & Describe the reuse license \\
-		\texttt{copyright} & Record ownership or rights text \\
-		\texttt{code} / \texttt{code url} & Link the software or repository \\
-		\texttt{data} / \texttt{data url} & Link the dataset or archive \\
-		\texttt{project} / \texttt{project url} & Link a homepage or landing page \\
-		\texttt{preprint} / \texttt{preprint url} & Link a public preprint page \\
-		\texttt{doi} & Print a clickable DOI \\
-		\texttt{note} & Add a short release-specific note \\
-		\bottomrule
-	\end{tabular}
-	\caption{Metadata keys exposed by \texttt{\string\duchasetup}}
-	\label{tbl:metadata-keys}
-\end{table}
+Switch to \verb|\submissionfalse| only when you want to surface inline review annotations.
 
 \section{Helper Commands}
 \label{sec:helpers}
@@ -551,19 +341,13 @@ The current guide file is configured as \textbf{\duchaversionlabel}, which is wh
 The template exposes several helpers that matter in most documents:
 
 \begin{verbatim}
-\duchasetup{...}
-\duchaversionlabel
 \email{person@example.com}
-\printduchametadata
 \templatelistoftodos
 \printtemplatebibliography
 \end{verbatim}
 
 \begin{itemize}
-\item \verb|\duchasetup{...}| stores release metadata such as version, license, code, and data links.
-\item \verb|\duchaversionlabel| expands to the current human-readable release label.
 \item \verb|\email{...}| creates a clickable mailto link and is useful in the author block.
-\item \verb|\printduchametadata| prints the metadata block for the fields you configured.
 \item \verb|\templatelistoftodos| prints the todo list only in \texttt{draft} mode.
 \item \verb|\printtemplatebibliography| chooses the bibliography command automatically.
 It works with both \texttt{biblatex} and \texttt{natbib}.
@@ -690,12 +474,10 @@ The algorithm environment is ready for methods, procedures, or reproducibility n
 \begin{algorithm}[ht]
 	\caption{Choosing a build configuration}
 	\label{alg:workflow}
-	\KwIn{A document state, a release target, and a bibliography preference}
-	\KwOut{Build-mode toggles plus metadata settings}
+	\KwIn{A document state and a bibliography preference}
+	\KwOut{Build-mode toggles}
 	Choose \verb|\submissionfalse| if review notes should remain visible; otherwise choose \verb|\submissiontrue|\;
 	Choose \verb|\usebiblatextrue| for the default Biber workflow; otherwise choose \verb|\usebiblatexfalse|\;
-	Set \verb|\duchasetup| keys for version, license, copyright, code, and data as needed\;
-	Print the metadata block if you want that information visible in the front matter\;
 	Compile the document and place the bibliography with \verb|\printtemplatebibliography|\;
 \end{algorithm}
 
@@ -720,9 +502,7 @@ select the correct bibliography command automatically.
 When you start a new document from this template, the practical checklist is short:
 \begin{enumerate}
 \item Choose the right visibility and bibliography toggles near the top of the preamble.
-\item Use \verb|\duchasetup{...}| to describe the release profile, license, copyright, code, and data information.
 \item Keep figure assets in \texttt{figs/} and bibliography data in \texttt{refs.bib}.
-\item Place \verb|\printduchametadata| near the front matter if that metadata should appear in the PDF.
 \item Place \verb|\templatelistoftodos| near the front matter if you use \texttt{draft} mode.
 \item Use the bundled theorem, figure, table, and algorithm environments instead of rebuilding the preamble.
 \item End the document with \verb|\printtemplatebibliography|.
