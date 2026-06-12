@@ -2,11 +2,12 @@
 \documentclass[a4paper]{article}
 
 % Template settings formerly provided by a separate style file.
-% Current settings mirror the former submission/biblatex defaults.
-% Set \submissionfalse for visible todo notes.
+% This guide ships in draft mode (\submissionfalse) so the demo todo
+% notes and the todo list stay visible.
+% Set \submissiontrue for a clean submission PDF.
 % Set \usebiblatexfalse for BibTeX/natbib citations.
 \newif\ifsubmission
-\submissiontrue
+\submissionfalse
 \newif\ifusebiblatex
 \usebiblatextrue
 
@@ -415,14 +416,15 @@ The template is controlled by two independent booleans near the top of the pream
 	\label{tbl:option-combos}
 \end{table}
 
-In practice, most final builds keep the two default toggles:
+In practice, most final builds use:
 
 \begin{verbatim}
 \submissiontrue
 \usebiblatextrue
 \end{verbatim}
 
-Switch to \verb|\submissionfalse| only when you want to surface inline review annotations.
+This guide is currently compiled with \verb|\submissionfalse| so that the example notes in \cref{sec:todo-helpers} and the todo list after the title stay visible.
+Switch back to \verb|\submissiontrue| when you want a clean PDF.\Task[lowpriority]{Decide the build mode before sharing this PDF.}
 
 \section{Helper Commands}
 \label{sec:helpers}
@@ -464,7 +466,17 @@ Todo helpers are available in every document, but they only render visibly when 
 \TaskEditor[highpriority]{Update Figure 2}
 \end{verbatim}
 
-This design lets one source file serve both as a collaborative draft and as a clean submission build. In \texttt{submission} mode, these commands are effectively silent.
+% Live versions of the commands listed above; visible because this
+% guide is compiled with \submissionfalse.
+\TaskNewPerson{Editor}{Editor}{blue}
+Since this guide is in draft mode, the same commands render right here as live notes\Editor{Rewrite the abstract}:
+
+\Task{Rewrite the introduction}
+\TaskPerson{Editor}{Check the notation section}
+\TaskDone{Bibliography verified}
+\TaskEditor[highpriority]{Update Figure 2}
+
+This design lets one source file serve both as a collaborative draft and as a clean submission build. In \texttt{submission} mode, these commands are effectively silent and the notes above disappear.
 
 \subsection{Domain-Specific Math Helpers}
 \label{sec:math-helpers}
