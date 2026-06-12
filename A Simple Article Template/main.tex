@@ -270,6 +270,42 @@ sorting=ydnt
 \newcommand{\Int}{\mathsf{Int}}
 \newcommand{\CP}[1]{\text{CP}_{#1}}
 
+% ----------------------------------------------------------------------
+% Optional CC BY 4.0 license footer (icon + linked text).
+%   \ccbylicense   -> license notice in the footer of the first page
+%                     only; call it right after \maketitle
+%   \ccbylicense*  -> license notice in the footer of every page
+% The wording lives in \ccbynotice; \renewcommand it to adjust the
+% text, e.g. to add a copyright holder. The icon comes from the
+% ccicons package when it is installed; otherwise the notice is
+% text only.
+% ----------------------------------------------------------------------
+\IfFileExists{ccicons.sty}{%
+	\usepackage{ccicons}%
+	\newcommand{\ccbyicon}{\ccby\enspace}%
+}{%
+	\newcommand{\ccbyicon}{}%
+}
+\newcommand{\ccbynotice}{%
+	\ccbyicon This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License (CC BY 4.0)}.%
+}
+\makeatletter
+% Page style `ccbyfoot': like `plain' (empty header, centered page
+% number), with the notice set below the page number so it extends
+% into the bottom margin instead of stealing text height.
+\def\ps@ccbyfoot{%
+	\let\@mkboth\@gobbletwo
+	\let\@oddhead\@empty
+	\let\@evenhead\@empty
+	\def\@oddfoot{\reset@font\vtop{\hsize\textwidth
+		\centering\thepage\par\smallskip
+		{\scriptsize\sffamily\ccbynotice\par}}}%
+	\let\@evenfoot\@oddfoot}
+\newcommand{\ccbylicense}{\@ifstar
+	{\pagestyle{ccbyfoot}\thispagestyle{ccbyfoot}}%
+	{\thispagestyle{ccbyfoot}}}
+\makeatother
+
 \newcommand{\templatelistoftodos}{%
 	\ifsubmission
 	\else
@@ -303,6 +339,7 @@ sorting=ydnt
 
 \begin{document}
 \maketitle
+\ccbylicense
 
 \begin{abstract}
 	This document explains how to use the self-contained article template. It shows how to choose build modes, call the helper commands, use the bundled theorem environments, and work with the included table, figure, algorithm, and bibliography support.
@@ -399,6 +436,8 @@ The template exposes several helpers that matter in most documents:
 \email{person@example.com}
 \templatelistoftodos
 \printtemplatebibliography
+\ccbylicense
+\ccbylicense*
 \end{verbatim}
 
 \begin{itemize}
@@ -406,6 +445,9 @@ The template exposes several helpers that matter in most documents:
 \item \verb|\templatelistoftodos| prints the todo list only in \texttt{draft} mode.
 \item \verb|\printtemplatebibliography| chooses the bibliography command automatically.
 It works with both \texttt{biblatex} and \texttt{natbib}.
+\item \verb|\ccbylicense| is optional and prints a CC BY 4.0 notice (icon plus linked text) in the first-page footer, as on the title page of this guide; call it right after \verb|\maketitle|.
+The starred form \verb|\ccbylicense*| repeats the notice in the footer of every page.
+Renew \verb|\ccbynotice| to adjust the wording, for example to name a copyright holder.
 \end{itemize}
 
 \subsection{Todo Commands}
